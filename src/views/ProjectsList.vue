@@ -1,0 +1,31 @@
+<template>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Projects</h1>
+    <a class="btn btn-primary" href="/projects/new">New</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="border-0">Name</th>
+        <th class="border-0 w-1">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="/projects/qwe/current">qwe</a></td>
+        <td>
+          <div class="dropdown">
+            <a class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"><i class="fas fa-cog"></i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="/projects/qwe/edit">Edit</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" data-confirm="Are you sure?" data-to="/projects/qwe" href="/projects/qwe" rel="nofollow">
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>
