@@ -1,6 +1,6 @@
 <template>
-  <Header/>
-  <Sidebar/>
+  <Header />
+  <Sidebar />
   <div class="wrapper">
     <div class="pt-4">
       <div class="container px-4">
@@ -16,18 +16,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
+import { onMounted } from 'vue'
 
-export default {
-  beforeCreate: () => document.body.className = 'bg-gray',
-  components: {
-    Header,
-    Sidebar
-  }
-}
+onMounted(() => (document.body.className = 'bg-gray'))
 </script>
-
-<style>
-</style>

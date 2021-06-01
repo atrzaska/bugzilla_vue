@@ -1,10 +1,16 @@
 <template>
   <aside class="sidebar d-flex flex-column">
     <div class="sidebar-header"></div>
-    <router-link to="/" class="sidebar-item d-flex justify-content-center align-items-center">
+    <router-link
+      to="/dashboard"
+      class="sidebar-item d-flex justify-content-center align-items-center"
+    >
       <i class="fas fa-desktop gray-2"></i>
     </router-link>
-    <router-link to="/projects" class="sidebar-item d-flex justify-content-center align-items-center">
+    <router-link
+      to="/projects"
+      class="sidebar-item d-flex justify-content-center align-items-center"
+    >
       <i class="fas fa-table gray-2"></i>
     </router-link>
   </aside>
@@ -29,7 +35,7 @@
 }
 
 .sidebar-header {
-  background-color: #563D7C;
+  background-color: #563d7c;
   height: 30px;
 }
 
@@ -37,7 +43,8 @@
   height: 40px;
 }
 
-.sidebar-item-active, .sidebar-item:hover {
+.sidebar-item-active,
+.sidebar-item:hover {
   background-color: #f2f2f2;
 }
 </style>

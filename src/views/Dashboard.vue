@@ -1,15 +1,9 @@
 <template>
-  <App>
+  <AppLayout>
     <h1>Dashboard</h1>
-  </App>
+  </AppLayout>
 </template>
 
-<script>
-import App from '@/layouts/App'
-
-export default {
-  components: {
-    App,
-  },
-}
+<script setup>
+import AppLayout from '@/layouts/App'
 </script>

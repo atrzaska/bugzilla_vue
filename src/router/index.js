@@ -1,19 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import CommentsEdit from '../views/CommentsEdit.vue'
 import CommentsNew from '../views/CommentsNew.vue'
-import Confirm from '../views/Confirm.vue'
+import Confirm from '../views/auth/Confirm.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Landing from '../views/Landing.vue'
-import Signin from '../views/Signin.vue'
+import Signin from '../views/auth/Signin.vue'
 import MembersList from '../views/MembersList.vue'
 import Privacy from '../views/Privacy.vue'
 import ProjectsEdit from '../views/ProjectsEdit.vue'
 import ProjectsList from '../views/ProjectsList.vue'
 import ProjectsNew from '../views/ProjectsNew.vue'
-import Recover from '../views/Recover.vue'
-import RecoverSuccess from '../views/RecoverSuccess.vue'
-import Signup from '../views/Signup.vue'
-import SignupSuccess from '../views/SignupSuccess.vue'
+import Recover from '../views/auth/Recover.vue'
+import RecoverSuccess from '../views/auth/RecoverSuccess.vue'
+import Signup from '../views/auth/Signup.vue'
+import SignupSuccess from '../views/auth/SignupSuccess.vue'
 import StoriesCurrent from '../views/StoriesCurrent.vue'
 import StoriesEdit from '../views/StoriesEdit.vue'
 import StoriesIcebox from '../views/StoriesIcebox.vue'
@@ -80,7 +80,7 @@ const routes = [
     component: RecoverSuccess,
   },
   {
-    path: '/cofirm',
+    path: '/confirm',
     name: 'Confirm',
     component: Confirm,
   },
