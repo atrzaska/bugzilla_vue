@@ -7,4 +7,7 @@ import store from './store'
 import '@/plugins'
 import '@/css/app.scss'
 
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App)
+app.use(store).use(router).mount('#app')
+
+window.app = app

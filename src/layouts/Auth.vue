@@ -6,6 +6,9 @@
 <script setup>
 import AuthHeader from '@/components/AuthHeader'
 import { onMounted } from 'vue'
+import { fetchCurrentUser, refreshToken } from '@/services/requests'
 
-onMounted(() => (document.body.className = 'bg-white'))
+refreshToken()
+fetchCurrentUser()
+document.body.className = 'bg-white'
 </script>

@@ -22,7 +22,7 @@
               <img
                 class="rounded-circle mr-2"
                 height="48"
-                src="/images/nobody-571bcf8e09d39096dccf93b6f557bee5.jpg?vsn=d"
+                src="/images/nobody.jpg"
                 with="48"
               />
               <div class="d-flex flex-column">

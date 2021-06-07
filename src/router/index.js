@@ -3,16 +3,17 @@ import CommentsEdit from '@/views/Comments/Edit'
 import CommentsNew from '@/views/Comments/New'
 import Confirm from '@/views/Auth/Confirm'
 import Dashboard from '@/views/Dashboard/Index'
+import Help from '@/views/Pages/Help'
+import InvitesNew from '@/views/Invites/New'
 import Landing from '@/views/Pages/Landing'
-import Signin from '@/views/Auth/Signin'
 import MembersList from '@/views/Members/Index'
-import MembersNew from '@/views/Members/New'
 import Privacy from '@/views/Pages/Privacy'
 import ProjectsEdit from '@/views/Projects/Edit'
 import ProjectsList from '@/views/Projects/Index'
 import ProjectsNew from '@/views/Projects/New'
 import Recover from '@/views/Auth/Recover'
 import RecoverSuccess from '@/views/Auth/RecoverSuccess'
+import Signin from '@/views/Auth/Signin'
 import Signup from '@/views/Auth/Signup'
 import SignupSuccess from '@/views/Auth/SignupSuccess'
 import StoriesCurrent from '@/views/Stories/Current'
@@ -39,6 +40,11 @@ const routes = [
     path: '/privacy',
     name: 'Privacy',
     component: Privacy,
+  },
+  {
+    path: '/help',
+    name: 'Help',
+    component: Help,
   },
   {
     path: '/signup',
@@ -109,7 +115,7 @@ const routes = [
   {
     path: '/invites/new',
     name: 'MembersNew',
-    component: MembersNew,
+    component: InvitesNew,
     meta: { requiresAuth: true },
   },
   {
@@ -168,9 +174,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (localStorage.getItem('authToken') == null) {
-      next({ path: '/signin' })
+  const requiresAuth = to.matched.some((r) => r.meta.requiresAuth)
+  const isLoggedOut = localStorage.getItem('authToken') == null
+
+  if (requiresAuth) {
+    if (isLoggedOut) {
+      next('/signin')
     } else {
       next()
     }

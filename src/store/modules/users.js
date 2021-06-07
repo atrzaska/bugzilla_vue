@@ -7,13 +7,7 @@ const getters = {
 }
 
 const mutations = {
-  userStatus: (state, user) => {
-    if (user) {
-      state.currentUser = user.email
-    } else {
-      state.currentUser = null
-    }
-  },
+  userStatus: (state, user) => (state.currentUser = user),
 }
 
 const actions = {

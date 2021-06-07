@@ -1,6 +1,6 @@
 <template>
   <AuthLayout>
-    <form action="/signin" class="form-signin bg-white p-4" method="post">
+    <form class="form-signin bg-white p-4" @submit.prevent="onSubmit">
       <h3 class="mb-3 font-weight-normal">Sign in</h3>
       <div class="form-group">
         <input
@@ -10,6 +10,7 @@
           placeholder="Email address"
           type="email"
           required
+          v-model="email"
         />
         <input
           class="form-control form-control-last"
@@ -18,6 +19,7 @@
           placeholder="Password"
           type="password"
           required
+          v-model="password"
         />
       </div>
       <div class="form-group">
@@ -56,4 +58,16 @@
 
 <script setup>
 import AuthLayout from '@/layouts/Auth'
+import { ref } from 'vue'
+import { signIn } from '@/services/requests'
+
+const withSignin = () => {
+  const email = ref('')
+  const password = ref('')
+  const onSubmit = () => signIn(email.value, password.value)
+
+  return [email, password, onSubmit]
+}
+
+const [email, password, onSubmit] = withSignin()
 </script>

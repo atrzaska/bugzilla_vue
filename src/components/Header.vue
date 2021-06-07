@@ -1,26 +1,53 @@
 <template>
-  <header class="header d-flex align-items-center px-3 py-1 border-bottom shadow-sm bg-white">
+  <header
+    class="header d-flex align-items-center px-3 py-1 border-bottom shadow-sm bg-white"
+  >
     <router-link to="/" class="mr-auto">
       <img height="24" src="/images/bootstrap.svg" width="24" />
     </router-link>
     <div class="nav-item dropdown">
-      <a aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"><img class="rounded-circle" height="32" src="/images/nobody.jpg" with="32" /></a>
-      <div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right">
+      <a
+        aria-expanded="false"
+        aria-haspopup="true"
+        data-toggle="dropdown"
+        href="#"
+        role="button"
+        ><img
+          class="rounded-circle"
+          height="32"
+          src="/images/nobody.jpg"
+          with="32"
+      /></a>
+      <div
+        aria-labelledby="navbarDropdown"
+        class="dropdown-menu dropdown-menu-right"
+      >
         <div class="d-flex align-items-center px-3">
-          <img class="rounded-circle mr-3" height="80" src="/images/nobody.jpg" with="80" />
+          <img
+            class="rounded-circle mr-3"
+            height="80"
+            src="/images/nobody.jpg"
+            with="80"
+          />
           <div class="d-flex flex-column">
             <b>Andrzej Trzaska</b>
             <div class="text-secondary">atrzaska2@gmail.com</div>
           </div>
         </div>
         <div class="dropdown-divider"></div>
-        <router-link to="/users/settings" class="dropdown-item">Profile</router-link>
+        <router-link to="/users/settings" class="dropdown-item"
+          >Profile</router-link
+        >
         <router-link to="/help" class="dropdown-item">Help</router-link>
-        <a class="dropdown-item" data-csrf="IB1BFy4cchoHBSdJKy5jAQoAITMoP1Y8TXwnFnGOU5vdNWW6PtSQjsbR" data-method="delete" data-to="/logout" href="/logout" rel="nofollow">Log out</a>
+        <a class="dropdown-item" @click="logout">Log out</a>
       </div>
     </div>
   </header>
 </template>
+
+<script setup>
+import { logout } from '@/services/requests'
+</script>
 
 <style>
 .header {

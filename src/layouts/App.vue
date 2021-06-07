@@ -20,6 +20,10 @@
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
 import { onMounted } from 'vue'
+import { fetchCurrentUser, refreshToken } from '@/services/requests'
+
+refreshToken()
+fetchCurrentUser()
 
 onMounted(() => (document.body.className = 'bg-gray'))
 </script>

@@ -23,5 +23,9 @@
         Members
       </router-link>
     </li>
+
+    <router-link class="nav-item" tag="li" to="/projects/qwe/members">
+      <a class="nav-link">New Members</a>
+    </router-link>
   </ul>
 </template>
