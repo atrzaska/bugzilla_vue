@@ -46,8 +46,8 @@
                   data-confirm="Are you sure?"
                   data-csrf="XBVlAXJqUTVlI2RVODpQVDUfHSoxeiUmmSS5DR3G7fP7Tu25tqz_cWSv"
                   data-method="delete"
-                  data-to="/projects/qwe/people/1"
-                  href="/projects/qwe/people/1"
+                  data-to="/projects/qwe/members/1"
+                  href="/projects/qwe/members/1"
                   rel="nofollow"
                 >
                   Leave project...

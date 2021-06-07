@@ -187,6 +187,5 @@
 <script setup>
 import LegalLayout from '@/layouts/Legal'
 
-const appHost = 'bugzilla.nexxy.net'
-const appUrl = `https://${appHost}`
+const appUrl = `https://${process.env.VUE_APP_HOST}`
 </script>

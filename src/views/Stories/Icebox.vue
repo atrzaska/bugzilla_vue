@@ -22,7 +22,7 @@
       <tbody>
         <tr>
           <td>
-            <a href="/projects/qwe/stories/1/edit">MyStory</a>
+            <router-link to="/projects/qwe/stories/1/edit">MyStory</router-link>
           </td>
           <td>unstarted</td>
           <td>feature</td>

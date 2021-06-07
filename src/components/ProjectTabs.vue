@@ -19,7 +19,7 @@
       <router-link class="nav-link" to="/projects/qwe/done">Done</router-link>
     </li>
     <li class="active nav-item">
-      <router-link class="active nav-link" to="/projects/qwe/people">
+      <router-link class="active nav-link" to="/projects/qwe/members">
         Members
       </router-link>
     </li>

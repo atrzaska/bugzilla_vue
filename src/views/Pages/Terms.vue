@@ -1,12 +1,12 @@
 <template>
-  <legal-layout>
+  <LegalLayout>
     <h2>
       <strong>Terms and Conditions</strong>
     </h2>
     <p>Welcome to Bugzilla!</p>
     <p>
       These terms and conditions outline the rules and regulations for the use
-      of Bugzilla's Website, located at http://bugzilla.uk.to.
+      of Bugzilla's Website, located at {{ appUrl }}.
     </p>
     <p>
       By accessing this website we assume you accept these terms and conditions.
@@ -269,9 +269,11 @@
       provided free of charge, we will not be liable for any loss or damage of
       any nature.
     </p>
-  </legal-layout>
+  </LegalLayout>
 </template>
 
 <script setup>
 import LegalLayout from '@/layouts/Legal'
+
+const appUrl = `https://${process.env.VUE_APP_HOST}`
 </script>

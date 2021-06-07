@@ -1,48 +1,34 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import CommentsEdit from '../views/CommentsEdit.vue'
-import CommentsNew from '../views/CommentsNew.vue'
-import Confirm from '../views/auth/Confirm.vue'
-import Dashboard from '../views/Dashboard.vue'
-import Landing from '../views/Landing.vue'
-import Signin from '../views/auth/Signin.vue'
-import MembersList from '../views/MembersList.vue'
-import Privacy from '../views/Privacy.vue'
-import ProjectsEdit from '../views/ProjectsEdit.vue'
-import ProjectsList from '../views/ProjectsList.vue'
-import ProjectsNew from '../views/ProjectsNew.vue'
-import Recover from '../views/auth/Recover.vue'
-import RecoverSuccess from '../views/auth/RecoverSuccess.vue'
-import Signup from '../views/auth/Signup.vue'
-import SignupSuccess from '../views/auth/SignupSuccess.vue'
-import StoriesCurrent from '../views/StoriesCurrent.vue'
-import StoriesEdit from '../views/StoriesEdit.vue'
-import StoriesIcebox from '../views/StoriesIcebox.vue'
-import StoriesNew from '../views/StoriesNew.vue'
-import TasksEdit from '../views/TasksEdit.vue'
-import TasksNew from '../views/TasksNew.vue'
-import Terms from '../views/Terms.vue'
-import UsersSettings from '../views/UsersSettings.vue'
+import CommentsEdit from '@/views/Comments/Edit'
+import CommentsNew from '@/views/Comments/New'
+import Confirm from '@/views/Auth/Confirm'
+import Dashboard from '@/views/Dashboard/Index'
+import Landing from '@/views/Pages/Landing'
+import Signin from '@/views/Auth/Signin'
+import MembersList from '@/views/Members/Index'
+import MembersNew from '@/views/Members/New'
+import Privacy from '@/views/Pages/Privacy'
+import ProjectsEdit from '@/views/Projects/Edit'
+import ProjectsList from '@/views/Projects/Index'
+import ProjectsNew from '@/views/Projects/New'
+import Recover from '@/views/Auth/Recover'
+import RecoverSuccess from '@/views/Auth/RecoverSuccess'
+import Signup from '@/views/Auth/Signup'
+import SignupSuccess from '@/views/Auth/SignupSuccess'
+import StoriesCurrent from '@/views/Stories/Current'
+import StoriesEdit from '@/views/Stories/Edit'
+import StoriesIcebox from '@/views/Stories/Icebox'
+import StoriesNew from '@/views/Stories/New'
+import TasksEdit from '@/views/Tasks/Edit'
+import TasksNew from '@/views/Tasks/New'
+import Terms from '@/views/Pages/Terms'
+import UsersSettings from '@/views/User/Settings'
 
 const routes = [
   {
     path: '/',
     name: 'Landing',
     component: Landing,
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard,
-  },
-  {
-    path: '/projects',
-    name: 'Projects',
-    component: ProjectsList,
-  },
-  {
-    path: '/users/settings',
-    name: 'UsersSettings',
-    component: UsersSettings,
   },
   {
     path: '/terms',
@@ -85,59 +71,94 @@ const routes = [
     component: Confirm,
   },
   {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/projects',
+    name: 'Projects',
+    component: ProjectsList,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/users/settings',
+    name: 'UsersSettings',
+    component: UsersSettings,
+    meta: { requiresAuth: true },
+  },
+  {
     path: '/projects/:id/current',
     name: 'StoriesCurrent',
     component: StoriesCurrent,
+    meta: { requiresAuth: true },
   },
   {
     path: '/projects/:id/icebox',
     name: 'StoriesIcebox',
     component: StoriesIcebox,
+    meta: { requiresAuth: true },
   },
   {
-    path: '/projects/:id/people',
+    path: '/projects/:id/members',
     name: 'MembersList',
     component: MembersList,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/invites/new',
+    name: 'MembersNew',
+    component: MembersNew,
+    meta: { requiresAuth: true },
   },
   {
     path: '/projects/:id/stories/new',
     name: 'StoriesNew',
     component: StoriesNew,
+    meta: { requiresAuth: true },
   },
   {
     path: '/projects/:id/stories/:storyId/edit',
     name: 'StoriesEdit',
     component: StoriesEdit,
+    meta: { requiresAuth: true },
   },
   {
     path: '/comments/new',
     name: 'CommentsNew',
     component: CommentsNew,
+    meta: { requiresAuth: true },
   },
   {
     path: '/comments/:id/edit',
     name: 'CommentsEdit',
     component: CommentsEdit,
+    meta: { requiresAuth: true },
   },
   {
     path: '/projects/new',
     name: 'ProjectsNew',
     component: ProjectsNew,
+    meta: { requiresAuth: true },
   },
   {
     path: '/projects/:id/edit',
     name: 'ProjectsEdit',
     component: ProjectsEdit,
+    meta: { requiresAuth: true },
   },
   {
     path: '/tasks/new',
     name: 'TasksNew',
     component: TasksNew,
+    meta: { requiresAuth: true },
   },
   {
     path: '/tasks/:id/edit',
     name: 'TasksEdit',
     component: TasksEdit,
+    meta: { requiresAuth: true },
   },
 ]
 
@@ -146,4 +167,15 @@ const router = createRouter({
   routes,
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (localStorage.getItem('authToken') == null) {
+      next({ path: '/signin' })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
 export default router
