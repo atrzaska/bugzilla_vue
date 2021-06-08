@@ -6,9 +6,6 @@ const useQueryParams = () => {
 
   const queryParams = route.query
   const setQueryParams = (params) => {
-    console.log(params)
-    console.log(queryParams)
-    console.log(Object.assign({}, queryParams, params))
     router.push({
       path: route.path,
       query: Object.assign({}, queryParams, params),

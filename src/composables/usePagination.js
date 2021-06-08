@@ -32,10 +32,6 @@ const usePagination = (options = {}) => {
   const previousPage = () => goToPage(page.value - 1)
   const nextPage = () => goToPage(page.value + 1)
 
-  // this will cause goToPage to be called twice on change
-  // that's ok because goToPage does not do anything heavy
-  watch(page, (page) => goToPage(page))
-
   return {
     collection,
     total,

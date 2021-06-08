@@ -14,7 +14,8 @@
     <input
       type="text"
       class="form-input col-2 mr-2"
-      v-model.lazy.number="page"
+      :value="page"
+      @change="onPageChange"
     />
     <span>of {{ totalPages }}</span>
     <a v-if="hasNextPage" href="" @click.prevent="nextPage()">
@@ -42,5 +43,23 @@ const {
   totalPages,
   previousPage,
   nextPage,
+  goToPage,
 } = pagination
+
+const onPageChange = (e) => {
+  const val = parseInt(e.target.value)
+
+  if (isNaN(val)) {
+    goToPage(1)
+    e.target.value = 1
+  } else if (val < 1) {
+    goToPage(1)
+    e.target.value = 1
+  } else if (val > totalPages.value) {
+    goToPage(totalPages.value)
+    e.target.value = totalPages.value
+  } else {
+    goToPage(val)
+  }
+}
 </script>
