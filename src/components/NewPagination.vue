@@ -42,6 +42,5 @@ const {
   totalPages,
   previousPage,
   nextPage,
-  currentPageValid,
 } = pagination
 </script>
