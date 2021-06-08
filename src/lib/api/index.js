@@ -1,4 +1,5 @@
 import axios from 'axios'
+import merge from 'lodash/merge'
 
 const defaultOptions = () => ({
   baseURL: '/api',
@@ -9,8 +10,7 @@ const defaultOptions = () => ({
   },
 })
 
-const withDefaults = (options = {}) =>
-  Object.assign({}, defaultOptions(), options)
+const withDefaults = (options = {}) => merge(defaultOptions(), options)
 
 const cache = new Map()
 

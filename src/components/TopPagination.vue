@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="showPagination"
-    class="d-flex justify-content-center align-items-center"
+    class="d-flex justify-content-end align-items-center"
   >
     <a v-if="hasPreviousPage" href="" @click.prevent="previousPage()">
       <div class="px-2 text-primary">
@@ -11,8 +11,12 @@
     <div v-else class="px-2">
       <i class="fas fa-chevron-left" />
     </div>
-    <!-- <span>{{ currentPage }} of {{ totalPages }}</span> -->
-    <span>{{ first }}-{{ last }} of {{ total }}</span>
+    <input
+      type="text"
+      class="form-input col-2 mr-2"
+      v-model.lazy.number="page"
+    />
+    <span>of {{ totalPages }}</span>
     <a v-if="hasNextPage" href="" @click.prevent="nextPage()">
       <div class="px-2 text-primary">
         <i class="fas fa-chevron-right" />
@@ -34,12 +38,9 @@ const {
   showPagination,
   hasPreviousPage,
   hasNextPage,
-  currentPage,
+  page,
   totalPages,
   previousPage,
   nextPage,
-  total,
-  currentPageFirstItem: first,
-  currentPageLastItem: last,
 } = pagination
 </script>

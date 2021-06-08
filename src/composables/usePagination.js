@@ -1,53 +1,54 @@
 import { ref, computed, watch } from 'vue'
+import queryParams from '@/helpers/queryParams'
 
-const PER_PAGE = 10
+const SIZE = 10
 
-const usePagination = (fetchCollection, per = PER_PAGE) => {
-  const collection = ref([])
-  const total = ref(1)
-  const currentPage = ref(1)
-  const totalPages = computed(() => Math.ceil(total.value / per))
+const usePagination = (options = {}) => {
+  const defaultPage = parseInt(queryParams.get('page')) || 1
+  const size = options.size || SIZE
+  const collection = options.collection || ref([])
+  const total = options.total || ref(1)
+  const page = ref(defaultPage)
+  const offset = ref(0)
+  const totalPages = computed(() => Math.ceil(total.value / size))
   const showPagination = computed(() => totalPages.value > 1)
-  const hasPreviousPage = computed(() => currentPage.value > 1)
-  const hasNextPage = computed(() => currentPage.value < totalPages.value)
-  const currentPageLastItem = computed(() =>
-    Math.min(currentPage.value * per, total.value)
-  )
-  const currentPageFirstItem = computed(() =>
-    collection.value.length === 0 ? 0 : (currentPage.value - 1) * per + 1
+  const hasPreviousPage = computed(() => page.value > 1)
+  const hasNextPage = computed(() => page.value < totalPages.value)
+  const pageLastItem = computed(() => Math.min(page.value * size, total.value))
+  const pageFirstItem = computed(() =>
+    collection.value.length === 0 ? 0 : (page.value - 1) * size + 1
   )
 
-  watch(currentPage, (page) => goToPage(page))
-
-  const goToPage = (page) => {
-    if (isNaN(page) || page > totalPages.value || page < 1) {
+  const goToPage = (val) => {
+    if (isNaN(val) || val > totalPages.value || val < 1) {
       return
     }
 
-    fetchCollection({ page }).then((res) => {
-      collection.value = res.data.collection
-      total.value = res.data.total
-      currentPage.value = page
-    })
+    page.value = val
+    offset.value = (val - 1) * size
+    queryParams.set({ page: val })
   }
-  const previousPage = () => goToPage(currentPage.value - 1)
-  const nextPage = () => goToPage(currentPage.value + 1)
-  const loadFirstPage = () => goToPage(1)
+
+  const previousPage = () => goToPage(page.value - 1)
+  const nextPage = () => goToPage(page.value + 1)
+
+  // this will cause goToPage to be called twice on change
+  // that's ok because goToPage does not do anything heavy
+  watch(page, (page) => goToPage(page))
 
   return {
     collection,
     total,
-    currentPage,
+    page,
     totalPages,
     showPagination,
     hasPreviousPage,
     hasNextPage,
-    currentPageFirstItem,
-    currentPageLastItem,
+    pageFirstItem,
+    pageLastItem,
     previousPage,
     nextPage,
     goToPage,
-    loadFirstPage,
   }
 }
 

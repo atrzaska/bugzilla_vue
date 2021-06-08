@@ -48,8 +48,7 @@ const logout = () => API.post('/logout').then(clearToken).catch(clearToken)
 //   )
 // }
 
-const fetchProjects = ({ page, per, offset, limit }) =>
-  API.get('/projects', { params: { page, per, limit, offset } })
+const fetchProjects = (params) => API.get('/projects', { params })
 
 export {
   clearToken,
