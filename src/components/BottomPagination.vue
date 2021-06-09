@@ -1,25 +1,27 @@
 <template>
-  <div
-    v-if="showPagination"
-    class="d-flex justify-content-center align-items-center"
-  >
-    <a v-if="hasPreviousPage" href="" @click.prevent="previousPage()">
-      <div class="px-2 text-primary">
+  <div class="d-flex justify-content-between align-items-center">
+    <span>{{ first }}-{{ last }} of {{ total }}</span>
+    <div
+      v-if="showPagination"
+      class="d-flex justify-content-center align-items-center"
+    >
+      <a v-if="hasPreviousPage" href="" @click.prevent="previousPage()">
+        <div class="pr-2 text-primary">
+          <i class="fas fa-chevron-left" />
+        </div>
+      </a>
+      <div v-else class="pr-2">
         <i class="fas fa-chevron-left" />
       </div>
-    </a>
-    <div v-else class="px-2">
-      <i class="fas fa-chevron-left" />
-    </div>
-    <!-- <span>{{ page }} of {{ totalPages }}</span> -->
-    <span>{{ first }}-{{ last }} of {{ total }}</span>
-    <a v-if="hasNextPage" href="" @click.prevent="nextPage()">
-      <div class="px-2 text-primary">
+      <span>{{ page }} of {{ totalPages }}</span>
+      <a v-if="hasNextPage" href="" @click.prevent="nextPage()">
+        <div class="pl-2 text-primary">
+          <i class="fas fa-chevron-right" />
+        </div>
+      </a>
+      <div v-else class="pl-2">
         <i class="fas fa-chevron-right" />
       </div>
-    </a>
-    <div v-else class="px-2">
-      <i class="fas fa-chevron-right" />
     </div>
   </div>
 </template>
