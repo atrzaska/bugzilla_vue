@@ -9,7 +9,9 @@ const useCollection = () => {
     collection.value = res.data.collection
     total.value = res.data.total
     loading.value = false
+    return res
   }
+
   return { collection, total, loading, setCollection }
 }
 

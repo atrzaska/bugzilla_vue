@@ -1,31 +1,16 @@
 <template>
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <router-link class="nav-link" to="/projects/qwe/current">
-        Current
-      </router-link>
-    </li>
-    <li class="nav-item">
-      <router-link class="nav-link" to="/projects/qwe/backlog">
-        Backlog
-      </router-link>
-    </li>
-    <li class="nav-item">
-      <router-link class="nav-link" to="/projects/qwe/icebox">
-        Icebox
-      </router-link>
-    </li>
-    <li class="nav-item">
-      <router-link class="nav-link" to="/projects/qwe/done">Done</router-link>
-    </li>
-    <li class="active nav-item">
-      <router-link class="active nav-link" to="/projects/qwe/members">
-        Members
-      </router-link>
-    </li>
-
-    <router-link class="nav-item" tag="li" to="/projects/qwe/members">
-      <a class="nav-link">New Members</a>
-    </router-link>
+  <ul class="nav nav-tabs mb-3">
+    <Tab :to="`/projects/${id}/current`">Current</Tab>
+    <Tab :to="`/projects/${id}/backlog`">Backlog</Tab>
+    <Tab :to="`/projects/${id}/icebox`">Icebox</Tab>
+    <Tab :to="`/projects/${id}/done`">Done</Tab>
+    <Tab :to="`/projects/${id}/members`">Members</Tab>
   </ul>
 </template>
+
+<script setup>
+import Tab from '@/components/Tab'
+import useUrlParams from '@/use/useUrlParams'
+
+const { id } = useUrlParams()
+</script>

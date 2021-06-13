@@ -39,14 +39,14 @@
           >Profile</router-link
         >
         <router-link to="/help" class="dropdown-item">Help</router-link>
-        <a class="dropdown-item" @click="logout">Log out</a>
+        <a class="dropdown-item" @click="API.logout">Log out</a>
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
-import { logout } from '@/services/requests'
+import API from '@/services/requests'
 </script>
 
 <style>

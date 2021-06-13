@@ -6,7 +6,7 @@
         Invite member
       </router-link>
     </div>
-    <ProjectTabs />
+    <ProjectTabs :project="project" />
     <table class="table">
       <thead>
         <tr>
@@ -64,4 +64,6 @@
 <script setup>
 import AppLayout from '@/layouts/App'
 import ProjectTabs from '@/components/ProjectTabs'
+
+// const project =
 </script>

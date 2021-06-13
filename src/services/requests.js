@@ -41,20 +41,27 @@ const signIn = (email, password) => {
 
 const logout = () => API.post('/logout').then(clearToken).catch(clearToken)
 
-// const fetchProjects = ({ page, per = 10 }) => {
-//   return API.get('/projects', { params: { page, per } })
-//   .then((res) =>
-//     store.dispatch('setProjects', res.data)
-//   )
-// }
-
 const fetchProjects = (params) => API.get('/projects', { params })
+const fetchProject = (id) => API.get(`/projects/${id}`)
+const fetchProjectBySlug = (slug) =>
+  fetchProjects({ 'filter.slug': slug }).then((res) => res.data.collection[0])
+const fetchStories = (params, options = {}) =>
+  API.get('/stories', Object.assign({ params }, options))
+const fetchStory = (id) => API.get(`/stories/${id}`)
+const updateStory = (id, params) => API.put(`/stories/${id}`, params)
+const deleteStory = (id) => API.delete(`/stories/${id}`)
 
-export {
+export default {
   clearToken,
   refreshToken,
   fetchCurrentUser,
   signIn,
   logout,
   fetchProjects,
+  fetchProject,
+  fetchProjectBySlug,
+  fetchStories,
+  fetchStory,
+  updateStory,
+  deleteStory,
 }

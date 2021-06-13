@@ -58,16 +58,7 @@
 
 <script setup>
 import AuthLayout from '@/layouts/Auth'
-import { ref } from 'vue'
-import { signIn } from '@/services/requests'
-
-const withSignin = () => {
-  const email = ref('')
-  const password = ref('')
-  const onSubmit = () => signIn(email.value, password.value)
-
-  return [email, password, onSubmit]
-}
+import withSignin from '@/use/withSignin'
 
 const [email, password, onSubmit] = withSignin()
 </script>
