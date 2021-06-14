@@ -36,6 +36,7 @@ const usePagination = (options = {}) => {
     collection,
     total,
     page,
+    size,
     totalPages,
     showPagination,
     hasPreviousPage,

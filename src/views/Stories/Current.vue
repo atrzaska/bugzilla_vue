@@ -62,7 +62,6 @@ import useSorting from '@/use/useSorting'
 import { defaultSorting, SORT_OPTIONS } from './helpers/sorting'
 
 const STATES = 'started,finished,delivered,rejected'
-
 const sort = useSorting(defaultSorting)
 const { id: projectSlug } = useUrlParams()
 const { collection, total, loading, setCollection } = useCollection()
