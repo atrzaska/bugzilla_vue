@@ -62,7 +62,7 @@ import useSorting from '@/use/useSorting'
 import { defaultSorting, SORT_OPTIONS } from './helpers/sorting'
 
 const STATES = 'unstarted'
-const CONTAINER = 'icebox'
+const CONTAINER = 'backlog'
 const sort = useSorting(defaultSorting)
 const { id: projectSlug } = useUrlParams()
 const { collection, total, loading, setCollection } = useCollection()

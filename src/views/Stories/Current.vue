@@ -101,5 +101,5 @@ const deleteStory = (story) => {
 }
 
 watch([page, sort], fetchCollection)
-fetchCollection()
+fetchCollection({ refresh: true })
 </script>

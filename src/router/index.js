@@ -17,6 +17,8 @@ import Signin from '@/views/Auth/Signin'
 import Signup from '@/views/Auth/Signup'
 import SignupSuccess from '@/views/Auth/SignupSuccess'
 import StoriesCurrent from '@/views/Stories/Current'
+import StoriesBacklog from '@/views/Stories/Backlog'
+import StoriesDone from '@/views/Stories/Done'
 import StoriesEdit from '@/views/Stories/Edit'
 import StoriesIcebox from '@/views/Stories/Icebox'
 import StoriesNew from '@/views/Stories/New'
@@ -101,9 +103,21 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
+    path: '/projects/:id/backlog',
+    name: 'StoriesBacklog',
+    component: StoriesBacklog,
+    meta: { requiresAuth: true },
+  },
+  {
     path: '/projects/:id/icebox',
     name: 'StoriesIcebox',
     component: StoriesIcebox,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/projects/:id/done',
+    name: 'StoriesDone',
+    component: StoriesDone,
     meta: { requiresAuth: true },
   },
   {

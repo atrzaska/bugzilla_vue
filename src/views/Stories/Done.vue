@@ -61,8 +61,7 @@ import API from '@/services/requests'
 import useSorting from '@/use/useSorting'
 import { defaultSorting, SORT_OPTIONS } from './helpers/sorting'
 
-const STATES = 'unstarted'
-const CONTAINER = 'icebox'
+const STATES = 'accepted'
 const sort = useSorting(defaultSorting)
 const { id: projectSlug } = useUrlParams()
 const { collection, total, loading, setCollection } = useCollection()
@@ -79,7 +78,6 @@ const fetchCollection = (options = {}) => {
         {
           'filter.project_id': result.id,
           'filter.state': STATES,
-          'filter.container': CONTAINER,
           page: page.value,
           sort: sort.value,
         },
