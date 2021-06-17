@@ -30,7 +30,7 @@ const fetchCurrentUser = () => {
 }
 
 const signIn = (email, password) => {
-  API.post('/signin', { email, password }).then((res) => {
+  return API.post('/signin', { email, password }).then((res) => {
     const { token, user } = res.data
     window.localStorage.setItem('authToken', token)
     store.dispatch('setUser', user)
@@ -39,8 +39,8 @@ const signIn = (email, password) => {
   })
 }
 
+const signUp = (user) => API.post('/signup', user)
 const logout = () => API.post('/logout').then(clearToken).catch(clearToken)
-
 const fetchProjects = (params) => API.get('/projects', { params })
 const fetchProject = (id) => API.get(`/projects/${id}`)
 const fetchProjectBySlug = (slug) =>
@@ -56,6 +56,7 @@ export default {
   refreshToken,
   fetchCurrentUser,
   signIn,
+  signUp,
   logout,
   fetchProjects,
   fetchProject,
