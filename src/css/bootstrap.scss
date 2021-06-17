@@ -38,3 +38,7 @@ body {
 .bg-gray {
   background-color: #e5e5e5;
 }
+
+.was-validated .form-control:invalid, .form-control.is-invalid {
+  background-image: none;
+}
