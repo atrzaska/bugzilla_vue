@@ -8,20 +8,20 @@
     </router-link>
     <div v-else>
       <router-link
-        v-if="isSignup"
+        v-if="isSignin"
         class="btn btn-lg btn-outline-primary"
-        to="/signin"
+        to="/signup"
       >
-        Sign in
-      </router-link>
-      <router-link v-else class="btn btn-lg btn-outline-primary" to="/signup">
         Sign up
+      </router-link>
+      <router-link v-else class="btn btn-lg btn-outline-primary" to="/signin">
+        Sign in
       </router-link>
     </div>
   </header>
 </template>
 
 <script setup>
-const isSignup = window.location.pathname === '/signup'
+const isSignin = window.location.pathname === '/signin'
 const isLoggedIn = false
 </script>
