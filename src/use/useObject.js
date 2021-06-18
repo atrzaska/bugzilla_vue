@@ -1,13 +1,14 @@
-// TODO: unused file
 import { ref } from 'vue'
 
-const useObject = async (fetchResource) => {
-  const object = ref(null)
+const useObject = () => {
+  const object = ref({})
   const loading = ref(true)
-  const fetchObject = () =>
-    fetchResource.then((res) => (object.value = res.data))
+  const setObject = (res) => {
+    loading.value = false
+    object.value = res.data
+  }
 
-  return { object, loading, fetchObject }
+  return { object, loading, setObject }
 }
 
 export default useObject
