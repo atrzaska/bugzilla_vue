@@ -7,7 +7,7 @@ const clearToken = () => {
   router.push('/signin')
 }
 
-const refreshToken = () => {
+const refreshToken = async () => {
   if (!window.localStorage.getItem('authToken')) {
     return
   }
@@ -19,14 +19,12 @@ const refreshToken = () => {
     })
     .catch(clearToken)
 }
-const fetchCurrentUser = () => {
+const fetchCurrentUser = async () => {
   if (!window.localStorage.getItem('authToken')) {
     return
   }
 
-  API.get('/me')
-    .then((res) => store.dispatch('setUser', res.data))
-    .catch(clearToken)
+  return API.get('/me').catch(clearToken)
 }
 
 const signIn = (email, password) => {
