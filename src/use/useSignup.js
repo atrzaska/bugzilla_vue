@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import API from '@/services/requests'
+import Toast from '@/lib/toast'
 
 const useSignup = (errors) => {
   errors = errors || ref({})
@@ -16,11 +17,15 @@ const useSignup = (errors) => {
     termsAccepted: termsAccepted.value,
     newsletterSubscribed: newsletterSubscribed.value,
   })
-  const onSubmit = () => {
+  const signUp = () => {
     errors.value = []
-    API.signUp(payload()).catch(
-      (err) => (errors.value = err.response.data.errors)
-    )
+    API.signUp(payload()).catch((err) => {
+      if (err.response.status === 422) {
+        errors.value = err.response.data.errors
+      } else {
+        Toast.error('Something went wrong, please try again.')
+      }
+    })
   }
 
   return {
@@ -31,7 +36,7 @@ const useSignup = (errors) => {
     newsletterSubscribed,
     errors,
     payload,
-    onSubmit,
+    signUp,
   }
 }
 
