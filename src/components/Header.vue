@@ -15,7 +15,7 @@
         ><img
           class="rounded-circle"
           height="32"
-          src="/images/nobody.jpg"
+          :src="user.photoUrl || '/images/nobody.jpg'"
           with="32"
       /></a>
       <div
@@ -26,18 +26,18 @@
           <img
             class="rounded-circle mr-3"
             height="80"
-            src="/images/nobody.jpg"
+            :src="user.photoUrl || '/images/nobody.jpg'"
             with="80"
           />
           <div class="d-flex flex-column">
-            <b>Andrzej Trzaska</b>
-            <div class="text-secondary">atrzaska2@gmail.com</div>
+            <b>{{ fullName(user) }}</b>
+            <div class="text-secondary">{{ user.email }}</div>
           </div>
         </div>
         <div class="dropdown-divider"></div>
-        <router-link to="/users/settings" class="dropdown-item"
-          >Profile</router-link
-        >
+        <router-link to="/users/settings" class="dropdown-item">
+          Profile
+        </router-link>
         <router-link to="/help" class="dropdown-item">Help</router-link>
         <a class="dropdown-item" @click="API.logout">Log out</a>
       </div>
@@ -47,13 +47,18 @@
 
 <script setup>
 import API from '@/services/requests'
+import useObject from '@/use/useObject'
+import { fullName } from '@/helpers/utils'
+
+const { object: user, loading, setObject } = useObject()
+API.fetchCurrentUser().then(setObject)
 </script>
 
 <style>
 .header {
   height: 48px;
   z-index: 10;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
