@@ -26,16 +26,20 @@
         />
       </div>
       <div class="form-group">
-        <label class="d-block font-weight-normal mb-4 text-secondary">
-          <input name="user[remember_me]" type="hidden" value="false" />
+        <div class="form-check">
           <input
-            id="user_remember_me"
-            name="user[remember_me]"
+            v-model="rememberMe"
+            id="rememberMe"
             type="checkbox"
-            value="true"
+            class="form-check-input"
           />
-          &nbsp;Remember me
-        </label>
+          <label
+            for="rememberMe"
+            class="d-block form-check-label font-weight-normal mb-4 text-secondary"
+          >
+            &nbsp;Remember me
+          </label>
+        </div>
       </div>
       <div class="form-group">
         <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -63,5 +67,5 @@
 import AuthLayout from '@/layouts/Auth'
 import useSignin from '@/use/useSignin'
 
-const { email, password, error, onSubmit } = useSignin()
+const { email, password, rememberMe, error, onSubmit } = useSignin()
 </script>
