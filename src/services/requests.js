@@ -39,7 +39,11 @@ const signIn = (email, password) => {
   })
 }
 
-const signUp = (user) => API.post('/signup', user)
+const signUp = (user) =>
+  API.post('/signup', user).then((res) => {
+    router.push('/signup/success')
+    return res
+  })
 const logout = () => API.post('/logout').then(clearToken).catch(clearToken)
 const fetchProjects = (params) => API.get('/projects', { params })
 const fetchProject = (id) => API.get(`/projects/${id}`)
