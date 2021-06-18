@@ -35,6 +35,7 @@ const useFrontendValidation = ({ errors, schema }) => {
     invalidFieldClass,
     validateField,
     validateForm,
+    errors,
   }
 }
 
