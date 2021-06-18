@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { toFullErrors, toInvalidFields } from '@/helpers/errors'
 
-const useValidation = ({ errors }) => {
+const useBackendValidation = ({ errors }) => {
   errors = errors || ref({})
 
   const fullErrors = computed(() => toFullErrors(errors.value))
@@ -14,4 +14,4 @@ const useValidation = ({ errors }) => {
   return { fullErrors, invalidFields, invalidFieldClass, errors }
 }
 
-export default useValidation
+export default useBackendValidation
