@@ -10,7 +10,7 @@ const useValidation = ({ errors }) => {
   const invalidFieldClass = (field) =>
     invalidFields.value.includes(field) && 'is-invalid'
 
-  return { fullErrors, invalidFields, invalidFieldClass }
+  return { fullErrors, invalidFields, invalidFieldClass, errors }
 }
 
 export default useValidation
