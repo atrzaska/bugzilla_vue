@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 
 import '@/plugins'
+import 'animate.css/animate.css'
 import '@/css/app.scss'
 
 const app = createApp(App)
