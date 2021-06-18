@@ -27,8 +27,8 @@ const fetchCurrentUser = async () => {
   return API.get('/me').catch(clearToken)
 }
 
-const signIn = (email, password) => {
-  return API.post('/signin', { email, password }).then((res) => {
+const signIn = ({ email, password, rememberMe }) => {
+  return API.post('/signin', { email, password, rememberMe }).then((res) => {
     const { token, user } = res.data
     window.localStorage.setItem('authToken', token)
     store.dispatch('setUser', user)
