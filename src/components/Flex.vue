@@ -1,10 +1,11 @@
 <template>
   <div :class="`d-flex justify-content-${justify} align-items-${align}`">
-    <Loading />
+    <slot />
   </div>
 </template>
 
 <script setup>
+// TODO: unused file
 import { defineProps } from 'vue'
 
 const props = defineProps({
