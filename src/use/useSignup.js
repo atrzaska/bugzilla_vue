@@ -5,12 +5,13 @@ import Toast from '@/lib/toast'
 const useSignup = (errors) => {
   errors = errors || ref({})
 
+  const submitting = ref(false)
   const name = ref('')
   const email = ref('')
   const password = ref('')
-  const submitting = ref(false)
   const termsAccepted = ref(false)
   const newsletterSubscribed = ref(false)
+
   const payload = () => ({
     name: name.value,
     email: email.value,
