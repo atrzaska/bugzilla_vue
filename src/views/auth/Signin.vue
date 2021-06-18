@@ -1,6 +1,6 @@
 <template>
   <AuthLayout>
-    <form class="form-signin bg-white p-4" @submit.prevent="onSubmit">
+    <form class="form-signin bg-white p-4" @submit.prevent="signIn">
       <h3 class="mb-3 font-weight-normal">Sign in</h3>
       <div v-if="error" class="alert alert-danger">
         <p class="mb-0">Invalid e-mail or password</p>
@@ -67,5 +67,5 @@
 import AuthLayout from '@/layouts/Auth'
 import useSignin from '@/use/useSignin'
 
-const { email, password, rememberMe, error, onSubmit } = useSignin()
+const { email, password, rememberMe, error, signIn } = useSignin()
 </script>
