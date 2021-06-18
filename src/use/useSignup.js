@@ -8,6 +8,7 @@ const useSignup = (errors) => {
   const name = ref('')
   const email = ref('')
   const password = ref('')
+  const submitting = ref(false)
   const termsAccepted = ref(false)
   const newsletterSubscribed = ref(false)
   const payload = () => ({
@@ -18,14 +19,18 @@ const useSignup = (errors) => {
     newsletterSubscribed: newsletterSubscribed.value,
   })
   const signUp = () => {
+    submitting.value = true
     errors.value = []
-    API.signUp(payload()).catch((err) => {
-      if (err.response.status === 422) {
-        errors.value = err.response.data.errors
-      } else {
-        Toast.error('Something went wrong, please try again.')
-      }
-    })
+    API.signUp(payload())
+      .then((res) => (submitting.value = false))
+      .catch((err) => {
+        submitting.value = false
+        if (err.response.status === 422) {
+          errors.value = err.response.data.errors
+        } else {
+          Toast.error('Something went wrong, please try again.')
+        }
+      })
   }
 
   return {
@@ -37,6 +42,7 @@ const useSignup = (errors) => {
     errors,
     payload,
     signUp,
+    submitting,
   }
 }
 
