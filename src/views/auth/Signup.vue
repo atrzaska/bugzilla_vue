@@ -52,26 +52,43 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="d-block font-weight-normal text-secondary">
+        <div class="form-check">
           <input
-            v-model="termsAccepted"
+            id="termsAccepted"
+            :class="['form-check-input', invalidFieldClass('termsAccepted')]"
             type="checkbox"
-            @click="validateField('termsAccepted', termsAccepted)"
+            v-model="termsAccepted"
+            @change="validateField('termsAccepted', termsAccepted)"
           />
-          &nbsp;I agree to Bugzilla&nbsp;
-          <a href="/terms" target="_blank">Terms&nbsp;</a>
-          and&nbsp;
-          <a href="/privacy" target="_blank">Privacy Policy</a>
-        </label>
-        <div v-if="errors.termsAccepted" class="invalid-feedback">
-          {{ errors.termsAccepted }}
+          <label
+            for="termsAccepted"
+            class="d-block form-check-label font-weight-normal text-secondary"
+          >
+            &nbsp;I agree to Bugzilla&nbsp;
+            <a href="/terms" target="_blank">Terms&nbsp;</a>
+            and&nbsp;
+            <a href="/privacy" target="_blank">Privacy Policy</a>
+          </label>
+          <div v-if="errors.termsAccepted" class="invalid-feedback">
+            {{ errors.termsAccepted }}
+          </div>
         </div>
       </div>
       <div class="form-group">
-        <label class="d-block font-weight-normal text-secondary">
-          <input v-model="newsletterSubscribed" type="checkbox" />
-          &nbsp;I agree to receive Bugzilla news and updates.
-        </label>
+        <div class="form-check">
+          <input
+            id="newsletterSubscribed"
+            class="form-check-input"
+            v-model="newsletterSubscribed"
+            type="checkbox"
+          />
+          <label
+            for="newsletterSubscribed"
+            class="d-block form-check-label font-weight-normal text-secondary"
+          >
+            &nbsp;I agree to receive Bugzilla news and updates.
+          </label>
+        </div>
       </div>
       <div class="form-group">
         <button
