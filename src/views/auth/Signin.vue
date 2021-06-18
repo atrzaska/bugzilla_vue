@@ -63,5 +63,5 @@
 import AuthLayout from '@/layouts/Auth'
 import useSignin from '@/use/useSignin'
 
-const [email, password, error, onSubmit] = useSignin()
+const { email, password, error, onSubmit } = useSignin()
 </script>

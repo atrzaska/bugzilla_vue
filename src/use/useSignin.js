@@ -10,7 +10,7 @@ const useSignin = () => {
     API.signIn(email.value, password.value).catch((err) => (error.value = true))
   }
 
-  return [email, password, error, onSubmit]
+  return { email, password, error, onSubmit }
 }
 
 export default useSignin
