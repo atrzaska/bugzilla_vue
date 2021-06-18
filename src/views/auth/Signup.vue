@@ -3,7 +3,6 @@
     <form @submit.prevent="onSubmit" class="form-signin bg-white p-4">
       <h3 class="mb-3 font-weight-normal">Get started free today</h3>
       <p class="mb-4 text-secondary">No credit card required</p>
-      <ErrorsBox :validation="validation" />
       <div class="form-group">
         <input
           v-model="name"
@@ -16,7 +15,6 @@
           placeholder="Name"
           type="text"
           required
-          @blur="validateField('name', name)"
           @input="validateField('name', name)"
         />
         <div v-if="errors.name" class="invalid-feedback">{{ errors.name }}</div>
@@ -31,7 +29,6 @@
           placeholder="Email address"
           type="email"
           required
-          @blur="validateField('email', email)"
           @input="validateField('email', email)"
         />
         <div v-if="errors.email" class="invalid-feedback">
@@ -48,7 +45,6 @@
           placeholder="Password 8+ characters"
           type="password"
           required
-          @blur="validateField('password', password)"
           @input="validateField('password', password)"
         />
         <div v-if="errors.password" class="invalid-feedback">
@@ -60,7 +56,6 @@
           <input
             v-model="termsAccepted"
             type="checkbox"
-            @blur="validateField('termsAccepted', termsAccepted)"
             @click="validateField('termsAccepted', termsAccepted)"
           />
           &nbsp;I agree to Bugzilla&nbsp;
@@ -82,9 +77,16 @@
         <button
           class="btn btn-lg btn-primary btn-block"
           type="submit"
-          :disabled="!isValid"
+          :disabled="!isValid || isSubmitting"
         >
-          Get started now
+          <div v-if="isSubmitting">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <div v-else>Get started now</div>
         </button>
       </div>
     </form>
@@ -108,9 +110,10 @@ const {
   newsletterSubscribed,
   payload,
   signUp,
+  isSubmitting,
 } = useSignup(errors)
+
 const validation = useFrontendValidation({ errors, schema: signUpSchema })
 const { isValid, invalidFieldClass, validateField, validateForm } = validation
-// TODO: checbox validation is not working
 const onSubmit = () => validateForm(payload()) && signUp()
 </script>
