@@ -33,6 +33,12 @@ const cachedAxios = {
     return result
   },
 }
+const clearCache = (url, options = {}) => {
+  const { params } = options
+  const cacheKey = JSON.stringify({ url, params })
+
+  return cache.delete(cacheKey)
+}
 
 const API = {
   get: (url, options) => cachedAxios.get(url, withDefaults(options)),
@@ -40,6 +46,7 @@ const API = {
   put: (url, data, options) => axios.put(url, data, withDefaults(options)),
   patch: (url, data, options) => axios.patch(url, data, withDefaults(options)),
   delete: (url, options) => axios.delete(url, withDefaults(options)),
+  clearCache,
 }
 
 export default API
