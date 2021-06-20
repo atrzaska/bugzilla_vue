@@ -5,11 +5,10 @@ const useCollection = () => {
   const total = ref(1)
   const loading = ref(true)
 
-  const setCollection = (res) => {
-    collection.value = res.data.collection
-    total.value = res.data.total
+  const setCollection = (data) => {
+    collection.value = data.collection
+    total.value = data.total
     loading.value = false
-    return res
   }
 
   return { collection, total, loading, setCollection }

@@ -83,25 +83,25 @@ const fetchCollection = (options = {}) => {
           page: page.value,
           sort: sort.value,
         },
-        options
+        { refresh: true }
       )
     )
-    .then(setCollection)
+    .then((res) => setCollection(res.data))
 }
 
 const updateStoryState = (story, state) =>
   API.updateStory(story.id, { state }).then(() => {
     loading.value = true
-    fetchCollection({ refresh: true })
+    fetchCollection()
   })
 
 const deleteStory = (story) => {
   if (confirm('Are you sure?')) {
     loading.value = true
-    API.deleteStory(story.id).then(() => fetchCollection({ refresh: true }))
+    API.deleteStory(story.id).then(() => fetchCollection())
   }
 }
 
 watch([page, sort], fetchCollection)
-fetchCollection({ refresh: true })
+fetchCollection()
 </script>
