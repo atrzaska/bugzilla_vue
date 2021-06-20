@@ -16,4 +16,8 @@ const signInSchema = yup.object().shape({
   password: yup.string().min(8).max(255),
 })
 
-export { signUpSchema, signInSchema }
+const createProjectSchema = yup.object().shape({
+  name: yup.string().required().max(255),
+})
+
+export { signUpSchema, signInSchema, createProjectSchema }
