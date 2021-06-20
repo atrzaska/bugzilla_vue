@@ -1,11 +1,11 @@
 import { ref } from 'vue'
 
-const useObject = () => {
-  const object = ref({})
+const useObject = (initialObject = {}) => {
+  const object = ref(initialObject)
   const loading = ref(true)
-  const setObject = (res) => {
+  const setObject = (obj) => {
     loading.value = false
-    object.value = res.data
+    object.value = obj
   }
 
   return { object, loading, setObject }
