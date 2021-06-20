@@ -10,20 +10,16 @@ const Toast = Swal.mixin({
     toast.addEventListener('mouseenter', Swal.stopTimer)
     toast.addEventListener('mouseleave', Swal.resumeTimer)
   },
+  showClass: {
+    popup: 'animate__animated animate__slideInRight',
+  },
+  hideClass: {
+    popup: 'animate__animated animate__slideOutRight',
+  },
 })
 
 const success = (title) => Toast.fire({ icon: 'success', title })
-const error = (title) =>
-  Toast.fire({
-    icon: 'error',
-    title,
-    showClass: {
-      popup: 'animate__animated animate__slideInRight',
-    },
-    hideClass: {
-      popup: 'animate__animated animate__slideOutRight',
-    },
-  })
+const error = (title) => Toast.fire({ icon: 'error', title })
 const warning = (title) => Toast.fire({ icon: 'warning', title })
 const info = (title) => Toast.fire({ icon: 'info', title })
 
