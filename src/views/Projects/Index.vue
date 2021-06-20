@@ -98,7 +98,9 @@ const pagination = usePagination({ collection, total })
 const { page } = pagination
 
 const fetchCollection = () =>
-  API.fetchProjects({ page: page.value, sort: sort.value }).then(setCollection)
+  API.fetchProjects({ page: page.value, sort: sort.value }).then((res) =>
+    setCollection(res.data)
+  )
 
 watch([page, sort], fetchCollection)
 fetchCollection()
