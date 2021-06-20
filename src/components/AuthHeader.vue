@@ -8,7 +8,7 @@
     </router-link>
     <div v-else>
       <router-link
-        v-if="isSignin"
+        v-if="isSigninPage"
         class="btn btn-lg btn-outline-primary"
         to="/signup"
       >
@@ -22,6 +22,8 @@
 </template>
 
 <script setup>
-const isSignin = window.location.pathname === '/signin'
-const isLoggedIn = false
+import useCurrentUser from '@/use/useCurrentUser'
+
+const isSigninPage = window.location.pathname === '/signin'
+// const { isLoggedIn } = useCurrentUser()
 </script>

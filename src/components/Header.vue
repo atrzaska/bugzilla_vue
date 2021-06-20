@@ -2,7 +2,7 @@
   <header
     class="header d-flex align-items-center px-3 py-1 border-bottom shadow-sm bg-white"
   >
-    <router-link to="/" class="mr-auto">
+    <router-link to="/dashboard" class="mr-auto">
       <img height="24" src="/images/bootstrap.svg" width="24" />
     </router-link>
     <div class="nav-item dropdown">
@@ -47,11 +47,10 @@
 
 <script setup>
 import API from '@/services/requests'
-import useObject from '@/use/useObject'
+import useCurrentUser from '@/use/useCurrentUser'
 import { fullName } from '@/helpers/utils'
 
-const { object: user, loading, setObject } = useObject()
-API.fetchCurrentUser().then(setObject)
+const { user } = useCurrentUser({})
 </script>
 
 <style>
