@@ -1,10 +1,9 @@
 <template>
   <div class="notification-wrapper">
-    <a href="#" @click.prevent="deleteNotification(index)"> </a>
     <div
       v-for="(notification, index) in notifications"
       :key="index"
-      class="toast d-flex mb-2 animate__animated animate__fadeInRight"
+      class="toast d-flex mb-2 animate__animated animate__fadeInRight cursor-pointer"
       @click="deleteNotification(index)"
     >
       <div :class="['indicator rounded-left', notification.color]"></div>
