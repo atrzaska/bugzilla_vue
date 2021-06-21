@@ -1,6 +1,5 @@
 import { ref } from 'vue'
 import API from '@/services/requests'
-import Toast from '@/lib/toast'
 
 const useSignup = (errors) => {
   errors = errors || ref({})
@@ -29,7 +28,7 @@ const useSignup = (errors) => {
         if (err.response.status === 422) {
           errors.value = err.response.data.errors
         } else {
-          Toast.error('Something went wrong, please try again.')
+          window.Toast.error('Something went wrong, please try again.')
         }
       })
   }

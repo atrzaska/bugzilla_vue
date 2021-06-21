@@ -50,7 +50,6 @@ import useForm from '@/use/useForm'
 import API from '@/services/requests'
 import useFrontendValidation from '@/use/useFrontendValidation'
 import { createProjectSchema } from '@/helpers/yup'
-import Toast from '@/lib/toast'
 import { useRouter } from 'vue-router'
 
 const errors = ref({})
@@ -66,7 +65,7 @@ const onSubmit = () => {
   validateForm(data) &&
     submit(API.createProject(data)).then((res) => {
       router.push('/projects')
-      Toast.success(`Project ${res.data.name} created successfully.`)
+      window.Toast.success(`Project ${res.data.name} created successfully.`)
     })
 }
 </script>
