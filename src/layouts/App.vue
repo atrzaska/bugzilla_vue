@@ -1,7 +1,6 @@
 <template>
   <Header />
   <Sidebar />
-  <Toast />
   <div class="wrapper">
     <div class="pt-4">
       <div class="container px-4">
@@ -20,7 +19,6 @@
 <script setup>
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
-import Toast from '@/components/Toast'
 import { onMounted } from 'vue'
 import API from '@/services/requests'
 
