@@ -25,5 +25,5 @@
 import useCurrentUser from '@/use/useCurrentUser'
 
 const isSigninPage = window.location.pathname === '/signin'
-// const { isLoggedIn } = useCurrentUser()
+const { isLoggedIn } = useCurrentUser()
 </script>
