@@ -14,8 +14,10 @@
             required
             @input="validateField('name', data.name)"
           />
+          <div v-if="errors.name" class="invalid-feedback">
+            {{ errors.name }}
+          </div>
         </div>
-        <div v-if="errors.name" class="invalid-feedback">{{ errors.name }}</div>
       </div>
       <div class="form-group row">
         <div class="col-sm-2"></div>
