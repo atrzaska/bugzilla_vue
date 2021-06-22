@@ -60,6 +60,7 @@
       class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
       data-toggle="dropdown"
     >
+      <img :src="threeDots" />
     </a>
     <div class="dropdown-menu dropdown-menu-right">
       <router-link
@@ -79,6 +80,7 @@
 <script setup>
 import { defineProps } from 'vue'
 import useUrlParams from '@/use/useUrlParams'
+import threeDots from '@/assets/threeDots.svg'
 
 const { id: projectSlug } = useUrlParams()
 

@@ -34,7 +34,7 @@
                   class="btn btn-outline-secondary dropdown-toggle"
                   data-toggle="dropdown"
                 >
-                  <i class="fas fa-cog" />
+                  <img :src="threeDots" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                   <router-link
@@ -78,6 +78,7 @@ import TopPagination from '@/components/TopPagination'
 import BottomPagination from '@/components/BottomPagination'
 import Loading from '@/components/Loading'
 import Sort from '@/components/Sort'
+import threeDots from '@/assets/threeDots.svg'
 import API from '@/services/requests'
 import usePagination from '@/use/usePagination'
 import useSorting from '@/use/useSorting'
