@@ -16,12 +16,12 @@ $modal-content-border-width: 0;
 $hr-border-color: $light;
 $list-group-border-color: $light;
 $font-family-base: 'Fira Sans', sans-serif;
+$input-btn-focus-box-shadow: none;
 @import "node_modules/bootstrap/scss/bootstrap";
 
 // Extra styles
 .card {
   box-shadow: 0 2px 2px rgba(0,0,0,.16);
-  padding: 1.5rem;
 }
 
 .btn-outline-secondary {

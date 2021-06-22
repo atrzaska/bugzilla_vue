@@ -7,7 +7,9 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <slot />
+              <div class="card-body">
+                <slot />
+              </div>
             </div>
           </div>
         </div>
