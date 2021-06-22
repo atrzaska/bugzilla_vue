@@ -77,7 +77,7 @@ const fetchCollection = (options = {}) => {
     .then((result) =>
       API.fetchStories(
         {
-          'filter.project_id': result.id,
+          'filter.projectId': result.id,
           'filter.state': STATES,
           'filter.container': CONTAINER,
           page: page.value,
