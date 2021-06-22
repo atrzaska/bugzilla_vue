@@ -25,3 +25,11 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.hr-line-dashed {
+  border-top: 1px dashed #e5e5e5;
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  margin: 20px 0;
+}
