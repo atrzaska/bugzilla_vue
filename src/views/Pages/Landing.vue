@@ -28,7 +28,7 @@
     <footer class="text-center">
       <span class="mr-2">Made with</span>
       <i class="fas fa-heart mr-2 d-inline"></i>
-      <span class="mr-2"> &nbsp;by&nbsp;</span>
+      <span class="mr-2">by</span>
       <router-link to="/">Andrzej Trzaska</router-link>
     </footer>
   </LandingLayout>
