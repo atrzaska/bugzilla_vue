@@ -18,7 +18,7 @@ const refreshToken = async () => {
     .catch(clearToken)
 }
 
-const fetchCurrentUser = async () => API.get('/me')
+const fetchCurrentUser = () => API.get('/me')
 
 const signIn = ({ email, password, rememberMe }) => {
   return API.post('/signin', { email, password, rememberMe }).then((res) => {
