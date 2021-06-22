@@ -24,5 +24,5 @@ import API from '@/services/requests'
 
 API.refreshToken()
 
-onMounted(() => (document.body.className = 'bg-gray'))
+onMounted(() => (document.body.className = 'bg-light'))
 </script>
