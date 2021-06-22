@@ -10,12 +10,14 @@
     <td>{{ story.container }}</td>
     <td>{{ story.tasksCount }}</td>
     <td>{{ story.commentsCount }}</td>
-    <td class="d-flex justify-content-end">
-      <Actions
-        :story="story"
-        :updateStoryState="updateStoryState"
-        :deleteStory="deleteStory"
-      />
+    <td>
+      <div class="d-flex justify-content-end">
+        <Actions
+          :story="story"
+          :updateStoryState="updateStoryState"
+          :deleteStory="deleteStory"
+        />
+      </div>
     </td>
   </tr>
 </template>
