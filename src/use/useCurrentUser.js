@@ -6,7 +6,7 @@ const isSigninPage = window.location.pathname === '/signin'
 const useCurrentUser = (defaultValue = null) => {
   const { object: user, setObject, loading } = useObject(defaultValue)
 
-  API.fetchCurrentUser({ refresh: true })
+  API.fetchCurrentUser()
     .then((res) => setObject(res.data))
     .catch((err) => setObject(defaultValue))
 
