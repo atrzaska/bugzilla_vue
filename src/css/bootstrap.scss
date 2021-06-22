@@ -6,12 +6,14 @@ $enable-caret: false;
 $primary: #563D7C;
 $light: #e5e5e5;
 $secondary: #666;
-$body-color: rgb(20, 19, 19);
-$input-border-color: #e5e5e5;
+$body-color: #141313;
+$input-border-color: $light;
 $input-focus-box-shadow: none !important;
 $toast-background-color: rgba(#fff, .95);
 $toast-border-width: 0;
 $modal-content-border-width: 0;
+$hr-border-color: $light;
+$list-group-border-color: $light;
 $font-family-base: 'Fira Sans', sans-serif;
 @import "node_modules/bootstrap/scss/bootstrap";
 
@@ -23,7 +25,7 @@ $font-family-base: 'Fira Sans', sans-serif;
 
 .btn-outline-secondary {
   color: #666 !important;
-  border-color: #e5e5e5 !important;
+  border-color: $light !important;
   background-color: #fff !important;
 }
 
@@ -33,4 +35,8 @@ $font-family-base: 'Fira Sans', sans-serif;
 
 .modal {
   display: block;
+}
+
+hr {
+  border-top: 1px dashed $light;
 }
