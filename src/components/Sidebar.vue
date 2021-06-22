@@ -5,18 +5,34 @@
     <div class="sidebar-header d-none d-sm-block"></div>
     <router-link
       to="/dashboard"
-      class="sidebar-item d-flex justify-content-center align-items-center"
+      :class="[
+        'sidebar-item',
+        'd-flex',
+        'justify-content-center',
+        'align-items-center',
+        isActive('/dashboard') && 'sidebar-item-active',
+      ]"
     >
       <i class="fas fa-desktop gray-2"></i>
     </router-link>
     <router-link
       to="/projects"
-      class="sidebar-item d-flex justify-content-center align-items-center"
+      :class="[
+        'sidebar-item',
+        'd-flex',
+        'justify-content-center',
+        'align-items-center',
+        isActive('/projects') && 'sidebar-item-active',
+      ]"
     >
       <i class="fas fa-table gray-2"></i>
     </router-link>
   </aside>
 </template>
+
+<script setup>
+const isActive = (path) => window.location.pathname.match(new RegExp(path, 'i'))
+</script>
 
 <style>
 .sidebar {
