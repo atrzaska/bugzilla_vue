@@ -34,8 +34,7 @@
                   class="btn btn-outline-secondary dropdown-toggle"
                   data-toggle="dropdown"
                 >
-                  <!-- <i class="fas fa-ellipsis-h"></i> -->
-                  <!-- <i class="bi bi-three-dots"></i> -->
+                  <i class="fas fa-cog" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                   <router-link
@@ -85,11 +84,13 @@ import useSorting from '@/use/useSorting'
 import useCollection from '@/use/useCollection'
 
 const SORT_OPTIONS = {
+  id_desc: { name: 'Creation time: newest', value: 'id_desc' },
+  id_asc: { name: 'Creation time: oldest', value: 'id_asc' },
   name_asc: { name: 'Name A-Z', value: 'name_asc' },
   name_desc: { name: 'Name Z-A', value: 'name_desc' },
 }
 
-const defaultSorting = SORT_OPTIONS.name_asc.value
+const defaultSorting = SORT_OPTIONS.id_desc.value
 const sort = useSorting(defaultSorting)
 const { collection, total, loading, setCollection } = useCollection()
 const pagination = usePagination({ collection, total })
