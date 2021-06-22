@@ -1,13 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;700&display=swap');
 
-// Your variable overrides
-$body-bg: #FFFFFF;
-$body-color: #141A26;
+// Bootstrap overrides
+$enable-validation-icons: false;
+$enable-caret: false;
 $primary: #563D7C;
-
-$enable-shadows: true;
-
-// Bootstrap and its default variables
+$light: #e5e5e5;
+$secondary: #666;
+$body-color: rgb(20, 19, 19);
+$input-border-color: #e5e5e5;
+$input-focus-box-shadow: none !important;
+$toast-background-color: rgba(#fff, .95);
+$toast-border-width: 0;
+$modal-content-border-width: 0;
+$font-family-base: 'Fira Sans', sans-serif;
 @import "node_modules/bootstrap/scss/bootstrap";
 
 // Extra styles
@@ -16,29 +21,16 @@ $enable-shadows: true;
   padding: 1.5rem;
 }
 
-.btn-outline-gray {
-  border-color: #e5e5e5;
+.btn-outline-secondary {
+  color: #666 !important;
+  border-color: #e5e5e5 !important;
+  background-color: #fff !important;
 }
 
-.btn-outline-gray:hover {
+.btn-outline-secondary:hover {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
 }
 
-.toast {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  z-index: 2;
-}
-
-body {
-  font-family: 'Lato', sans-serif;
-}
-
-.bg-gray {
-  background-color: #e5e5e5;
-}
-
-.was-validated .form-control:invalid, .form-control.is-invalid {
-  background-image: none;
+.modal {
+  display: block;
 }
