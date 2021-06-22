@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1>Projects</h1>
+      <h5>Projects</h5>
       <router-link class="btn btn-primary" to="/projects/new">
         New
       </router-link>
@@ -31,10 +31,11 @@
             <td>
               <div class="dropdown">
                 <a
-                  class="btn btn-outline-primary dropdown-toggle"
+                  class="btn btn-outline-secondary dropdown-toggle"
                   data-toggle="dropdown"
                 >
-                  <i class="fas fa-cog" />
+                  <!-- <i class="fas fa-ellipsis-h"></i> -->
+                  <!-- <i class="bi bi-three-dots"></i> -->
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                   <router-link
@@ -46,13 +47,10 @@
                   <div class="dropdown-divider" />
                   <a
                     class="dropdown-item"
-                    data-confirm="Are you sure?"
-                    data-to="/projects/qwe"
-                    href="/projects/qwe"
-                    rel="nofollow"
+                    href="#"
+                    @click.prevent="onDelete(project)"
+                    >Remove</a
                   >
-                    Remove
-                  </a>
                 </div>
               </div>
             </td>
@@ -98,9 +96,29 @@ const pagination = usePagination({ collection, total })
 const { page } = pagination
 
 const fetchCollection = () =>
-  API.fetchProjects({ page: page.value, sort: sort.value }).then((res) =>
-    setCollection(res.data)
-  )
+  API.fetchProjects(
+    { page: page.value, sort: sort.value },
+    { refresh: true }
+  ).then((res) => setCollection(res.data))
+
+const onDeleteConfirmed = (project) => {
+  API.deleteProject(project.id)
+    .then((res) => {
+      window.Toast.success(`Project ${project.name} deleted successfully.`)
+      fetchCollection()
+    })
+    .catch((err) =>
+      window.Toast.error('Something went wrong, please try again.')
+    )
+}
+
+const onDelete = (project) => {
+  window.Modal.confirm({
+    title: `You are about to delete project ${project.name}`,
+    body: 'This action cannot be undone. Are you sure you want to continue?',
+    onConfirm: () => onDeleteConfirmed(project),
+  })
+}
 
 watch([page, sort], fetchCollection)
 fetchCollection()
