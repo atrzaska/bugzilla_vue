@@ -1,6 +1,8 @@
 <template>
-  <aside class="sidebar d-flex flex-column">
-    <div class="sidebar-header"></div>
+  <aside
+    class="sidebar d-flex justify-content-center justify-content-sm-start align-items-center align-items-sm-start flex-sm-column"
+  >
+    <div class="sidebar-header d-none d-sm-block"></div>
     <router-link
       to="/dashboard"
       class="sidebar-item d-flex justify-content-center align-items-center"
@@ -19,13 +21,12 @@
 <style>
 .sidebar {
   background-color: #ffffff;
-  width: 48px;
+  width: 100%;
   position: fixed;
-  top: 0;
   left: 0;
+  right: 0;
   bottom: 0;
   z-index: 8;
-  padding-top: 48px;
   box-shadow: 1px 0 0 #d1d1d1;
 }
 
@@ -37,14 +38,25 @@
 .sidebar-header {
   background-color: #563d7c;
   height: 30px;
+  width: 100%;
 }
 
 .sidebar-item {
-  height: 40px;
+  height: 48px;
+  width: 48px;
 }
 
 .sidebar-item-active,
 .sidebar-item:hover {
   background-color: #f2f2f2;
+}
+
+@media (min-width: 576px) {
+  .sidebar {
+    width: 48px;
+    right: auto;
+    height: 100%;
+    padding-top: 48px;
+  }
 }
 </style>
