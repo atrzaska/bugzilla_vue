@@ -80,7 +80,7 @@
       </div>
     </form>
     <hr />
-    <h1>Comments</h1>
+    <h5>Comments</h5>
     <div class="list-group border-0 mb-3">
       <div class="list-group-item d-flex">
         <router-link class="mr-auto" to="/comments/1/edit">
@@ -100,7 +100,7 @@
     </div>
     <router-link class="mb-3" to="/comments/new">New Comment</router-link>
     <hr />
-    <h1>Tasks</h1>
+    <h5>Tasks</h5>
     <div class="list-group border-0 mb-3">
       <div class="list-group-item d-flex">
         <router-link class="mr-auto" to="/tasks/1/edit"

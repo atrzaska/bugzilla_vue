@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1>qwe</h1>
+      <h5>qwe</h5>
       <router-link class="btn btn-primary" to="/invites/new">
         Invite member
       </router-link>

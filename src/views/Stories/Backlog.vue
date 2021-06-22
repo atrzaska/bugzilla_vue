@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1>{{ project.name }}</h1>
+      <h5>{{ project.name }}</h5>
       <router-link
         class="btn btn-primary"
         :to="`/projects/${projectSlug}/stories/new`"

@@ -1,6 +1,6 @@
 <template>
   <AppLayout>
-    <h1>Dashboard</h1>
+    <h5>Dashboard</h5>
   </AppLayout>
 </template>
 
