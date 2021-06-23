@@ -1,29 +1,41 @@
 <template>
   <AppLayout>
     <h1 class="mb-4">Edit Project</h1>
-    <form action="/projects/qwe" method="post">
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="project_name"> Name </label>
-        <div class="col-sm-10">
-          <input
-            class="form-control"
-            id="project_name"
-            name="project[name]"
-            placeholder="Name"
-            type="text"
-            value="qwe"
-            required
-          />
+    <form @submit.prevent="onSubmit">
+      <div class="form-group">
+        <label class="col-form-label" for="projectName"> Name </label>
+        <input
+          v-model="data.name"
+          :class="['form-control', invalidFieldClass('name')]"
+          id="projectName"
+          placeholder="Name"
+          type="text"
+          required
+          @input="validateField('name', data.name)"
+        />
+        <div v-if="errors.name" class="invalid-feedback">
+          {{ errors.name }}
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-10">
-          <button class="btn btn-primary mr-2" type="submit">Save</button>
-          <router-link class="btn btn-outline-secondary" to="/projects">
-            Back
-          </router-link>
-        </div>
+      <hr />
+      <div class="form-group">
+        <button
+          class="btn btn-primary mr-2"
+          type="submit"
+          :disabled="!isValid || isSubmitting"
+        >
+          <div v-if="isSubmitting">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <div v-else>Save</div>
+        </button>
+        <router-link class="btn btn-outline-secondary" to="/projects">
+          Back
+        </router-link>
       </div>
     </form>
   </AppLayout>
@@ -31,4 +43,36 @@
 
 <script setup>
 import AppLayout from '@/layouts/App'
+import { ref } from 'vue'
+import useForm from '@/use/useForm'
+import API from '@/services/requests'
+import useFrontendValidation from '@/use/useFrontendValidation'
+import { projectSchema as schema } from '@/helpers/yup'
+import { useRouter } from 'vue-router'
+import useObject from '@/use/useObject'
+import useUrlParams from '@/use/useUrlParams'
+
+const data = ref({})
+const errors = ref({})
+const { isSubmitting, submit } = useForm({ data, errors })
+const validation = useFrontendValidation({ errors, schema })
+const { isValid, invalidFieldClass, validateField, validateForm } = validation
+const router = useRouter()
+const { setObject, loading } = useObject(data)
+const { id: projectSlug } = useUrlParams()
+
+const onSubmit = () => {
+  validateForm(data.value) &&
+    submit(API.updateProject(data.value.id, data.value)).then((res) => {
+      router.push('/projects')
+      window.Toast.success(`Project ${res.data.name} updated successfully.`)
+    })
+}
+
+const fetchObject = () => {
+  loading.value = true
+  API.fetchProjectBySlug(projectSlug).then((res) => setObject(res))
+}
+
+fetchObject()
 </script>
