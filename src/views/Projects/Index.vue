@@ -57,6 +57,9 @@
         </tbody>
       </table>
       <BottomPagination :pagination="pagination" />
+      <BootstrapPagination :pagination="pagination" />
+      <XrmPagination :pagination="pagination" />
+      <AllegroPagination :pagination="pagination" />
     </div>
     <div v-else>
       <h1 class="text-center text-secondary p-4">
@@ -76,6 +79,9 @@ import { watch } from 'vue'
 import AppLayout from '@/layouts/App'
 import TopPagination from '@/components/TopPagination'
 import BottomPagination from '@/components/BottomPagination'
+import BootstrapPagination from '@/components/BootstrapPagination'
+import XrmPagination from '@/components/XrmPagination'
+import AllegroPagination from '@/components/AllegroPagination'
 import Loading from '@/components/Loading'
 import Sort from '@/components/Sort'
 import threeDots from '@/assets/threeDots.svg'
