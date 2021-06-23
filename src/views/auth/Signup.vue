@@ -116,7 +116,7 @@ import AuthLayout from '@/layouts/Auth'
 import ErrorsBox from '@/components/ErrorsBox'
 import useSignup from '@/use/useSignup'
 import useFrontendValidation from '@/use/useFrontendValidation'
-import { signUpSchema } from '@/helpers/yup'
+import { signUpSchema as schema } from '@/helpers/yup'
 
 const errors = ref({})
 const {
@@ -130,7 +130,7 @@ const {
   isSubmitting,
 } = useSignup(errors)
 
-const validation = useFrontendValidation({ errors, schema: signUpSchema })
+const validation = useFrontendValidation({ errors, schema })
 const { isValid, invalidFieldClass, validateField, validateForm } = validation
 const onSubmit = () => validateForm(payload()) && signUp()
 </script>
