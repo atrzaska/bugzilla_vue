@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, computed } from 'vue'
 
 const props = defineProps({ pagination: Object })
 
@@ -54,7 +54,23 @@ const {
   hasNextPage,
   nextPage,
   page,
-  visiblePages,
+  totalPages,
   goToPage,
 } = pagination
+
+const MORE_ITEMS_TO_SHOW = 3 // current page + 2 more items
+
+const visiblePages = computed(() => {
+  const result = []
+
+  for (var i = 1; i <= totalPages.value; i++) {
+    const diff = Math.abs(i - page.value)
+
+    if (diff <= MORE_ITEMS_TO_SHOW) {
+      result.push(i)
+    }
+  }
+
+  return result
+})
 </script>
