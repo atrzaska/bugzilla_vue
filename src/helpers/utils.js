@@ -1,5 +1,6 @@
-function fullName({ firstName, lastName }) {
-  return [firstName, lastName].filter((x) => Boolean(x)).join(' ')
-}
+const fullName = ({ firstName, lastName }) =>
+  [firstName, lastName].filter((x) => Boolean(x)).join(' ')
 
-export { fullName }
+const scrollToTop = () => window.scrollTo(0, 0)
+
+export { fullName, scrollToTop }
