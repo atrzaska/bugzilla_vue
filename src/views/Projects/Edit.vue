@@ -1,7 +1,8 @@
 <template>
   <AppLayout>
     <h1 class="mb-4">Edit Project</h1>
-    <form @submit.prevent="onSubmit">
+    <Loading v-if="loading" />
+    <form v-else @submit.prevent="onSubmit">
       <div class="form-group">
         <label class="col-form-label" for="projectName"> Name </label>
         <input
