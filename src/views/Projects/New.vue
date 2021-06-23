@@ -43,12 +43,12 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import AppLayout from '@/layouts/App'
 import useForm from '@/use/useForm'
-import API from '@/services/requests'
 import useFrontendValidation from '@/use/useFrontendValidation'
 import { projectSchema as schema } from '@/helpers/yup'
-import { useRouter } from 'vue-router'
+import API from '@/services/requests'
 
 const errors = ref({})
 const { data, isSubmitting, submit } = useForm({ errors })

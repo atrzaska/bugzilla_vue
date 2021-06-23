@@ -43,15 +43,16 @@
 </template>
 
 <script setup>
-import AppLayout from '@/layouts/App'
 import { ref } from 'vue'
-import useForm from '@/use/useForm'
-import API from '@/services/requests'
-import useFrontendValidation from '@/use/useFrontendValidation'
-import { projectSchema as schema } from '@/helpers/yup'
 import { useRouter } from 'vue-router'
+import AppLayout from '@/layouts/App'
+import Loading from '@/components/Loading'
+import useForm from '@/use/useForm'
+import useFrontendValidation from '@/use/useFrontendValidation'
 import useObject from '@/use/useObject'
 import useUrlParams from '@/use/useUrlParams'
+import { projectSchema as schema } from '@/helpers/yup'
+import API from '@/services/requests'
 
 const data = ref({})
 const errors = ref({})
