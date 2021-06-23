@@ -3,7 +3,7 @@
 // Bootstrap overrides
 $enable-validation-icons: false;
 $enable-caret: false;
-$primary: #563D7C;
+$primary: #563d7c;
 $light: #e5e5e5;
 $secondary: #666;
 $body-color: #141313;
@@ -17,6 +17,9 @@ $hr-border-color: $light;
 $list-group-border-color: $light;
 $font-family-base: 'Fira Sans', sans-serif;
 $input-btn-focus-box-shadow: none;
+$pagination-border-width: 0;
+$pagination-disabled-color: $light;
+$pagination-padding-x: 0.88rem;
 @import "node_modules/bootstrap/scss/bootstrap";
 
 // Extra styles
@@ -40,4 +43,12 @@ $input-btn-focus-box-shadow: none;
 
 hr {
   border-top: 1px dashed $light;
+}
+
+.page-link {
+  border-radius: 4px;
+}
+
+.page-link:hover {
+  background: none;
 }
