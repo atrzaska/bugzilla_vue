@@ -69,7 +69,7 @@ const pagination = usePagination({ collection, total })
 const { page } = pagination
 const project = ref({})
 
-const fetchCollection = (options = {}) => {
+const fetchCollection = () => {
   loading.value = true
   API.fetchProjectBySlug(projectSlug)
     .then((result) => (project.value = result))
