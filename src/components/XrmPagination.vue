@@ -42,11 +42,6 @@
         </li>
 
         <li v-if="isMiddle" class="page-item">
-          <a @click.prevent="goToPage(page - 2)" class="page-link" href="#">
-            {{ page - 2 }}
-          </a>
-        </li>
-        <li v-if="isMiddle" class="page-item">
           <a @click.prevent="goToPage(page - 1)" class="page-link" href="#">
             {{ page - 1 }}
           </a>
@@ -57,11 +52,6 @@
         <li v-if="isMiddle" class="page-item">
           <a @click.prevent="goToPage(page + 1)" class="page-link" href="#">
             {{ page + 1 }}
-          </a>
-        </li>
-        <li v-if="isMiddle" class="page-item">
-          <a @click.prevent="goToPage(page + 2)" class="page-link" href="#">
-            {{ page + 2 }}
           </a>
         </li>
 
