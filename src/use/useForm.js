@@ -1,8 +1,8 @@
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import API from '@/services/requests'
 
-const useForm = (errors) => {
-  const data = reactive({})
+const useForm = ({ data, errors }) => {
+  data = data || ref({})
   errors = errors || ref({})
   const isSubmitting = ref(false)
 
