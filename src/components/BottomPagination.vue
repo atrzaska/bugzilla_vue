@@ -1,7 +1,7 @@
 <template>
   <div v-if="showPagination">
     <div class="d-flex justify-content-between align-items-center">
-      <span>{{ first }}-{{ last }} of {{ total }}</span>
+      <span>{{ first }}-{{ last }} of {{ total }} results</span>
       <div class="d-flex align-items-center">
         <a v-if="hasPreviousPage" href="" @click.prevent="previousPage()">
           <div class="pr-2 text-primary">
