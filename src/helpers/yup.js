@@ -20,4 +20,12 @@ const projectSchema = yup.object().shape({
   name: yup.string().required().max(255),
 })
 
-export { signUpSchema, signInSchema, projectSchema }
+const storySchema = yup.object().shape({
+  name: yup.string().required().max(255),
+  description: yup.string().required().max(255),
+  kind: yup.string().oneOf(['feature', 'bug', 'chore', 'release']),
+  container: yup.string().oneOf(['icebox', 'backlog']),
+  projectId: yup.number().required().positive().integer(),
+})
+
+export { signUpSchema, signInSchema, projectSchema, storySchema }
