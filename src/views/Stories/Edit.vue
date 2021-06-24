@@ -115,9 +115,9 @@
     <h5>Tasks</h5>
     <div class="list-group border-0 mb-3">
       <div class="list-group-item d-flex">
-        <router-link class="mr-auto" to="/tasks/1/edit"
-          >this is a task</router-link
-        >
+        <router-link class="mr-auto" to="/tasks/1/edit">
+          this is a task
+        </router-link>
         <a
           data-confirm="Are you sure?"
           data-csrf="YhYPYUwKVzcrAWszIComCXk7AAIaZyEjSP9Uz25EyD_QLeDh8UgwHJWs"
@@ -142,7 +142,7 @@ import { storySchema as schema } from '@/helpers/yup'
 import API from '@/services/requests'
 import useUrlParams from '@/use/useUrlParams'
 
-const { id } = useUrlParams()
+const { id, storyId } = useUrlParams()
 const {
   data,
   loading,
@@ -153,6 +153,7 @@ const {
   isSubmitting,
   onSubmit,
 } = useEditForm({
+  id: storyId,
   schema,
   onFetch: (id) => API.fetchStory(id),
   onUpdate: (data) => API.updateStory(data.id, data),

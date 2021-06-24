@@ -6,6 +6,7 @@ import useObject from '@/use/useObject'
 import useUrlParams from '@/use/useUrlParams'
 
 const useEditForm = ({
+  id,
   data,
   schema,
   onFetch,
@@ -19,7 +20,8 @@ const useEditForm = ({
   const validation = useFrontendValidation({ errors, schema })
   const router = useRouter()
   const object = useObject(data)
-  const { id } = useUrlParams()
+  const urlParams = useUrlParams()
+  id = id || urlParams.id
 
   const onSubmit = () => {
     validation.validateForm(data.value) &&
