@@ -1,82 +1,94 @@
 <template>
   <AppLayout>
     <h1 class="mb-4">Edit Story</h1>
-    <form action="/projects/qwe/stories/1" method="post">
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="story_name">Name</label>
-        <div class="col-sm-10">
-          <input
-            class="form-control"
-            id="story_name"
-            name="story[name]"
-            placeholder="Name"
-            type="text"
-            value="MyStory"
-            required
-          />
+    <Loading v-if="loading" />
+    <form v-else @submit.prevent="onSubmit">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          v-model="data.name"
+          :class="['form-control', invalidFieldClass('name')]"
+          @input="validateField('name', data.name)"
+          id="name"
+          placeholder="Name"
+          type="text"
+          required
+        />
+        <div v-if="errors.name" class="invalid-feedback">
+          {{ errors.name }}
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="story_description">
-          Description
-        </label>
-        <div class="col-sm-10">
-          <input
-            class="form-control"
-            id="story_description"
-            name="story[description]"
-            placeholder="Description"
-            type="text"
-            value="MyDescription"
-            required
-          />
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          v-model="data.description"
+          :class="['form-control', invalidFieldClass('description')]"
+          @input="validateField('description', data.description)"
+          id="description"
+          placeholder="Description"
+          type="text"
+          required
+        />
+        <div v-if="errors.description" class="invalid-feedback">
+          {{ errors.description }}
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="story_story_type">
-          Story type
-        </label>
-        <div class="col-sm-10">
-          <select
-            class="form-control"
-            id="story_story_type"
-            name="story[story_type]"
-            required
-          >
-            <option value="feature" selected>feature</option>
-            <option value="bug">bug</option>
-            <option value="chore">chore</option>
-            <option value="release">release</option>
-          </select>
+      <div class="form-group">
+        <label for="kind">Story type</label>
+        <select
+          v-model="data.kind"
+          :class="['form-control', invalidFieldClass('kind')]"
+          @input="validateField('kind', data.kind)"
+          id="kind"
+          required
+        >
+          <option value="feature">Feature</option>
+          <option value="bug">Bug</option>
+          <option value="chore">Chore</option>
+          <option value="release">Release</option>
+        </select>
+        <div v-if="errors.kind" class="invalid-feedback">
+          {{ errors.kind }}
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="story_container">
-          Container
-        </label>
-        <div class="col-sm-10">
-          <select
-            class="form-control"
-            id="story_container"
-            name="story[container]"
-            required
-          >
-            <option value="icebox" selected>icebox</option>
-            <option value="backlog">backlog</option>
-          </select>
+      <div class="form-group">
+        <label for="storyContainer">Container</label>
+        <select
+          v-model="data.container"
+          :class="['form-control', invalidFieldClass('container')]"
+          @input="validateField('container', data.container)"
+          id="container"
+          required
+        >
+          <option value="icebox">Icebox</option>
+          <option value="backlog">Backlog</option>
+        </select>
+        <div v-if="errors.container" class="invalid-feedback">
+          {{ errors.container }}
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-10">
-          <button class="btn btn-primary mr-2" type="submit">Save</button>
-          <router-link
-            class="btn btn-outline-secondary"
-            to="/projects/qwe/current"
-          >
-            Back
-          </router-link>
-        </div>
+      <hr />
+      <div class="form-group">
+        <button
+          class="btn btn-primary mr-2"
+          type="submit"
+          :disabled="!isValid || isSubmitting"
+        >
+          <div v-if="isSubmitting">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <div v-else>Save</div>
+        </button>
+        <router-link
+          class="btn btn-outline-secondary"
+          :to="`/projects/${id}/current`"
+        >
+          Back
+        </router-link>
       </div>
     </form>
     <hr />
@@ -124,4 +136,27 @@
 
 <script setup>
 import AppLayout from '@/layouts/App'
+import Loading from '@/components/Loading'
+import useEditForm from '@/use/useEditForm'
+import { storySchema as schema } from '@/helpers/yup'
+import API from '@/services/requests'
+import useUrlParams from '@/use/useUrlParams'
+
+const { id } = useUrlParams()
+const {
+  data,
+  loading,
+  errors,
+  invalidFieldClass,
+  validateField,
+  isValid,
+  isSubmitting,
+  onSubmit,
+} = useEditForm({
+  schema,
+  onFetch: (id) => API.fetchStory(id),
+  onUpdate: (data) => API.updateStory(data.id, data),
+  successToast: (data) => `Story ${data.name} updated successfully.`,
+  successRedirectPath: `/projects/${id}/current`,
+})
 </script>
