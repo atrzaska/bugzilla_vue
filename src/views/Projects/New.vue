@@ -7,11 +7,11 @@
         <input
           v-model="data.name"
           :class="['form-control', invalidFieldClass('name')]"
+          @input="validateField('name', data.name)"
           id="projectName"
           placeholder="Name"
           type="text"
           required
-          @input="validateField('name', data.name)"
         />
         <div v-if="errors.name" class="invalid-feedback">
           {{ errors.name }}
