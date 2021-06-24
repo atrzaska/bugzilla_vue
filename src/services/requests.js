@@ -89,6 +89,7 @@ export default {
 
   fetchStories,
   fetchStory,
+  createStory,
   updateStory,
   deleteStory,
 
