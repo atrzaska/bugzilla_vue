@@ -42,25 +42,23 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import AppLayout from '@/layouts/App'
-import useForm from '@/use/useForm'
-import useFrontendValidation from '@/use/useFrontendValidation'
+import useNewForm from '@/use/useNewForm'
 import { projectSchema as schema } from '@/helpers/yup'
 import API from '@/services/requests'
 
-const errors = ref({})
-const { data, isSubmitting, submit } = useForm({ errors })
-const validation = useFrontendValidation({ errors, schema })
-const { isValid, invalidFieldClass, validateField, validateForm } = validation
-const router = useRouter()
-
-const onSubmit = () => {
-  validateForm(data.value) &&
-    submit(API.createProject(data.value)).then((res) => {
-      router.push('/projects')
-      window.Toast.success(`Project ${res.data.name} created successfully.`)
-    })
-}
+const {
+  data,
+  errors,
+  isValid,
+  isSubmitting,
+  onSubmit,
+  invalidFieldClass,
+  validateField,
+} = useNewForm({
+  schema,
+  onCreate: (data) => API.createProject(data),
+  successToast: (data) => `Project ${data.name} created successfully.`,
+  successRedirectPath: '/projects',
+})
 </script>

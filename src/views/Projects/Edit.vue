@@ -43,38 +43,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
-import useForm from '@/use/useForm'
-import useFrontendValidation from '@/use/useFrontendValidation'
-import useObject from '@/use/useObject'
-import useUrlParams from '@/use/useUrlParams'
+import useEditForm from '@/use/useEditForm'
 import { projectSchema as schema } from '@/helpers/yup'
 import API from '@/services/requests'
 
-const data = ref({})
-const errors = ref({})
-const { isSubmitting, submit } = useForm({ data, errors })
-const validation = useFrontendValidation({ errors, schema })
-const { isValid, invalidFieldClass, validateField, validateForm } = validation
-const router = useRouter()
-const { setObject, loading } = useObject(data)
-const { id } = useUrlParams()
-
-const onSubmit = () => {
-  validateForm(data.value) &&
-    submit(API.updateProject(data.value.id, data.value)).then((res) => {
-      router.push('/projects')
-      window.Toast.success(`Project ${res.data.name} updated successfully.`)
-    })
-}
-
-const fetchObject = () => {
-  loading.value = true
-  API.fetchProject(id).then((res) => setObject(res.data))
-}
-
-fetchObject()
+const {
+  data,
+  loading,
+  errors,
+  invalidFieldClass,
+  validateField,
+  isValid,
+  isSubmitting,
+  onSubmit,
+} = useEditForm({
+  schema,
+  onFetch: (id) => API.fetchProject(id),
+  onUpdate: (data) => API.updateProject(data.id, data),
+  successToast: (data) => `Project ${data.name} updated successfully.`,
+  successRedirectPath: '/projects',
+})
 </script>
