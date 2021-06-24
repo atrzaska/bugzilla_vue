@@ -56,10 +56,14 @@
           </tr>
         </tbody>
       </table>
-      <BottomPagination :pagination="pagination" />
+
+      <div class="d-flex justify-content-between align-items-center">
+        <PageResults :pagination="pagination" />
+        <AllegroPagination :pagination="pagination" />
+      </div>
+      <CompactPagination :pagination="pagination" />
       <BootstrapPagination :pagination="pagination" />
       <XrmPagination :pagination="pagination" />
-      <AllegroPagination :pagination="pagination" />
     </div>
     <div v-else>
       <h1 class="text-center text-secondary p-4">
@@ -77,11 +81,12 @@
 <script setup>
 import { watch } from 'vue'
 import AppLayout from '@/layouts/App'
-import TopPagination from '@/components/TopPagination'
-import BottomPagination from '@/components/BottomPagination'
-import BootstrapPagination from '@/components/BootstrapPagination'
-import XrmPagination from '@/components/XrmPagination'
-import AllegroPagination from '@/components/AllegroPagination'
+import TopPagination from '@/components/pagination/TopPagination'
+import CompactPagination from '@/components/pagination/CompactPagination'
+import BootstrapPagination from '@/components/pagination/BootstrapPagination'
+import XrmPagination from '@/components/pagination/XrmPagination'
+import AllegroPagination from '@/components/pagination/AllegroPagination'
+import PageResults from '@/components/pagination/PageResults'
 import Loading from '@/components/Loading'
 import Sort from '@/components/Sort'
 import threeDots from '@/assets/threeDots.svg'
