@@ -126,13 +126,11 @@ const onDeleteConfirmed = (project) => {
     )
 }
 
-const onDelete = (project) => {
-  window.Modal.confirm({
-    title: `You are about to delete project ${project.name}`,
-    body: 'This action cannot be undone. Are you sure you want to continue?',
+const onDelete = (project) =>
+  window.Modal.confirmDelete({
+    name: project.name,
     onConfirm: () => onDeleteConfirmed(project),
   })
-}
 
 watch([page, sort], fetchCollection)
 fetchCollection()
