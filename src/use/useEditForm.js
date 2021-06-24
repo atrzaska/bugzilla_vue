@@ -6,13 +6,14 @@ import useObject from '@/use/useObject'
 import useUrlParams from '@/use/useUrlParams'
 
 const useEditForm = ({
+  data,
   schema,
   onFetch,
   onUpdate,
   successToast,
   successRedirectPath,
 }) => {
-  const data = ref({})
+  data = data || ref({})
   const errors = ref({})
   const form = useForm({ data, errors })
   const validation = useFrontendValidation({ errors, schema })

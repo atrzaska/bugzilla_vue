@@ -4,12 +4,13 @@ import useForm from '@/use/useForm'
 import useFrontendValidation from '@/use/useFrontendValidation'
 
 const useEditForm = ({
+  data,
   schema,
   onCreate,
   successToast,
   successRedirectPath,
 }) => {
-  const data = ref({})
+  data = data || ref({})
   const errors = ref({})
   const form = useForm({ data, errors })
   const validation = useFrontendValidation({ errors, schema })
