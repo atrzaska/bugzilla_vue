@@ -4,7 +4,7 @@
     <Loading v-if="loading" />
     <form v-else @submit.prevent="onSubmit">
       <div class="form-group">
-        <label class="col-form-label" for="projectName"> Name </label>
+        <label for="projectName">Name</label>
         <input
           v-model="data.name"
           :class="['form-control', invalidFieldClass('name')]"
