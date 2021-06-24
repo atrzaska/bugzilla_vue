@@ -27,8 +27,6 @@ const useSignup = (errors) => {
         isSubmitting.value = false
         if (err.response.status === 422) {
           errors.value = err.response.data.errors
-        } else {
-          window.Toast.error('Something went wrong, please try again.')
         }
       })
   }

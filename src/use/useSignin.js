@@ -23,8 +23,6 @@ const useSignin = () => {
         isSubmitting.value = false
         if (err.response.status === 422) {
           error.value = true
-        } else {
-          window.Toast.error('Something went wrong, please try again.')
         }
       })
   }

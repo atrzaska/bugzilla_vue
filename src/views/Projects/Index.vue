@@ -116,14 +116,10 @@ const fetchCollection = () =>
   ).then((res) => setCollection(res.data))
 
 const onDeleteConfirmed = (project) => {
-  API.deleteProject(project.id)
-    .then((res) => {
-      window.Toast.success(`Project ${project.name} deleted successfully.`)
-      fetchCollection()
-    })
-    .catch((err) =>
-      window.Toast.error('Something went wrong, please try again.')
-    )
+  API.deleteProject(project.id).then((res) => {
+    window.Toast.success(`Project ${project.name} deleted successfully.`)
+    fetchCollection()
+  })
 }
 
 const onDelete = (project) =>

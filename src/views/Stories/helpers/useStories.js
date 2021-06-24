@@ -39,14 +39,10 @@ const useStories = ({ filters }) => {
     })
 
   const onDeleteConfirmed = (story) => {
-    API.deleteStory(story.id)
-      .then((res) => {
-        window.Toast.success(`Story ${story.name} deleted successfully.`)
-        fetchCollection()
-      })
-      .catch((err) =>
-        window.Toast.error('Something went wrong, please try again.')
-      )
+    API.deleteStory(story.id).then((res) => {
+      window.Toast.success(`Story ${story.name} deleted successfully.`)
+      fetchCollection()
+    })
   }
 
   const onDelete = (story) =>
