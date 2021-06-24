@@ -70,7 +70,7 @@
         Edit
       </router-link>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#" @click.prevent="deleteStory(story)">
+      <a class="dropdown-item" href="#" @click.prevent="onDelete(story)">
         Remove
       </a>
     </div>
@@ -87,7 +87,7 @@ const { id } = useUrlParams()
 const props = defineProps({
   story: Object,
   updateStoryState: Function,
-  deleteStory: Function,
+  onDelete: Function,
 })
-const { story, updateStoryState, deleteStory } = props
+const { story, updateStoryState, onDelete } = props
 </script>

@@ -15,7 +15,7 @@
         <Actions
           :story="story"
           :updateStoryState="updateStoryState"
-          :deleteStory="deleteStory"
+          :onDelete="onDelete"
         />
       </div>
     </td>
@@ -32,7 +32,7 @@ const { id } = useUrlParams()
 const props = defineProps({
   story: Object,
   updateStoryState: Function,
-  deleteStory: Function,
+  onDelete: Function,
 })
-const { story, updateStoryState, deleteStory } = props
+const { story, updateStoryState, onDelete } = props
 </script>

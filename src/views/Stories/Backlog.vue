@@ -30,7 +30,7 @@
             <Story
               :story="story"
               :updateStoryState="updateStoryState"
-              :deleteStory="deleteStory"
+              :onDelete="onDelete"
             />
           </template>
         </tbody>
@@ -51,54 +51,21 @@ import Loading from '@/components/Loading'
 import Sort from '@/components/Sort'
 import Story from './components/Story'
 import Empty from './components/Empty'
-import useCollection from '@/use/useCollection'
-import useUrlParams from '@/use/useUrlParams'
-import usePagination from '@/use/usePagination'
-import API from '@/services/requests'
-import useSorting from '@/use/useSorting'
-import { defaultSorting, SORT_OPTIONS } from './helpers/sorting'
+import { SORT_OPTIONS } from './helpers/sorting'
+import useStories from './helpers/useStories'
 
-const STATES = 'unstarted'
-const CONTAINER = 'backlog'
-const sort = useSorting(defaultSorting)
-const { id } = useUrlParams()
-const { collection, total, loading, setCollection } = useCollection()
-const pagination = usePagination({ collection, total })
-const { page } = pagination
-const project = ref({})
-
-const fetchCollection = () => {
-  loading.value = true
-  API.fetchProject(id)
-    .then((res) => (project.value = res.data))
-    .then((result) =>
-      API.fetchStories(
-        {
-          'filter.projectId': result.id,
-          'filter.state': STATES,
-          'filter.container': CONTAINER,
-          page: page.value,
-          sort: sort.value,
-        },
-        { refresh: true }
-      )
-    )
-    .then((res) => setCollection(res.data))
-}
-
-const updateStoryState = (story, state) =>
-  API.updateStory(story.id, { state }).then(() => {
-    loading.value = true
-    fetchCollection()
-  })
-
-const deleteStory = (story) => {
-  if (confirm('Are you sure?')) {
-    loading.value = true
-    API.deleteStory(story.id).then(() => fetchCollection())
-  }
-}
-
-watch([page, sort], fetchCollection)
-fetchCollection()
+const filters = () => ({
+  'filter.state': 'unstarted',
+  'filter.container': 'backlog',
+})
+const {
+  id,
+  project,
+  collection,
+  loading,
+  pagination,
+  sort,
+  updateStoryState,
+  onDelete,
+} = useStories({ filters })
 </script>
