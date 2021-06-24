@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import useForm from '@/use/useForm'
 import useFrontendValidation from '@/use/useFrontendValidation'
 
-const useEditForm = ({
+const useNewForm = ({
   data,
   schema,
   onCreate,
@@ -27,4 +27,4 @@ const useEditForm = ({
   return { ...form, ...validation, onSubmit }
 }
 
-export default useEditForm
+export default useNewForm
