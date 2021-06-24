@@ -1,5 +1,21 @@
 import axios from 'axios'
 
+const showToast = () =>
+  window.Toast.error('Something went wrong, please try again.')
+
+axios.interceptors.response.use(
+  (res) => res,
+  function (err) {
+    if (err.response) {
+      err.response.status === 500 && showToast()
+    } else {
+      showToast()
+    }
+
+    return Promise.reject(err)
+  }
+)
+
 const defaultOptions = () => ({
   baseURL: '/api',
   headers: {
