@@ -2,10 +2,7 @@
   <AppLayout>
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h5>{{ project.name }}</h5>
-      <router-link
-        class="btn btn-primary"
-        :to="`/projects/${projectSlug}/stories/new`"
-      >
+      <router-link class="btn btn-primary" :to="`/projects/${id}/stories/new`">
         New
       </router-link>
     </div>
@@ -64,7 +61,7 @@ import { defaultSorting, SORT_OPTIONS } from './helpers/sorting'
 const STATES = 'unstarted'
 const CONTAINER = 'icebox'
 const sort = useSorting(defaultSorting)
-const { id: projectSlug } = useUrlParams()
+const { id } = useUrlParams()
 const { collection, total, loading, setCollection } = useCollection()
 const pagination = usePagination({ collection, total })
 const { page } = pagination
@@ -72,8 +69,8 @@ const project = ref({})
 
 const fetchCollection = () => {
   loading.value = true
-  API.fetchProjectBySlug(projectSlug)
-    .then((result) => (project.value = result))
+  API.fetchProject(id)
+    .then((res) => (project.value = res.data))
     .then((result) =>
       API.fetchStories(
         {

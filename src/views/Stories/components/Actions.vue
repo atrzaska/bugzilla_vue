@@ -65,7 +65,7 @@
     <div class="dropdown-menu dropdown-menu-right">
       <router-link
         class="dropdown-item"
-        :to="`/projects/${projectSlug}/stories/${story.id}/edit`"
+        :to="`/projects/${id}/stories/${story.id}/edit`"
       >
         Edit
       </router-link>
@@ -82,7 +82,7 @@ import { defineProps } from 'vue'
 import useUrlParams from '@/use/useUrlParams'
 import threeDots from '@/assets/threeDots.svg'
 
-const { id: projectSlug } = useUrlParams()
+const { id } = useUrlParams()
 
 const props = defineProps({
   story: Object,

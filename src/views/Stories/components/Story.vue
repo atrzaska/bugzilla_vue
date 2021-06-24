@@ -1,7 +1,7 @@
 <template>
   <tr>
     <td>
-      <router-link :to="`/projects/${projectSlug}/stories/${story.id}/edit`">
+      <router-link :to="`/projects/${id}/stories/${story.id}/edit`">
         {{ story.name }}
       </router-link>
     </td>
@@ -27,7 +27,7 @@ import { defineProps } from 'vue'
 import useUrlParams from '@/use/useUrlParams'
 import Actions from './Actions'
 
-const { id: projectSlug } = useUrlParams()
+const { id } = useUrlParams()
 
 const props = defineProps({
   story: Object,

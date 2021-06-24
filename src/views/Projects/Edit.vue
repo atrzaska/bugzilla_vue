@@ -61,7 +61,7 @@ const validation = useFrontendValidation({ errors, schema })
 const { isValid, invalidFieldClass, validateField, validateForm } = validation
 const router = useRouter()
 const { setObject, loading } = useObject(data)
-const { id: projectSlug } = useUrlParams()
+const { id } = useUrlParams()
 
 const onSubmit = () => {
   validateForm(data.value) &&
@@ -73,7 +73,7 @@ const onSubmit = () => {
 
 const fetchObject = () => {
   loading.value = true
-  API.fetchProjectBySlug(projectSlug).then((res) => setObject(res))
+  API.fetchProject(id).then((res) => setObject(res.data))
 }
 
 fetchObject()

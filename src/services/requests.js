@@ -44,8 +44,6 @@ const fetchProject = (id) => API.get(`/projects/${id}`)
 const createProject = (params) => API.post('/projects', params)
 const updateProject = (id, params) => API.put(`/projects/${id}`, params)
 const deleteProject = (id) => API.delete(`/projects/${id}`)
-const fetchProjectBySlug = (slug) =>
-  fetchProjects({ 'filter.slug': slug }).then((res) => res.data.collection[0])
 
 const fetchStories = (params, options = {}) =>
   API.get('/stories', Object.assign({ params }, options))
@@ -88,7 +86,6 @@ export default {
   createProject,
   updateProject,
   deleteProject,
-  fetchProjectBySlug,
 
   fetchStories,
   fetchStory,

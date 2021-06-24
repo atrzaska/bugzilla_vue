@@ -24,7 +24,7 @@
         <tbody>
           <tr v-for="project in collection" :key="project.id">
             <td>
-              <router-link :to="`/projects/${project.slug}/current`">
+              <router-link :to="`/projects/${project.id}/current`">
                 {{ project.name }}
               </router-link>
             </td>
@@ -39,7 +39,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
                   <router-link
                     class="dropdown-item"
-                    :to="`/projects/${project.slug}/edit`"
+                    :to="`/projects/${project.id}/edit`"
                   >
                     Edit
                   </router-link>
@@ -48,8 +48,9 @@
                     class="dropdown-item"
                     href="#"
                     @click.prevent="onDelete(project)"
-                    >Remove</a
                   >
+                    Remove
+                  </a>
                 </div>
               </div>
             </td>
