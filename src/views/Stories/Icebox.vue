@@ -54,10 +54,10 @@ import Empty from './components/Empty'
 import { SORT_OPTIONS } from './helpers/sorting'
 import useStories from './helpers/useStories'
 
-const filters = () => ({
+const filters = {
   'filter.state': 'unstarted',
   'filter.container': 'icebox',
-})
+}
 const {
   id,
   project,

@@ -54,7 +54,7 @@ import Empty from './components/Empty'
 import { SORT_OPTIONS } from './helpers/sorting'
 import useStories from './helpers/useStories'
 
-const filters = () => ({ 'filter.state': 'accepted' })
+const filters = { 'filter.state': 'accepted' }
 const {
   id,
   project,

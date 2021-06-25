@@ -54,9 +54,9 @@ import Empty from './components/Empty'
 import { SORT_OPTIONS } from './helpers/sorting'
 import useStories from './helpers/useStories'
 
-const filters = () => ({
+const filters = {
   'filter.state': 'started,finished,delivered,rejected',
-})
+}
 const {
   id,
   project,

@@ -21,7 +21,7 @@ const useStories = ({ filters }) => {
       .then((result) =>
         API.fetchStories(
           {
-            ...filters(),
+            ...filters,
             'filter.projectId': result.id,
             page: page.value,
             sort: sort.value,
