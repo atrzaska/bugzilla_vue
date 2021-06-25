@@ -1,69 +1,124 @@
 <template>
   <AppLayout>
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h5>qwe</h5>
+      <h5>{{ project.name }}</h5>
       <router-link class="btn btn-primary" to="/invites/new">
         Invite member
       </router-link>
     </div>
-    <ProjectTabs :project="project" />
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="border-0">Name</th>
-          <th class="border-0">Role</th>
-          <th class="border-0 w-1">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="d-flex align-items-center">
-              <img
-                class="rounded-circle mr-2"
-                height="48"
-                src="/images/nobody.jpg"
-                with="48"
-              />
-              <div class="d-flex flex-column">
-                <b>You • Andrzej Trzaska</b>
-                <div class="text-secondary">atrzaska2@gmail.com</div>
+    <ProjectTabs />
+    <Loading v-if="loading" />
+    <div v-else-if="collection.length">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <Sort v-model="sort" :options="SORT_OPTIONS" />
+        <TopPagination :pagination="pagination" />
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="border-0">Name</th>
+            <th class="border-0">Role</th>
+            <th class="border-0 w-1">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in collection" :key="item.id">
+            <td>
+              <div class="d-flex align-items-center">
+                <img
+                  class="rounded-circle mr-2"
+                  height="48"
+                  :src="item.photoUrl"
+                  with="48"
+                />
+                <div class="d-flex flex-column">
+                  <b>{{ item.name }}</b>
+                  <div class="text-secondary">{{ item.email }}</div>
+                </div>
               </div>
-            </div>
-          </td>
-          <td>owner</td>
-          <td>
-            <div class="dropdown">
-              <a
-                class="btn btn-outline-primary dropdown-toggle"
-                data-toggle="dropdown"
-              >
-                <i class="fas fa-cog"> </i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right">
+            </td>
+            <td>{{ item.role }}</td>
+            <td>
+              <div class="dropdown">
                 <a
-                  class="dropdown-item"
-                  data-confirm="Are you sure?"
-                  data-csrf="XBVlAXJqUTVlI2RVODpQVDUfHSoxeiUmmSS5DR3G7fP7Tu25tqz_cWSv"
-                  data-method="delete"
-                  data-to="/projects/qwe/members/1"
-                  href="/projects/qwe/members/1"
-                  rel="nofollow"
+                  class="btn btn-outline-primary dropdown-toggle"
+                  data-toggle="dropdown"
                 >
-                  Leave project...
+                  <i class="fas fa-cog"></i>
                 </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item">Leave project...</a>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <XrmPagination :pagination="pagination" />
+    </div>
+    <Empty v-else />
   </AppLayout>
 </template>
 
 <script setup>
+import { ref, watch } from 'vue'
 import AppLayout from '@/layouts/App'
 import ProjectTabs from '@/components/ProjectTabs'
+import TopPagination from '@/components/pagination/TopPagination'
+import XrmPagination from '@/components/pagination/XrmPagination'
+import Loading from '@/components/Loading'
+import Sort from '@/components/Sort'
+import Empty from './components/Empty'
+import API from '@/services/requests'
+import useUrlParams from '@/use/useUrlParams'
+import usePagination from '@/use/usePagination'
+import useSorting from '@/use/useSorting'
+import useCollection from '@/use/useCollection'
 
-// const project =
+const SORT_OPTIONS = {
+  id_desc: { name: 'Creation time: newest', value: 'id_desc' },
+  id_asc: { name: 'Creation time: oldest', value: 'id_asc' },
+  name_asc: { name: 'Name A-Z', value: 'name_asc' },
+  name_desc: { name: 'Name Z-A', value: 'name_desc' },
+}
+
+const project = ref({})
+const defaultSorting = SORT_OPTIONS.name_asc.value
+const sort = useSorting(defaultSorting)
+const { id } = useUrlParams()
+const { collection, total, loading, setCollection } = useCollection()
+const pagination = usePagination({ collection, total })
+const { page } = pagination
+
+const fetchCollection = () => {
+  API.fetchProject(id)
+    .then((res) => (project.value = res.data))
+    .then((result) =>
+      API.fetchMembers(
+        {
+          'filter.projectId': result.id,
+          page: page.value,
+          sort: sort.value,
+        },
+        { refresh: true }
+      )
+    )
+    .then((res) => setCollection(res.data))
+}
+
+const onDeleteConfirmed = (member) => {
+  API.deleteMember(member.id).then((res) => {
+    window.Toast.success(`Member ${member.name} deleted successfully.`)
+    fetchCollection()
+  })
+}
+
+const onDelete = (member) =>
+  window.Modal.confirmDelete({
+    name: member.name,
+    onConfirm: () => onDeleteConfirmed(member),
+  })
+
+watch([page, sort], fetchCollection)
+fetchCollection()
 </script>
