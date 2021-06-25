@@ -6,9 +6,7 @@
         New
       </router-link>
     </div>
-    <div v-if="loading">
-      <Loading />
-    </div>
+    <Loading v-if="loading" />
     <div v-else-if="collection.length">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <Sort v-model="sort" :options="SORT_OPTIONS" />
