@@ -1,15 +1,16 @@
 import axios from 'axios'
 
-const showToast = () =>
-  window.Toast.error('Something went wrong, please try again.')
-
 axios.interceptors.response.use(
   (res) => res,
   function (err) {
     if (err.response) {
-      err.response.status === 500 && showToast()
+      if (err.response.status === 500) {
+        window.Toast.error('Something went wrong, please try again.')
+      } else if (err.response.status === 403) {
+        window.Toast.error('You have no access to this resource')
+      }
     } else {
-      showToast()
+      window.Toast.error('Something went wrong, please try again.')
     }
 
     return Promise.reject(err)
@@ -25,8 +26,7 @@ const defaultOptions = () => ({
   },
 })
 
-const withDefaults = (options = {}) =>
-  Object.assign({}, defaultOptions(), options)
+const withDefaults = (options = {}) => ({ ...defaultOptions(), ...options })
 
 const cache = new Map()
 
