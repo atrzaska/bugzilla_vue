@@ -32,13 +32,14 @@
                   with="48"
                 />
                 <div class="d-flex flex-column">
-                  <b>{{ item.name }}</b>
+                  <b v-if="isCurrentUser(item)">You • {{ item.name }}</b>
+                  <b v-else>{{ item.name }}</b>
                   <div class="text-secondary">{{ item.email }}</div>
                 </div>
               </div>
             </td>
             <td>{{ item.role }}</td>
-            <td>
+            <td v-if="project.isOwner">
               <div class="dropdown">
                 <a
                   class="btn btn-outline-primary dropdown-toggle"
@@ -47,9 +48,19 @@
                   <i class="fas fa-cog"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item">Leave project...</a>
+                  <template v-if="isCurrentUser(item)">
+                    <a class="dropdown-item">Leave project...</a>
+                  </template>
+                  <template v-else>
+                    <a class="dropdown-item">Change role</a>
+                    <div class="dropdown-divider" />
+                    <a class="dropdown-item">Remove from project...</a>
+                  </template>
                 </div>
               </div>
+            </td>
+            <td v-else>
+              <a v-if="isCurrentUser(item)" class="btn btn-danger">Leave</a>
             </td>
           </tr>
         </tbody>
@@ -74,6 +85,10 @@ import useUrlParams from '@/use/useUrlParams'
 import usePagination from '@/use/usePagination'
 import useSorting from '@/use/useSorting'
 import useCollection from '@/use/useCollection'
+import useCurrentUser from '@/use/useCurrentUser'
+
+const { user } = useCurrentUser()
+const isCurrentUser = (member) => member.userId === user.value.id
 
 const SORT_OPTIONS = {
   id_desc: { name: 'Creation time: newest', value: 'id_desc' },
