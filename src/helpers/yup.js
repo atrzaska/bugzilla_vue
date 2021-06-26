@@ -37,6 +37,13 @@ const editMemberSchema = yup.object().shape({
   role: yup.string().oneOf(['owner', 'member']),
 })
 
+const recoverPasswordSchema = yup.object().shape({
+  email: yup.string().email().max(255),
+})
+
+const confirmPasswordSchema = yup.object().shape({
+  email: yup.string().email().max(255),
+})
 export {
   signUpSchema,
   signInSchema,
@@ -44,4 +51,6 @@ export {
   storySchema,
   newMemberSchema,
   editMemberSchema,
+  recoverPasswordSchema,
+  confirmPasswordSchema,
 }

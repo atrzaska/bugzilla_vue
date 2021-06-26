@@ -19,8 +19,8 @@ const useNewForm = ({
   const onSubmit = () => {
     validation.validateForm(data.value) &&
       form.submit(onCreate(data.value)).then((res) => {
-        router.push(successRedirectPath)
-        window.Toast.success(successToast(res.data))
+        successRedirectPath && router.push(successRedirectPath)
+        successToast && window.Toast.success(successToast(res.data))
       })
   }
 

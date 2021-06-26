@@ -1,23 +1,39 @@
 <template>
   <AuthLayout>
-    <form action="/recover" class="form-signin bg-white p-4" method="post">
+    <form @submit.prevent="onSubmit" class="form-signin bg-white p-4">
       <h3 class="mb-3 font-weight-normal">Password recovery</h3>
       <p class="mb-4 text-secondary">
         Enter the email you're using for your account.
       </p>
       <div class="form-group">
         <input
-          class="form-control"
-          id="user_email"
-          name="user[email]"
+          v-model="data.email"
+          :class="['form-control', invalidFieldClass('email')]"
+          @input="validateField('email', data.email)"
+          id="email"
           placeholder="Email address"
           type="email"
           required
         />
+        <div v-if="errors.email" class="invalid-feedback">
+          {{ errors.email }}
+        </div>
       </div>
+
       <div class="form-group">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">
-          Continue
+        <button
+          :disabled="!isValid || isSubmitting"
+          class="btn btn-lg btn-primary btn-block"
+          type="submit"
+        >
+          <div v-if="isSubmitting">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <div v-else>Continue</div>
         </button>
       </div>
     </form>
@@ -26,4 +42,21 @@
 
 <script setup>
 import AuthLayout from '@/layouts/Auth'
+import useNewForm from '@/use/useNewForm'
+import { recoverPasswordSchema as schema } from '@/helpers/yup'
+import API from '@/services/requests'
+
+const {
+  data,
+  errors,
+  isValid,
+  isSubmitting,
+  onSubmit,
+  invalidFieldClass,
+  validateField,
+} = useNewForm({
+  schema,
+  onCreate: (data) => API.createRecovery(data),
+  successRedirectPath: '/recover/success',
+})
 </script>

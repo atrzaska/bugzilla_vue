@@ -73,6 +73,8 @@ const updateMember = (id, params) => API.put(`/members/${id}`, params)
 const deleteMember = (id) => API.delete(`/members/${id}`)
 
 const createInvite = (params) => API.post('/invites', params)
+const createRecovery = (params) => API.post('/recover', params)
+const createConfirmation = (params) => API.post('/confirm', params)
 
 export default {
   clearToken,
@@ -113,4 +115,6 @@ export default {
   deleteMember,
 
   createInvite,
+  createRecovery,
+  createConfirmation,
 }
