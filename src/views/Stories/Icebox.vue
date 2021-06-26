@@ -22,7 +22,7 @@
             <th class="border-0">Container</th>
             <th class="border-0">Tasks</th>
             <th class="border-0">Comments</th>
-            <th class="border-0 w-1 text-right">Actions</th>
+            <th class="border-0 w-1 text-end">Actions</th>
           </tr>
         </thead>
         <tbody>

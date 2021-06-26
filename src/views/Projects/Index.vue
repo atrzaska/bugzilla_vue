@@ -30,11 +30,11 @@
               <div class="dropdown">
                 <a
                   class="btn btn-outline-secondary dropdown-toggle"
-                  data-toggle="dropdown"
+                  data-bs-toggle="dropdown"
                 >
                   <img :src="threeDots" />
                 </a>
-                <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-menu dropdown-menu-end">
                   <router-link
                     class="dropdown-item"
                     :to="`/projects/${project.id}/edit`"

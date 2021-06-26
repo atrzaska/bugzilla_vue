@@ -32,7 +32,7 @@
       <strong>Cookies</strong>
     </h3>
     <p>
-      <span class="mr-1">
+      <span class="me-1">
         We employ the use of cookies. By accessing Bugzilla, you agreed to use
         cookies in agreement with the Bugzilla's
       </span>
@@ -204,7 +204,7 @@
       <strong>Your Privacy</strong>
     </h3>
     <p>
-      <span class="mr-1">Please read</span>
+      <span class="me-1">Please read</span>
       <router-link to="/privacy">Privacy Policy</router-link>
     </p>
     <h3>

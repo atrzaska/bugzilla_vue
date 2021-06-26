@@ -3,7 +3,7 @@
     <form @submit.prevent="onSubmit" class="form-signin bg-white p-4">
       <h3 class="mb-3 font-weight-normal">Get started free today</h3>
       <p class="mb-4 text-secondary">No credit card required</p>
-      <div class="form-group">
+      <div class="mb-3">
         <input
           v-model="name"
           autocomplete="name"
@@ -51,7 +51,7 @@
           {{ errors.password }}
         </div>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <div class="form-check">
           <input
             id="termsAccepted"
@@ -74,7 +74,7 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <div class="form-check">
           <input
             id="newsletterSubscribed"
@@ -90,9 +90,9 @@
           </label>
         </div>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <button
-          class="btn btn-lg btn-primary btn-block"
+          class="btn btn-lg btn-primary w-100"
           type="submit"
           :disabled="!isValid || isSubmitting"
         >

@@ -4,26 +4,28 @@
     class="d-flex justify-content-end align-items-center"
   >
     <a v-if="hasPreviousPage" href="" @click.prevent="previousPage()">
-      <div class="pr-2 text-primary">
+      <div class="pe-2 text-primary">
         <i class="fas fa-chevron-left" />
       </div>
     </a>
-    <div v-else class="pr-2">
+    <div v-else class="pe-2">
       <i class="fas fa-chevron-left" />
     </div>
-    <input
-      type="text"
-      class="form-control text-center col-2 mr-2"
-      :value="page"
-      @change="onPageChange"
-    />
+    <div class="col-2 me-2">
+      <input
+        type="text"
+        class="form-control text-center"
+        :value="page"
+        @change="onPageChange"
+      />
+    </div>
     <span>of {{ totalPages }}</span>
     <a v-if="hasNextPage" href="" @click.prevent="nextPage()">
-      <div class="pl-2 text-primary">
+      <div class="ps-2 text-primary">
         <i class="fas fa-chevron-right" />
       </div>
     </a>
-    <div v-else class="pl-2">
+    <div v-else class="ps-2">
       <i class="fas fa-chevron-right" />
     </div>
   </div>

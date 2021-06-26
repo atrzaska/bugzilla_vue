@@ -17,7 +17,7 @@
           Get started
         </router-link>
         <router-link
-          class="btn btn-outline-primary btn-lg py-3 px-5 ml-3"
+          class="btn btn-outline-primary btn-lg py-3 px-5 ms-3"
           to="#howitworks"
           role="button"
         >
@@ -26,9 +26,9 @@
       </div>
     </div>
     <footer class="text-center">
-      <span class="mr-2">Made with</span>
-      <i class="fas fa-heart mr-2 d-inline"></i>
-      <span class="mr-2">by</span>
+      <span class="me-2">Made with</span>
+      <i class="fas fa-heart me-2 d-inline"></i>
+      <span class="me-2">by</span>
       <router-link to="/">Andrzej Trzaska</router-link>
     </footer>
   </LandingLayout>

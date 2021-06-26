@@ -9,7 +9,7 @@
           address is correct.
         </strong>
       </p>
-      <router-link class="btn btn-lg btn-primary btn-block" to="/signin">
+      <router-link class="btn btn-lg btn-primary w-100" to="/signin">
         Back to Sign in
       </router-link>
     </div>

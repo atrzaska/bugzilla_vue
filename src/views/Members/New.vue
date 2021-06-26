@@ -2,8 +2,8 @@
   <AppLayout>
     <h1 class="mb-4">Invite member</h1>
     <form @submit.prevent="onSubmit">
-      <div class="form-group">
-        <label for="email">Email</label>
+      <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
         <input
           v-model="data.email"
           :class="['form-control', invalidFieldClass('email')]"
@@ -17,9 +17,9 @@
         </div>
       </div>
       <hr />
-      <div class="form-group">
+      <div class="mb-3">
         <button
-          class="btn btn-primary mr-2"
+          class="btn btn-primary me-2"
           type="submit"
           :disabled="!isValid || isSubmitting"
         >

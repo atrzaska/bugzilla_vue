@@ -1,6 +1,6 @@
 <template>
   <header class="d-flex align-items-center p-4">
-    <router-link class="mr-auto" to="/">
+    <router-link class="me-auto" to="/">
       <img height="48" src="/images/bootstrap.svg" width="48" />
     </router-link>
     <router-link v-if="isLoggedIn" class="btn btn-primary" to="/dashboard">

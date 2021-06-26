@@ -30,7 +30,7 @@
             <td>
               <div class="d-flex align-items-center">
                 <img
-                  class="rounded-circle mr-2"
+                  class="rounded-circle me-2"
                   height="48"
                   :src="item.photoUrl"
                   with="48"
@@ -47,11 +47,11 @@
               <div class="dropdown">
                 <a
                   class="btn btn-outline-primary dropdown-toggle"
-                  data-toggle="dropdown"
+                  data-bs-toggle="dropdown"
                 >
                   <i class="fas fa-cog"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-menu dropdown-menu-end">
                   <template v-if="isCurrentUser(item)">
                     <a
                       href="#"

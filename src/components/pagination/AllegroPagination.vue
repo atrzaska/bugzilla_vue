@@ -4,7 +4,7 @@
       <li v-if="hasPreviousPage" class="page-item">
         <a @click.prevent="previousPage()" class="page-link" href="#">
           <i class="fas fa-chevron-left" />
-          <span class="ml-3 text-primary">PREVIOUS</span>
+          <span class="ms-3 text-primary">PREVIOUS</span>
         </a>
       </li>
 
@@ -102,7 +102,7 @@
 
       <li v-if="hasNextPage" class="page-item">
         <a @click.prevent="nextPage()" href="#" class="page-link">
-          <span class="mr-3 text-primary">NEXT</span>
+          <span class="me-3 text-primary">NEXT</span>
           <i class="fas fa-chevron-right" />
         </a>
       </li>

@@ -3,20 +3,22 @@
 // Bootstrap overrides
 $enable-validation-icons: false;
 $enable-caret: false;
+
 $primary: #563d7c;
 $light: #e5e5e5;
 $secondary: #666;
+
 $body-color: #141313;
 $border-color: $light;
+
 $input-border-color: $light;
 $input-focus-box-shadow: none !important;
-$toast-background-color: rgba(#fff, .95);
-$toast-border-width: 0;
-$modal-content-border-width: 0;
+$input-btn-focus-box-shadow: none;
+
+
 $hr-border-color: $light;
 $list-group-border-color: $light;
 $font-family-base: 'Fira Sans', sans-serif;
-$input-btn-focus-box-shadow: none;
 $pagination-border-width: 0;
 $pagination-disabled-color: $light;
 $pagination-padding-x: 0.88rem;
@@ -39,6 +41,11 @@ $pagination-padding-x: 0.88rem;
 
 .modal {
   display: block;
+}
+
+.toast {
+  width: auto;
+  max-width: 400px;
 }
 
 hr {

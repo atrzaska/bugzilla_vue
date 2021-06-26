@@ -5,7 +5,7 @@
       <p class="mb-4 text-secondary">
         Enter the email you're using for your account.
       </p>
-      <div class="form-group">
+      <div class="mb-3">
         <input
           v-model="data.email"
           :class="['form-control', invalidFieldClass('email')]"
@@ -19,10 +19,10 @@
           {{ errors.email }}
         </div>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <button
           :disabled="!isValid || isSubmitting"
-          class="btn btn-lg btn-primary btn-block"
+          class="btn btn-lg btn-primary w-100"
           type="submit"
         >
           <div v-if="isSubmitting">

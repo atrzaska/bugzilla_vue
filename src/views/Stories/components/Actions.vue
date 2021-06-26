@@ -2,7 +2,7 @@
   <div class="btn-group">
     <a
       v-if="story.state === 'unstarted'"
-      class="btn btn-outline-secondary d-flex align-items-center border-right-0"
+      class="btn btn-outline-secondary d-flex align-items-center"
       href="#"
       @click.prevent="updateStoryState(story, 'started')"
     >
@@ -10,7 +10,7 @@
     </a>
     <a
       v-if="story.state === 'started'"
-      class="btn btn-outline-secondary d-flex align-items-center border-right-0"
+      class="btn btn-outline-secondary d-flex align-items-center"
       href="#"
       @click.prevent="updateStoryState(story, 'finished')"
     >
@@ -18,7 +18,7 @@
     </a>
     <a
       v-if="story.state === 'finished'"
-      class="btn btn-outline-secondary d-flex align-items-center border-right-0"
+      class="btn btn-outline-secondary d-flex align-items-center"
       href="#"
       @click.prevent="updateStoryState(story, 'delivered')"
     >
@@ -26,7 +26,7 @@
     </a>
     <a
       v-if="story.state === 'delivered'"
-      class="btn btn-outline-secondary d-flex align-items-center border-right-0"
+      class="btn btn-outline-secondary d-flex align-items-center"
       href="#"
       @click.prevent="updateStoryState(story, 'accepted')"
     >
@@ -34,7 +34,7 @@
     </a>
     <a
       v-if="story.state === 'delivered'"
-      class="btn btn-outline-secondary d-flex align-items-center border-right-0"
+      class="btn btn-outline-secondary d-flex align-items-center"
       href="#"
       @click.prevent="updateStoryState(story, 'rejected')"
     >
@@ -42,7 +42,7 @@
     </a>
     <a
       v-if="story.state === 'rejected'"
-      class="btn btn-outline-secondary d-flex align-items-center border-right-0"
+      class="btn btn-outline-secondary d-flex align-items-center"
       href="#"
       @click.prevent="updateStoryState(story, 'unstarted')"
     >
@@ -50,7 +50,7 @@
     </a>
     <a
       v-if="story.state === 'accepted'"
-      class="btn btn-outline-secondary d-flex align-items-center border-right-0"
+      class="btn btn-outline-secondary d-flex align-items-center"
       href="#"
       @click.prevent="updateStoryState(story, 'unstarted')"
     >
@@ -58,11 +58,11 @@
     </a>
     <a
       class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-      data-toggle="dropdown"
+      data-bs-toggle="dropdown"
     >
       <img :src="threeDots" />
     </a>
-    <div class="dropdown-menu dropdown-menu-right">
+    <div class="dropdown-menu dropdown-menu-end">
       <router-link
         class="dropdown-item"
         :to="`/projects/${id}/stories/${story.id}/edit`"

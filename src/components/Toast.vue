@@ -3,7 +3,7 @@
     <div
       v-for="(notification, index) in notifications"
       :key="index"
-      class="toast fade show mb-2 cursor-pointer ml-auto"
+      class="toast border-0 fade show mb-2 cursor-pointer ms-auto"
       @click="deleteNotification(index)"
     >
       <div :class="`toast-body alert-${notification.kind} p-3 rounded`">

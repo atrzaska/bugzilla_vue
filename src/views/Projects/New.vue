@@ -2,8 +2,8 @@
   <AppLayout>
     <h1 class="mb-4">New Project</h1>
     <form @submit.prevent="onSubmit">
-      <div class="form-group">
-        <label for="projectName">Name</label>
+      <div class="mb-3">
+        <label class="form-label" for="projectName">Name</label>
         <input
           v-model="data.name"
           :class="['form-control', invalidFieldClass('name')]"
@@ -18,9 +18,9 @@
         </div>
       </div>
       <hr />
-      <div class="form-group">
+      <div class="mb-3">
         <button
-          class="btn btn-primary mr-2"
+          class="btn btn-primary me-2"
           type="submit"
           :disabled="!isValid || isSubmitting"
         >

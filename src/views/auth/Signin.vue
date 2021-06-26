@@ -5,7 +5,7 @@
       <div v-if="error" class="alert alert-danger">
         <p class="mb-0">Invalid e-mail or password</p>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <input
           class="form-control form-control-first"
           id="user_email"
@@ -25,7 +25,7 @@
           v-model="password"
         />
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <div class="form-check">
           <input
             v-model="rememberMe"
@@ -41,20 +41,20 @@
           </label>
         </div>
       </div>
-      <div class="form-group">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <div class="mb-3">
+        <button class="btn btn-lg btn-primary w-100" type="submit">
           Sign in
         </button>
       </div>
       <router-link
-        class="text-secondary text-decoration-none mr-1"
+        class="text-secondary text-decoration-none me-1"
         to="/recover"
       >
         Forgot password?
       </router-link>
       <br />
       <router-link
-        class="text-secondary text-decoration-none mr-1"
+        class="text-secondary text-decoration-none me-1"
         to="/confirm"
       >
         Didn't get confirmation email?

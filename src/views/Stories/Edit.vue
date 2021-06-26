@@ -3,8 +3,8 @@
     <h1 class="mb-4">Edit Story</h1>
     <Loading v-if="loading" />
     <form v-else @submit.prevent="onSubmit">
-      <div class="form-group">
-        <label for="name">Name</label>
+      <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
         <input
           v-model="data.name"
           :class="['form-control', invalidFieldClass('name')]"
@@ -18,8 +18,8 @@
           {{ errors.name }}
         </div>
       </div>
-      <div class="form-group">
-        <label for="description">Description</label>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
         <input
           v-model="data.description"
           :class="['form-control', invalidFieldClass('description')]"
@@ -33,11 +33,11 @@
           {{ errors.description }}
         </div>
       </div>
-      <div class="form-group">
-        <label for="kind">Story type</label>
+      <div class="mb-3">
+        <label class="form-label" for="kind">Story type</label>
         <select
           v-model="data.kind"
-          :class="['form-control', invalidFieldClass('kind')]"
+          :class="['form-select', invalidFieldClass('kind')]"
           @input="validateField('kind', data.kind)"
           id="kind"
           required
@@ -51,11 +51,11 @@
           {{ errors.kind }}
         </div>
       </div>
-      <div class="form-group">
-        <label for="storyContainer">Container</label>
+      <div class="mb-3">
+        <label class="form-label" for="storyContainer">Container</label>
         <select
           v-model="data.container"
-          :class="['form-control', invalidFieldClass('container')]"
+          :class="['form-select', invalidFieldClass('container')]"
           @input="validateField('container', data.container)"
           id="container"
           required
@@ -68,9 +68,9 @@
         </div>
       </div>
       <hr />
-      <div class="form-group">
+      <div class="mb-3">
         <button
-          class="btn btn-primary mr-2"
+          class="btn btn-primary me-2"
           type="submit"
           :disabled="!isValid || isSubmitting"
         >
@@ -95,7 +95,7 @@
     <h5>Comments</h5>
     <div class="list-group border-0 mb-3">
       <div class="list-group-item d-flex">
-        <router-link class="mr-auto" to="/comments/1/edit">
+        <router-link class="me-auto" to="/comments/1/edit">
           this is a comment
         </router-link>
         <a
@@ -115,7 +115,7 @@
     <h5>Tasks</h5>
     <div class="list-group border-0 mb-3">
       <div class="list-group-item d-flex">
-        <router-link class="mr-auto" to="/tasks/1/edit">
+        <router-link class="me-auto" to="/tasks/1/edit">
           this is a task
         </router-link>
         <a

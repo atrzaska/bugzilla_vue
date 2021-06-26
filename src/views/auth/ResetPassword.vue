@@ -4,7 +4,7 @@
     <form v-else @submit.prevent="onSubmit" class="form-signin bg-white p-4">
       <h3 class="mb-3 font-weight-normal">Password Recovery</h3>
       <p class="mb-4 text-secondary">Enter your new password.</p>
-      <div class="form-group">
+      <div class="mb-3">
         <input
           v-model="data.password"
           :class="['form-control', invalidFieldClass('password')]"
@@ -18,10 +18,10 @@
           {{ errors.password }}
         </div>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <button
           :disabled="!isValid || isSubmitting"
-          class="btn btn-lg btn-primary btn-block"
+          class="btn btn-lg btn-primary w-100"
           type="submit"
         >
           <div v-if="isSubmitting">

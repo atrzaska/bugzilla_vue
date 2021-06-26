@@ -2,8 +2,8 @@
   <AppLayout>
     <h1 class="mb-4">New Story</h1>
     <form @submit.prevent="onSubmit">
-      <div class="form-group">
-        <label for="name">Name</label>
+      <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
         <input
           v-model="data.name"
           :class="['form-control', invalidFieldClass('name')]"
@@ -17,8 +17,8 @@
           {{ errors.name }}
         </div>
       </div>
-      <div class="form-group">
-        <label for="description">Description</label>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
         <input
           v-model="data.description"
           :class="['form-control', invalidFieldClass('description')]"
@@ -32,11 +32,11 @@
           {{ errors.description }}
         </div>
       </div>
-      <div class="form-group">
-        <label for="kind">Story type</label>
+      <div class="mb-3">
+        <label class="form-label" for="kind">Story type</label>
         <select
           v-model="data.kind"
-          :class="['form-control', invalidFieldClass('kind')]"
+          :class="['form-select', invalidFieldClass('kind')]"
           @input="validateField('kind', data.kind)"
           id="kind"
           required
@@ -50,11 +50,11 @@
           {{ errors.kind }}
         </div>
       </div>
-      <div class="form-group">
-        <label for="storyContainer">Container</label>
+      <div class="mb-3">
+        <label class="form-label" for="storyContainer">Container</label>
         <select
           v-model="data.container"
-          :class="['form-control', invalidFieldClass('container')]"
+          :class="['form-select', invalidFieldClass('container')]"
           @input="validateField('container', data.container)"
           id="container"
           required
@@ -67,9 +67,9 @@
         </div>
       </div>
       <hr />
-      <div class="form-group">
+      <div class="mb-3">
         <button
-          class="btn btn-primary mr-2"
+          class="btn btn-primary me-2"
           type="submit"
           :disabled="!isValid || isSubmitting"
         >

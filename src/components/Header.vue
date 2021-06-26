@@ -2,29 +2,22 @@
   <header
     class="header d-flex align-items-center px-3 py-1 border-bottom shadow-sm bg-white"
   >
-    <router-link to="/dashboard" class="mr-auto">
+    <router-link to="/dashboard" class="me-auto">
       <img height="24" src="/images/bootstrap.svg" width="24" />
     </router-link>
-    <div class="nav-item dropdown">
-      <a
-        aria-expanded="false"
-        aria-haspopup="true"
-        data-toggle="dropdown"
-        href="#"
-        role="button"
-        ><img
+    <div class="dropdown">
+      <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#">
+        <img
           class="rounded-circle"
           height="32"
           :src="user.photoUrl || '/images/nobody.jpg'"
           with="32"
-      /></a>
-      <div
-        aria-labelledby="navbarDropdown"
-        class="dropdown-menu dropdown-menu-right"
-      >
+        />
+      </a>
+      <div class="dropdown-menu dropdown-menu-end">
         <div class="d-flex align-items-center px-3">
           <img
-            class="rounded-circle mr-3"
+            class="rounded-circle me-3"
             height="80"
             :src="user.photoUrl || '/images/nobody.jpg'"
             with="80"

@@ -12,24 +12,25 @@
     >
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div v-if="!!modal.title" class="modal-header">
+          <div v-if="!!modal.title" class="modal-header border-0">
             <h5 class="modal-title" id="exampleModalLabel">
               {{ modal.title }}
             </h5>
             <button
               type="button"
-              class="close"
-              data-dismiss="modal"
+              class="btn-close"
+              data-bs-dismiss="modal"
               aria-label="Close"
               @click="onClose"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            />
           </div>
           <div v-if="!!modal.body" class="modal-body">
             {{ modal.body }}
           </div>
-          <div v-if="modal.showCancel || !!modal.confirm" class="modal-footer">
+          <div
+            v-if="modal.showCancel || !!modal.confirm"
+            class="modal-footer border-0"
+          >
             <button
               v-if="modal.showCancel"
               type="button"
