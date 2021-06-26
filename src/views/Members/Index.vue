@@ -44,12 +44,12 @@
             </td>
             <td>{{ item.role }}</td>
             <td v-if="project.isOwner">
-              <div class="dropdown">
+              <div class="d-flex justify-content-end dropdown">
                 <a
-                  class="btn btn-outline-primary dropdown-toggle"
+                  class="btn btn-outline-secondary dropdown-toggle"
                   data-bs-toggle="dropdown"
                 >
-                  <i class="fas fa-cog"></i>
+                  <img :src="threeDots" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <template v-if="isCurrentUser(item)">
@@ -109,6 +109,7 @@ import XrmPagination from '@/components/pagination/XrmPagination'
 import Loading from '@/components/Loading'
 import Sort from '@/components/Sort'
 import Empty from './components/Empty'
+import threeDots from '@/assets/threeDots.svg'
 import API from '@/services/requests'
 import useUrlParams from '@/use/useUrlParams'
 import usePagination from '@/use/usePagination'

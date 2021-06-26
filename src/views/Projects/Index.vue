@@ -27,7 +27,7 @@
               </router-link>
             </td>
             <td>
-              <div class="dropdown">
+              <div class="d-flex justify-content-end dropdown">
                 <a
                   class="btn btn-outline-secondary dropdown-toggle"
                   data-bs-toggle="dropdown"
