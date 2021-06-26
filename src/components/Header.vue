@@ -34,7 +34,7 @@
             <div class="text-secondary">{{ user.email }}</div>
           </div>
         </div>
-        <div class="dropdown-divider"></div>
+        <div class="dropdown-divider" />
         <router-link to="/users/settings" class="dropdown-item">
           Profile
         </router-link>

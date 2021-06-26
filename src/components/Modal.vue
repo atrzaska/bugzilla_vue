@@ -1,5 +1,5 @@
 <template>
-  <div v-if="modal.show" class="modal-backdrop fade show"></div>
+  <div v-if="modal.show" class="modal-backdrop fade show" />
   <transition name="fade">
     <div
       v-if="modal.show"

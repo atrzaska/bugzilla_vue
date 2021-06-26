@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-2"></div>
+        <div class="col-sm-2" />
         <div class="col-sm-10">
           <button class="btn btn-primary" type="submit">Save</button>
         </div>
@@ -84,7 +84,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-2"></div>
+        <div class="col-sm-2" />
         <div class="col-sm-10">
           <button class="btn btn-primary" type="submit">Change email</button>
         </div>
@@ -148,7 +148,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-2"></div>
+        <div class="col-sm-2" />
         <div class="col-sm-10">
           <button class="btn btn-primary" type="submit">Change password</button>
         </div>

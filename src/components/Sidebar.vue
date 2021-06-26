@@ -2,7 +2,7 @@
   <aside
     class="sidebar d-flex justify-content-center justify-content-sm-start align-items-center align-items-sm-start flex-sm-column"
   >
-    <div class="sidebar-header d-none d-sm-block"></div>
+    <div class="sidebar-header d-none d-sm-block" />
     <router-link
       to="/dashboard"
       :class="[

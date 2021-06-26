@@ -11,7 +11,7 @@
     >
       Github
     </a>
-    <div class="mr-auto"></div>
+    <div class="mr-auto" />
     <div v-if="isLoggedIn">
       <router-link v-if="isLoggedIn" class="btn btn-primary" to="/dashboard">
         Go to the dashboard

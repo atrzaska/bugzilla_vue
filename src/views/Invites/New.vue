@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-2"></div>
+        <div class="col-sm-2" />
         <div class="col-sm-10">
           <button class="btn btn-primary mr-2" type="submit">Invite</button>
           <a class="btn btn-outline-secondary" href="/projects/qwe/members">

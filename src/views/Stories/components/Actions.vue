@@ -69,7 +69,7 @@
       >
         Edit
       </router-link>
-      <div class="dropdown-divider"></div>
+      <div class="dropdown-divider" />
       <a class="dropdown-item" href="#" @click.prevent="onDelete(story)">
         Remove
       </a>
