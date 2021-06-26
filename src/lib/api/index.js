@@ -6,8 +6,10 @@ axios.interceptors.response.use(
     if (err.response) {
       if (err.response.status === 500) {
         window.Toast.error('Something went wrong, please try again.')
+      } else if (err.response.status === 404) {
+        window.Toast.error('Resource not found.')
       } else if (err.response.status === 403) {
-        window.Toast.error('You have no access to this resource')
+        window.Toast.error('You have no access to this resource.')
       }
     } else {
       window.Toast.error('Something went wrong, please try again.')
