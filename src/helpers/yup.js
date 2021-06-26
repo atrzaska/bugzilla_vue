@@ -2,7 +2,7 @@ import * as yup from 'yup'
 
 const signUpSchema = yup.object().shape({
   name: yup.string().required().min(8).max(255),
-  email: yup.string().email().max(255),
+  email: yup.string().required().email().max(255),
   password: yup.string().min(8).max(255),
   termsAccepted: yup
     .boolean()
@@ -12,7 +12,7 @@ const signUpSchema = yup.object().shape({
 })
 
 const signInSchema = yup.object().shape({
-  email: yup.string().email().max(255),
+  email: yup.string().required().email().max(255),
   password: yup.string().min(8).max(255),
 })
 
@@ -29,7 +29,7 @@ const storySchema = yup.object().shape({
 })
 
 const newMemberSchema = yup.object().shape({
-  email: yup.string().email().max(255),
+  email: yup.string().required().email().max(255),
   projectId: yup.number().required().positive().integer(),
 })
 
@@ -38,14 +38,14 @@ const editMemberSchema = yup.object().shape({
 })
 
 const recoverPasswordSchema = yup.object().shape({
-  email: yup.string().email().max(255),
+  email: yup.string().required().email().max(255),
 })
 
 const confirmEmailSchema = yup.object().shape({
-  email: yup.string().email().max(255),
+  email: yup.string().required().email().max(255),
 })
 
-const resetPasswordSchema = yup.object({
+const resetPasswordSchema = yup.object().shape({
   password: yup.string().min(8).max(255),
 })
 
