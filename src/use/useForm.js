@@ -1,5 +1,4 @@
 import { ref } from 'vue'
-import API from '@/services/requests'
 
 const useForm = ({ data, errors }) => {
   data = data || ref({})
