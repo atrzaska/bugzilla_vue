@@ -3,6 +3,7 @@
 // Bootstrap overrides
 $enable-validation-icons: false;
 $enable-caret: false;
+$link-decoration: none;
 
 $primary: #563d7c;
 $light: #e5e5e5;
@@ -12,7 +13,6 @@ $border-color: $light;
 
 $input-border-color: $light;
 $input-btn-focus-box-shadow: none !important;
-
 
 $list-group-border-color: $light;
 $font-family-base: 'Fira Sans', sans-serif;
