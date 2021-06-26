@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
     <h1 class="text-center">Settings</h1>
-    <h3 class="mb-4">Change personal data</h3>
+    <h5 class="mb-4">Change personal data</h5>
     <form action="/users/settings" method="post">
       <div class="mb-3">
         <label class="form-label" for="user_name">Name</label>
@@ -34,7 +34,7 @@
       </div>
     </form>
     <hr class="my-4" />
-    <h3 class="mb-4">Change email</h3>
+    <h5 class="mb-4">Change email</h5>
     <form action="/users/settings/update_email" method="post">
       <div class="mb-3">
         <label class="form-label" for="user_email">Email</label>
@@ -66,7 +66,7 @@
       </div>
     </form>
     <hr class="my-4" />
-    <h3 class="mb-4">Change password</h3>
+    <h5 class="mb-4">Change password</h5>
     <form action="/users/settings/update_password" method="post">
       <div class="mb-3">
         <label class="form-label" for="current_password_for_password">
@@ -110,7 +110,7 @@
       </div>
     </form>
     <hr class="my-4" />
-    <h3 class="mb-4">Cancel my account</h3>
+    <h5 class="mb-4">Cancel my account</h5>
     <p>Unhappy?</p>
     <div>
       <a
