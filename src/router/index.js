@@ -4,7 +4,7 @@ import CommentsNew from '@/views/Comments/New'
 import Confirm from '@/views/Auth/Confirm'
 import Dashboard from '@/views/Dashboard/Index'
 import Help from '@/views/Pages/Help'
-import InvitesNew from '@/views/Invites/New'
+import MembersNew from '@/views/Members/New'
 import Landing from '@/views/Pages/Landing'
 import MembersList from '@/views/Members/Index'
 import MembersEdit from '@/views/Members/Edit'
@@ -140,9 +140,9 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
-    path: '/invites/new',
+    path: '/projects/:id/members/new',
     name: 'MembersNew',
-    component: InvitesNew,
+    component: MembersNew,
     meta: { requiresAuth: true },
   },
   {

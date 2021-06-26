@@ -2,7 +2,7 @@
   <AppLayout>
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h5>{{ project.name }}</h5>
-      <router-link class="btn btn-primary" to="/invites/new">
+      <router-link class="btn btn-primary" :to="`/projects/${id}/members/new`">
         Invite member
       </router-link>
     </div>
@@ -49,18 +49,42 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                   <template v-if="isCurrentUser(item)">
-                    <a class="dropdown-item">Leave project...</a>
+                    <a
+                      href="#"
+                      @click="onLeaveProject(item)"
+                      class="dropdown-item"
+                    >
+                      Leave project...
+                    </a>
                   </template>
                   <template v-else>
-                    <a class="dropdown-item">Change role</a>
+                    <router-link
+                      :to="`/projects/${id}/people/${item.id}/edit`"
+                      class="dropdown-item"
+                    >
+                      Change role
+                    </router-link>
                     <div class="dropdown-divider" />
-                    <a class="dropdown-item">Remove from project...</a>
+                    <a
+                      href="#"
+                      @click.prevent="onRemoveFromProject(item)"
+                      class="dropdown-item"
+                    >
+                      Remove from project...
+                    </a>
                   </template>
                 </div>
               </div>
             </td>
             <td v-else>
-              <a v-if="isCurrentUser(item)" class="btn btn-danger">Leave</a>
+              <a
+                v-if="isCurrentUser(item)"
+                href="#"
+                @click="onLeaveProject(item)"
+                class="btn btn-danger"
+              >
+                Leave
+              </a>
             </td>
           </tr>
         </tbody>
@@ -73,6 +97,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import AppLayout from '@/layouts/App'
 import ProjectTabs from '@/components/ProjectTabs'
 import TopPagination from '@/components/pagination/TopPagination'
@@ -87,6 +112,7 @@ import useSorting from '@/use/useSorting'
 import useCollection from '@/use/useCollection'
 import useCurrentUser from '@/use/useCurrentUser'
 
+const router = useRouter()
 const { user } = useCurrentUser()
 const isCurrentUser = (member) => member.userId === user.value.id
 
@@ -121,17 +147,34 @@ const fetchCollection = () => {
     .then((res) => setCollection(res.data))
 }
 
-const onDeleteConfirmed = (member) => {
+const onLeaveProjectConfirmed = (member) =>
   API.deleteMember(member.id).then((res) => {
-    window.Toast.success(`Member ${member.name} deleted successfully.`)
+    window.Toast.success(
+      `You removed yourself from project ${project.value.name}.`
+    )
+    router.push('/projects')
+  })
+
+const onLeaveProject = (member) =>
+  window.Modal.confirm({
+    title: `You are about to leave project ${project.value.name}`,
+    body: 'This action cannot be undone. Are you sure you want to continue?',
+    onConfirm: () => onLeaveProjectConfirmed(member),
+  })
+
+const onRemoveFromProjectConfirmed = (member) =>
+  API.deleteMember(member.id).then((res) => {
+    window.Toast.success(
+      `You removed ${member.name} from project ${project.value.name}.`
+    )
     fetchCollection()
   })
-}
 
-const onDelete = (member) =>
-  window.Modal.confirmDelete({
-    name: member.name,
-    onConfirm: () => onDeleteConfirmed(member),
+const onRemoveFromProject = (member) =>
+  window.Modal.confirm({
+    title: `You are about to remove ${member.name} from project ${project.value.name}`,
+    body: 'This action cannot be undone. Are you sure you want to continue?',
+    onConfirm: () => onRemoveFromProjectConfirmed(member),
   })
 
 watch([page, sort], fetchCollection)
