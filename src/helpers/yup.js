@@ -28,4 +28,20 @@ const storySchema = yup.object().shape({
   projectId: yup.number().required().positive().integer(),
 })
 
-export { signUpSchema, signInSchema, projectSchema, storySchema }
+const newMemberSchema = yup.object().shape({
+  email: yup.string().email().max(255),
+  projectId: yup.number().required().positive().integer(),
+})
+
+const editMemberSchema = yup.object().shape({
+  role: yup.string().oneOf(['owner', 'member']),
+})
+
+export {
+  signUpSchema,
+  signInSchema,
+  projectSchema,
+  storySchema,
+  newMemberSchema,
+  editMemberSchema,
+}
