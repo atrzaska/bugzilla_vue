@@ -7,12 +7,14 @@ import Help from '@/views/Pages/Help'
 import InvitesNew from '@/views/Invites/New'
 import Landing from '@/views/Pages/Landing'
 import MembersList from '@/views/Members/Index'
+import MembersEdit from '@/views/Members/Edit'
 import Privacy from '@/views/Pages/Privacy'
 import ProjectsEdit from '@/views/Projects/Edit'
 import ProjectsList from '@/views/Projects/Index'
 import ProjectsNew from '@/views/Projects/New'
 import Recover from '@/views/Auth/Recover'
 import RecoverSuccess from '@/views/Auth/RecoverSuccess'
+import ResetPassword from '@/views/Auth/ResetPassword'
 import Signin from '@/views/Auth/Signin'
 import Signup from '@/views/Auth/Signup'
 import SignupSuccess from '@/views/Auth/SignupSuccess'
@@ -74,6 +76,11 @@ const routes = [
     component: RecoverSuccess,
   },
   {
+    path: '/reset_password/:id',
+    name: 'ResetPassword',
+    component: ResetPassword,
+  },
+  {
     path: '/confirm',
     name: 'Confirm',
     component: Confirm,
@@ -124,6 +131,12 @@ const routes = [
     path: '/projects/:id/members',
     name: 'MembersList',
     component: MembersList,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/projects/:id/members/:memberId/edit',
+    name: 'MembersEdit',
+    component: MembersEdit,
     meta: { requiresAuth: true },
   },
   {
