@@ -50,7 +50,7 @@ import API from '@/services/requests'
 import useCurrentUser from '@/use/useCurrentUser'
 import { fullName } from '@/helpers/utils'
 
-const { user } = useCurrentUser({})
+const { user } = useCurrentUser()
 </script>
 
 <style>

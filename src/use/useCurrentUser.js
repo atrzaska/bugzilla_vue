@@ -3,14 +3,14 @@ import useObject from '@/use/useObject'
 import API from '@/services/requests'
 const isSigninPage = window.location.pathname === '/signin'
 
-const useCurrentUser = (defaultValue = null) => {
+const useCurrentUser = (defaultValue = {}) => {
   const { object: user, setObject, loading } = useObject(defaultValue)
 
   API.fetchCurrentUser()
     .then((res) => setObject(res.data))
     .catch((err) => setObject(defaultValue))
 
-  const isLoggedIn = computed(() => !!user.value)
+  const isLoggedIn = computed(() => !!user.value.id)
 
   return { isLoggedIn, user, loading }
 }
