@@ -61,7 +61,7 @@ const {
 } = useEditForm({
   schema,
   onFetch: (id) => API.fetchProject(id),
-  onUpdate: (data) => API.updateProject(data.id, data),
+  onUpdate: (id, data) => API.updateProject(id, data),
   successToast: (data) => `Project ${data.name} updated successfully.`,
   successRedirectPath: '/projects',
 })

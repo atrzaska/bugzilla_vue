@@ -90,7 +90,7 @@ const {
   id: storyId,
   schema,
   onFetch: (id) => API.fetchMember(id),
-  onUpdate: (data) => API.updateMember(data.id, data),
+  onUpdate: (id, data) => API.updateMember(id, data),
   successToast: (data) => `User ${data.name} updated successfully.`,
   successRedirectPath: `/projects/${id}/members`,
 })

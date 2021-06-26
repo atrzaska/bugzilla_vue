@@ -25,7 +25,7 @@ const useEditForm = ({
 
   const onSubmit = () => {
     validation.validateForm(data.value) &&
-      form.submit(onUpdate(data.value)).then((res) => {
+      form.submit(onUpdate(id, data.value)).then((res) => {
         successRedirectPath && router.push(successRedirectPath)
         successToast && window.Toast.success(successToast(res.data))
       })
