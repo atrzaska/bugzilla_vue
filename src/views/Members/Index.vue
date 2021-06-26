@@ -2,7 +2,11 @@
   <AppLayout>
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h5>{{ project.name }}</h5>
-      <router-link class="btn btn-primary" :to="`/projects/${id}/members/new`">
+      <router-link
+        v-if="project.isOwner"
+        class="btn btn-primary"
+        :to="`/projects/${id}/members/new`"
+      >
         Invite member
       </router-link>
     </div>
