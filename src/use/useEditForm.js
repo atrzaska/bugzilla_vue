@@ -10,6 +10,7 @@ const useEditForm = ({
   data,
   schema,
   onFetch,
+  onFetchError,
   onUpdate,
   successToast,
   successRedirectPath,
@@ -33,7 +34,9 @@ const useEditForm = ({
 
   const fetchObject = () => {
     object.loading.value = true
-    onFetch(id).then((res) => object.setObject(res.data))
+    onFetch(id)
+      .then((res) => object.setObject(res.data))
+      .catch((err) => onFetchError(err))
   }
 
   fetchObject()
