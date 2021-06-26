@@ -64,16 +64,7 @@
       <BootstrapPagination :pagination="pagination" />
       <XrmPagination :pagination="pagination" />
     </div>
-    <div v-else>
-      <h1 class="text-center text-secondary p-4">
-        You don't have any projects yet
-      </h1>
-      <div class="text-center">
-        <router-link class="btn btn-primary" to="/projects1/new">
-          Create project
-        </router-link>
-      </div>
-    </div>
+    <Empty v-else />
   </AppLayout>
 </template>
 
@@ -87,6 +78,7 @@ import XrmPagination from '@/components/pagination/XrmPagination'
 import AllegroPagination from '@/components/pagination/AllegroPagination'
 import PageResults from '@/components/pagination/PageResults'
 import Loading from '@/components/Loading'
+import Empty from './components/Empty'
 import Sort from '@/components/Sort'
 import threeDots from '@/assets/threeDots.svg'
 import API from '@/services/requests'
