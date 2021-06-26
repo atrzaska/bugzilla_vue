@@ -1,35 +1,37 @@
 <template>
   <AuthLayout>
-    <form
-      action="/reset_password/4UDZwYjNLEVudgmtCuvnh7fpJWAHurvr-e987Ozo9no"
-      class="form-signin bg-white p-4"
-      method="post"
-    >
+    <Loading v-if="loading" />
+    <form v-else @submit.prevent="onSubmit" class="form-signin bg-white p-4">
       <h3 class="mb-3 font-weight-normal">Password Recovery</h3>
       <p class="mb-4 text-secondary">Enter your new password.</p>
       <div class="form-group">
         <input
-          class="form-control"
-          id="user_password"
-          name="user[password]"
+          v-model="data.password"
+          :class="['form-control', invalidFieldClass('password')]"
+          @input="validateField('password', data.password)"
+          id="password"
           placeholder="Password"
           type="password"
           required
         />
+        <div v-if="errors.password" class="invalid-feedback">
+          {{ errors.password }}
+        </div>
       </div>
       <div class="form-group">
-        <input
-          class="form-control"
-          id="user_password_confirmation"
-          name="user[password_confirmation]"
-          placeholder="Password confirmation"
-          type="password"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">
-          Reset password
+        <button
+          :disabled="!isValid || isSubmitting"
+          class="btn btn-lg btn-primary btn-block"
+          type="submit"
+        >
+          <div v-if="isSubmitting">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <div v-else>Reset Password</div>
         </button>
       </div>
     </form>
@@ -37,5 +39,33 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import AuthLayout from '@/layouts/Auth'
+import Loading from '@/components/Loading'
+import useEditForm from '@/use/useEditForm'
+import { resetPasswordSchema as schema } from '@/helpers/yup'
+import API from '@/services/requests'
+
+const router = useRouter()
+const {
+  id,
+  data,
+  loading,
+  errors,
+  isValid,
+  isSubmitting,
+  onSubmit,
+  invalidFieldClass,
+  validateField,
+} = useEditForm({
+  schema,
+  onFetch: (id) => API.fetchResetPassword(id),
+  onFetchError: () => {
+    window.Toast.error('Reset password link is invalid or it has expired.')
+    router.push('/')
+  },
+  onUpdate: (id, data) => API.updateResetPassword(id, data),
+  successToast: () => 'Password reset successfully.',
+  successRedirectPath: '/signin',
+})
 </script>
