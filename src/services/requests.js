@@ -72,6 +72,8 @@ const createMember = (params) => API.post('/members', params)
 const updateMember = (id, params) => API.put(`/members/${id}`, params)
 const deleteMember = (id) => API.delete(`/members/${id}`)
 
+const createInvite = (params) => API.post('/invites', params)
+
 export default {
   clearToken,
   refreshToken,
@@ -109,4 +111,6 @@ export default {
   createMember,
   updateMember,
   deleteMember,
+
+  createInvite,
 }
