@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-const DELAY = 50000
+const DELAY = 5000
 
 const useToast = () => {
   const notifications = ref([])
