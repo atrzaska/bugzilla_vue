@@ -42,7 +42,7 @@
 <script setup>
 import AuthLayout from '@/layouts/Auth'
 import useNewForm from '@/use/useNewForm'
-import { confirmPasswordSchema as schema } from '@/helpers/yup'
+import { confirmEmailSchema as schema } from '@/helpers/yup'
 import API from '@/services/requests'
 
 const {

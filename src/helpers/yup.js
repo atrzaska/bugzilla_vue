@@ -41,9 +41,14 @@ const recoverPasswordSchema = yup.object().shape({
   email: yup.string().email().max(255),
 })
 
-const confirmPasswordSchema = yup.object().shape({
+const confirmEmailSchema = yup.object().shape({
   email: yup.string().email().max(255),
 })
+
+const resetPasswordSchema = yup.object({
+  password: yup.string().min(8).max(255),
+})
+
 export {
   signUpSchema,
   signInSchema,
@@ -52,5 +57,6 @@ export {
   newMemberSchema,
   editMemberSchema,
   recoverPasswordSchema,
-  confirmPasswordSchema,
+  confirmEmailSchema,
+  resetPasswordSchema,
 }
