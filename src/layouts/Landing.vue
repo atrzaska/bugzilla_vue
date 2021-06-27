@@ -18,7 +18,7 @@
       </router-link>
     </div>
     <div v-else>
-      <router-link class="me-4" to="/signin"> Log in </router-link>
+      <router-link class="me-4" to="/signin">Log in</router-link>
       <router-link class="btn btn-primary" to="/signup">
         Sign up free →
       </router-link>
