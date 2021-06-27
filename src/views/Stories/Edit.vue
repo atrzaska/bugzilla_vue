@@ -89,40 +89,60 @@
     </form>
     <hr />
     <h5>Comments</h5>
-    <div class="list-group border-0 mb-3">
-      <div class="list-group-item d-flex">
-        <router-link class="me-auto" to="/comments/1/edit">
-          this is a comment
-        </router-link>
-        <a href="#">
-          <i class="far fa-times-circle"> </i>
-        </a>
+    <Loading v-if="commentsData.loading.value" />
+    <div v-else>
+      <div class="list-group border-0 mb-3">
+        <div
+          v-for="comment in commentsData.collection"
+          :key="comment.id"
+          class="list-group-item d-flex"
+        >
+          <router-link class="me-auto" :to="`/comments/${comment.id}/edit`">
+            {{ comment.content }}
+          </router-link>
+          <a @click.prevent="onDeleteComment(comment)" href="#">
+            <i class="far fa-times-circle" />
+          </a>
+        </div>
       </div>
+      <LoadMore :pagination="commentsPagination" />
     </div>
     <router-link class="mb-3" to="/comments/new">New Comment</router-link>
     <hr />
     <h5>Tasks</h5>
-    <div class="list-group border-0 mb-3">
-      <div class="list-group-item d-flex">
-        <router-link class="me-auto" to="/tasks/1/edit">
-          this is a task
-        </router-link>
-        <a href="#">
-          <i class="far fa-times-circle"> </i>
-        </a>
+    <Loading v-if="tasksData.loading.value" />
+    <div v-else>
+      <div class="list-group border-0 mb-3">
+        <div
+          v-for="task in tasksData.collection"
+          :key="task.id"
+          class="list-group-item d-flex"
+        >
+          <router-link class="me-auto" :to="`/tasks/${task.id}/edit`">
+            {{ task.description }}
+          </router-link>
+          <a @click.prevent="onDeleteTask(task)" href="#">
+            <i class="far fa-times-circle" />
+          </a>
+        </div>
       </div>
+      <LoadMore :pagination="tasksPagination" />
     </div>
     <router-link to="/tasks/new">New Task</router-link>
   </AppLayout>
 </template>
 
 <script setup>
+import { ref, watch } from 'vue'
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
+import LoadMore from '@/components/pagination/LoadMore'
 import useEditForm from '@/use/useEditForm'
 import { storySchema as schema } from '@/helpers/yup'
 import API from '@/services/requests'
 import useUrlParams from '@/use/useUrlParams'
+import useCollection from '@/use/useCollection'
+import useLoadMorePagination from '@/use/useLoadMorePagination'
 
 const { id, storyId } = useUrlParams()
 const {
@@ -142,4 +162,61 @@ const {
   successToast: (data) => `Story ${data.name} updated successfully.`,
   successRedirectPath: `/projects/${id}/current`,
 })
+
+// comments
+const commentsData = useCollection()
+const commentsPagination = useLoadMorePagination(commentsData)
+const fetchComments = () => {
+  API.fetchComments(
+    { 'filter.storyId': storyId, offset: commentsPagination.offset.value },
+    { refresh: true }
+  ).then((res) => {
+    commentsPagination.setCollection(res.data)
+    commentsData.stopLoading()
+  })
+}
+fetchComments()
+watch(commentsPagination.offset, fetchComments)
+
+const onDeleteCommentConfirmed = (comment) =>
+  API.deleteComment(comment.id).then((res) => {
+    window.Toast.success('Comment removed successfully.')
+    commentsData.startLoading()
+    commentsPagination.reset()
+  })
+
+const onDeleteComment = (comment) =>
+  window.Modal.confirm({
+    title: 'You are about to remove a comment',
+    body: 'This action cannot be undone. Are you sure you want to continue?',
+    onConfirm: () => onDeleteCommentConfirmed(comment),
+  })
+
+// tasks
+const tasksData = useCollection()
+const tasksPagination = useLoadMorePagination(tasksData)
+const fetchTasks = () =>
+  API.fetchTasks(
+    { 'filter.storyId': storyId, offset: tasksPagination.offset.value },
+    { refresh: true }
+  ).then((res) => {
+    tasksPagination.setCollection(res.data)
+    tasksData.stopLoading()
+  })
+fetchTasks()
+watch(tasksPagination.offset, fetchTasks)
+
+const onDeleteTaskConfirmed = (task) =>
+  API.deleteTask(task.id).then((res) => {
+    window.Toast.success(`Task ${task.description} removed successfully.`)
+    tasksData.startLoading()
+    tasksPagination.reset()
+  })
+
+const onDeleteTask = (task) =>
+  window.Modal.confirm({
+    title: `You are about to remove ${task.description}`,
+    body: 'This action cannot be undone. Are you sure you want to continue?',
+    onConfirm: () => onDeleteTaskConfirmed(task),
+  })
 </script>
