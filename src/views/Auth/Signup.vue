@@ -113,9 +113,7 @@ import useSignup from '@/use/useSignup'
 import useFrontendValidation from '@/use/useFrontendValidation'
 import { signUpSchema as schema } from '@/helpers/yup'
 
-const errors = ref({})
-const { data, signUp, isSubmitting } = useSignup(errors)
-
+const { data, errors, signUp, isSubmitting } = useSignup()
 const validation = useFrontendValidation({ errors, schema })
 const { isValid, invalidFieldClass, validateField, validateForm } = validation
 const onSubmit = () => validateForm(data.value) && signUp()
