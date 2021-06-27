@@ -3,7 +3,7 @@
     <div
       v-for="(notification, index) in notifications"
       :key="index"
-      class="toast border-0 fade show mb-2 cursor-pointer ms-auto"
+      class="toast border-0 fade show mb-2 cursor-pointer ms-auto fade-in"
       @click="deleteNotification(index)"
     >
       <div :class="`toast-body alert-${notification.kind} p-3 rounded`">
@@ -28,5 +28,18 @@ window.Toast = Toast
   top: 60px;
   right: 20px;
   z-index: 20;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
