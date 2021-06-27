@@ -10,13 +10,17 @@ const useLoadMorePagination = (options = {}) => {
   const offset = ref(0)
   const hasNextPage = computed(() => collection.value.length < total.value)
 
-  const loadMore = () => {
-    offset.value = collection.value + size
+  const loadMore = () => (offset.value = collection.value.length)
 
-    // fetchCollection({ offset: offset.value }).then((res) => {
-    //   collection.value = collection.value.concat(res.data.collection)
-    //   total.value = res.data.total
-    // })
+  const setCollection = (data) => {
+    collection.value = collection.value.concat(data.collection)
+    total.value = data.total
+  }
+
+  const reset = () => {
+    collection.value = []
+    total.value = 0
+    offset.value = 0
   }
 
   return {
@@ -25,6 +29,8 @@ const useLoadMorePagination = (options = {}) => {
     offset,
     hasNextPage,
     loadMore,
+    setCollection,
+    reset,
   }
 }
 
