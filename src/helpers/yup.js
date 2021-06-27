@@ -3,7 +3,7 @@ import * as yup from 'yup'
 const signUpSchema = yup.object().shape({
   name: yup.string().required().min(8).max(255),
   email: yup.string().required().email().max(255),
-  password: yup.string().min(8).max(255),
+  password: yup.string().required().min(8).max(255),
   termsAccepted: yup
     .boolean()
     .required()
@@ -13,7 +13,7 @@ const signUpSchema = yup.object().shape({
 
 const signInSchema = yup.object().shape({
   email: yup.string().required().email().max(255),
-  password: yup.string().min(8).max(255),
+  password: yup.string().required().min(8).max(255),
 })
 
 const projectSchema = yup.object().shape({
@@ -23,8 +23,8 @@ const projectSchema = yup.object().shape({
 const storySchema = yup.object().shape({
   name: yup.string().required().max(255),
   description: yup.string().required().max(255),
-  kind: yup.string().oneOf(['feature', 'bug', 'chore', 'release']),
-  container: yup.string().oneOf(['icebox', 'backlog']),
+  kind: yup.string().required().oneOf(['feature', 'bug', 'chore', 'release']),
+  container: yup.string().required().oneOf(['icebox', 'backlog']),
   projectId: yup.number().required().positive().integer(),
 })
 
@@ -34,7 +34,7 @@ const newMemberSchema = yup.object().shape({
 })
 
 const editMemberSchema = yup.object().shape({
-  role: yup.string().oneOf(['owner', 'member']),
+  role: yup.string().required().oneOf(['owner', 'member']),
 })
 
 const recoverPasswordSchema = yup.object().shape({
@@ -46,7 +46,7 @@ const confirmEmailSchema = yup.object().shape({
 })
 
 const resetPasswordSchema = yup.object().shape({
-  password: yup.string().min(8).max(255),
+  password: yup.string().required().min(8).max(255),
 })
 
 export {
