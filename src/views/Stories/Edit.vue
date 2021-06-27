@@ -93,7 +93,7 @@
     <div v-else>
       <div class="list-group border-0 mb-3">
         <div
-          v-for="comment in commentsData.collection"
+          v-for="comment in commentsData.collection.value"
           :key="comment.id"
           class="list-group-item d-flex"
         >
@@ -114,7 +114,7 @@
     <div v-else>
       <div class="list-group border-0 mb-3">
         <div
-          v-for="task in tasksData.collection"
+          v-for="task in tasksData.collection.value"
           :key="task.id"
           class="list-group-item d-flex"
         >
