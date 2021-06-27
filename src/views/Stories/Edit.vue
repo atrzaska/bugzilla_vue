@@ -94,14 +94,7 @@
         <router-link class="me-auto" to="/comments/1/edit">
           this is a comment
         </router-link>
-        <a
-          data-confirm="Are you sure?"
-          data-csrf="YhYPYUwKVzcrAWszIComCXk7AAIaZyEjSP9Uz25EyD_QLeDh8UgwHJWs"
-          data-method="delete"
-          data-to="/comments/1"
-          href="/comments/1"
-          rel="nofollow"
-        >
+        <a href="#">
           <i class="far fa-times-circle"> </i>
         </a>
       </div>
@@ -114,14 +107,7 @@
         <router-link class="me-auto" to="/tasks/1/edit">
           this is a task
         </router-link>
-        <a
-          data-confirm="Are you sure?"
-          data-csrf="YhYPYUwKVzcrAWszIComCXk7AAIaZyEjSP9Uz25EyD_QLeDh8UgwHJWs"
-          data-method="delete"
-          data-to="/tasks/1"
-          href="/tasks/1"
-          rel="nofollow"
-        >
+        <a href="#">
           <i class="far fa-times-circle"> </i>
         </a>
       </div>

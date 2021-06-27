@@ -107,17 +107,7 @@
     <h5 class="mb-4">Cancel my account</h5>
     <p>Unhappy?</p>
     <div>
-      <a
-        class="btn btn-danger"
-        data-confirm="Are you sure?"
-        data-csrf="VHQGfkdLLzofFwcgFj8PAmxeEhsRRC4Ce20JqsMHMR3Bzpmc-0unCiXR"
-        data-method="delete"
-        data-to="/users/settings"
-        href="/users/settings"
-        rel="nofollow"
-      >
-        Cancel my account
-      </a>
+      <a class="btn btn-danger" href="#">Cancel my account</a>
     </div>
   </AppLayout>
 </template>
