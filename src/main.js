@@ -1,5 +1,4 @@
 import '@/plugins'
-import 'animate.css/animate.css'
 import '@/css/app.scss'
 
 import { createApp } from 'vue'
