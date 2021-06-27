@@ -13,10 +13,6 @@ Story also has status from `started` to `finished`.
 Project owners can also invite other users (registered or unregistered).
 Invitation emails are sent to invited users asking them to join the project.
 
-## Demo
-
-Demo is available at https://bugzilla.nexxy.net . Go and check it out!
-
 ## Tech stack
 
 - vue 3
