@@ -59,7 +59,7 @@ const updateComment = (id, params) => API.put(`/comments/${id}`, params)
 const deleteComment = (id) => API.delete(`/comments/${id}`)
 
 const fetchTasks = (params, options = {}) =>
-  API.get('/tasks', { ...params, ...options })
+  API.get('/tasks', { params, ...options })
 const fetchTask = (id) => API.get(`/tasks/${id}`)
 const createTask = (params) => API.post('/tasks', params)
 const updateTask = (id, params) => API.put(`/tasks/${id}`, params)
