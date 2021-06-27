@@ -4,9 +4,8 @@
     <p class="text-secondary">Select a new role</p>
     <Loading v-if="loading" />
     <form v-else @submit.prevent="onSubmit">
-      <div class="mb-3 row">
-        <label class="col-sm-2 form-label">Role</label>
-        <div class="col-sm-10 d-flex flex-column">
+      <div class="mb-3">
+        <div class="d-flex flex-column">
           <div class="form-check">
             <input
               v-model="data.role"
