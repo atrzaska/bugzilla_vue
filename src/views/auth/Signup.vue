@@ -9,7 +9,8 @@
           autocomplete="name"
           :class="[
             'form-control',
-            'form-control-first',
+            'rounded-0',
+            'rounded-top',
             invalidFieldClass('name'),
           ]"
           placeholder="Name"
@@ -20,11 +21,7 @@
         <input
           v-model="email"
           autocomplete="username"
-          :class="[
-            'form-control',
-            'form-control-middle',
-            invalidFieldClass('email'),
-          ]"
+          :class="['form-control', 'rounded-0', invalidFieldClass('email')]"
           placeholder="Email address"
           type="email"
           @input="validateField('email', email)"
@@ -37,7 +34,8 @@
           autocomplete="new-password"
           :class="[
             'form-control',
-            'form-control-last',
+            'rounded-0',
+            'rounded-bottom',
             invalidFieldClass('password'),
           ]"
           placeholder="Password 8+ characters"

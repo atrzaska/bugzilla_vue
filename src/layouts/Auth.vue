@@ -1,6 +1,8 @@
 <template>
   <AuthHeader />
-  <slot></slot>
+  <div class="d-flex justify-content-center">
+    <slot></slot>
+  </div>
 </template>
 
 <script setup>

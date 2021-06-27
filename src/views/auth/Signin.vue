@@ -7,7 +7,7 @@
       </div>
       <div class="mb-3">
         <input
-          class="form-control form-control-first"
+          class="form-control rounded-0 rounded-top"
           id="user_email"
           name="user[email]"
           placeholder="Email address"
@@ -15,7 +15,7 @@
           v-model="email"
         />
         <input
-          class="form-control form-control-last"
+          class="form-control rounded-0 rounded-bottom"
           id="user_password"
           name="user[password]"
           placeholder="Password"
