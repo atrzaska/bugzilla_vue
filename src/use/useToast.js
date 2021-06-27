@@ -2,7 +2,8 @@ import { ref } from 'vue'
 
 const DELAY = 5000
 
-const useToast = () => {
+const useToast = (options = {}) => {
+  const delay = options.delay || DELAY
   const notifications = ref([])
 
   const deleteNotification = (index) => {
@@ -10,7 +11,7 @@ const useToast = () => {
   }
   const fire = (message, kind) => {
     notifications.value.push({ message, kind })
-    setTimeout(() => deleteNotification(0), DELAY)
+    setTimeout(() => deleteNotification(0), delay)
   }
 
   const Toast = {
