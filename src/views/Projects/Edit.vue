@@ -11,7 +11,6 @@
           id="projectName"
           placeholder="Name"
           type="text"
-          required
           @input="validateField('name', data.name)"
         />
         <div v-if="errors.name" class="invalid-feedback">

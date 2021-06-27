@@ -12,7 +12,6 @@
           name="user[email]"
           placeholder="Email address"
           type="email"
-          required
           v-model="email"
         />
         <input
@@ -21,7 +20,6 @@
           name="user[password]"
           placeholder="Password"
           type="password"
-          required
           v-model="password"
         />
       </div>

@@ -3,13 +3,12 @@
     <h1 class="mb-4">New Comment</h1>
     <form action="/comments" method="post">
       <div class="mb-3">
-        <label class="form-label" for="comment_content">Content</label>
+        <label class="form-label" for="content">Content</label>
         <textarea
           class="form-control"
-          id="comment_content"
+          id="content"
           name="comment[content]"
           placeholder="Content"
-          required
         />
       </div>
       <div class="mb-3">

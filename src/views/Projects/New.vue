@@ -11,7 +11,6 @@
           id="projectName"
           placeholder="Name"
           type="text"
-          required
         />
         <div v-if="errors.name" class="invalid-feedback">
           {{ errors.name }}

@@ -13,7 +13,6 @@
           id="email"
           placeholder="Email address"
           type="email"
-          required
         />
         <div v-if="errors.email" class="invalid-feedback">
           {{ errors.email }}

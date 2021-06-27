@@ -10,7 +10,6 @@
             id="task_description"
             name="task[description]"
             placeholder="Description"
-            required
           />
         </div>
       </div>

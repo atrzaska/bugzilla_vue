@@ -14,7 +14,6 @@
               id="role_member"
               type="radio"
               value="member"
-              required
             />
             <label class="form-check-label mb-3" for="role_member">
               <b>Member</b>
@@ -30,7 +29,6 @@
               id="role_owner"
               type="radio"
               value="owner"
-              required
             />
             <label class="form-check-label" for="role_owner">
               <b>Owner</b>

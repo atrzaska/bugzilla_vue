@@ -14,7 +14,6 @@
           ]"
           placeholder="Name"
           type="text"
-          required
           @input="validateField('name', name)"
         />
         <div v-if="errors.name" class="invalid-feedback">{{ errors.name }}</div>
@@ -28,7 +27,6 @@
           ]"
           placeholder="Email address"
           type="email"
-          required
           @input="validateField('email', email)"
         />
         <div v-if="errors.email" class="invalid-feedback">
@@ -44,7 +42,6 @@
           ]"
           placeholder="Password 8+ characters"
           type="password"
-          required
           @input="validateField('password', password)"
         />
         <div v-if="errors.password" class="invalid-feedback">

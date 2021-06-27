@@ -12,7 +12,6 @@
           placeholder="Name"
           type="text"
           value="Andrzej Trzaska"
-          required
         />
       </div>
       <div class="mb-3">
@@ -45,7 +44,6 @@
           placeholder="Email"
           type="email"
           value="atrzaska2@gmail.com"
-          required
         />
       </div>
       <div class="mb-3">
@@ -58,7 +56,6 @@
           name="current_password"
           placeholder="Current password"
           type="password"
-          required
         />
       </div>
       <div class="mb-3">
@@ -78,7 +75,6 @@
           name="current_password"
           placeholder="Current password"
           type="password"
-          required
         />
       </div>
       <div class="mb-3">
@@ -89,7 +85,6 @@
           name="user[password]"
           placeholder="New password"
           type="password"
-          required
         />
       </div>
       <div class="mb-3">
@@ -102,7 +97,6 @@
           name="user[password_confirmation]"
           placeholder="Confirm new password"
           type="password"
-          required
         />
       </div>
       <div class="mb-3">

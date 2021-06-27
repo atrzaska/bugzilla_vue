@@ -12,7 +12,6 @@
           id="password"
           placeholder="Password"
           type="password"
-          required
         />
         <div v-if="errors.password" class="invalid-feedback">
           {{ errors.password }}

@@ -11,7 +11,6 @@
           id="name"
           placeholder="Name"
           type="text"
-          required
         />
         <div v-if="errors.name" class="invalid-feedback">
           {{ errors.name }}
@@ -26,7 +25,6 @@
           id="description"
           placeholder="Description"
           type="text"
-          required
         />
         <div v-if="errors.description" class="invalid-feedback">
           {{ errors.description }}
@@ -39,7 +37,6 @@
           :class="['form-select', invalidFieldClass('kind')]"
           @input="validateField('kind', data.kind)"
           id="kind"
-          required
         >
           <option value="feature">Feature</option>
           <option value="bug">Bug</option>
@@ -57,7 +54,6 @@
           :class="['form-select', invalidFieldClass('container')]"
           @input="validateField('container', data.container)"
           id="container"
-          required
         >
           <option value="icebox">Icebox</option>
           <option value="backlog">Backlog</option>
