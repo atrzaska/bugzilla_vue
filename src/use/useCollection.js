@@ -11,7 +11,22 @@ const useCollection = () => {
     loading.value = false
   }
 
-  return { collection, total, loading, setCollection }
+  const startLoading = () => {
+    loading.value = true
+  }
+
+  const stopLoading = () => {
+    loading.value = false
+  }
+
+  return {
+    collection,
+    total,
+    loading,
+    setCollection,
+    startLoading,
+    stopLoading,
+  }
 }
 
 export default useCollection
