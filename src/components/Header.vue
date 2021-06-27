@@ -1,6 +1,6 @@
 <template>
   <header
-    class="header d-flex align-items-center px-3 py-1 border-bottom shadow-sm bg-white"
+    class="header d-flex align-items-center px-3 border-bottom shadow-sm bg-white"
   >
     <router-link to="/dashboard" class="me-auto">
       <img height="24" src="/images/bootstrap.svg" width="24" />
