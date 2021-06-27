@@ -106,7 +106,6 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
 import AuthLayout from '@/layouts/Auth'
 import ErrorsBox from '@/components/ErrorsBox'
 import useSignup from '@/use/useSignup'
