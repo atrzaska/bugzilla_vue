@@ -2,22 +2,18 @@ import { ref } from 'vue'
 import API from '@/services/requests'
 
 const useSignin = () => {
-  const email = ref('')
-  const password = ref('')
-  const rememberMe = ref(false)
   const error = ref(false)
   const isSubmitting = ref(false)
-
-  const payload = () => ({
-    email: email.value,
-    password: password.value,
-    rememberMe: rememberMe.value,
+  const data = ref({
+    email: '',
+    password: '',
+    rememberMe: false,
   })
 
   const signIn = () => {
     isSubmitting.value = true
     error.value = false
-    API.signIn(payload())
+    API.signIn(data.value)
       .then((res) => (isSubmitting.value = false))
       .catch((err) => {
         isSubmitting.value = false
@@ -27,7 +23,7 @@ const useSignin = () => {
       })
   }
 
-  return { email, password, rememberMe, error, isSubmitting, payload, signIn }
+  return { data, error, isSubmitting, signIn }
 }
 
 export default useSignin

@@ -12,7 +12,7 @@
           name="user[email]"
           placeholder="Email address"
           type="email"
-          v-model="email"
+          v-model="data.email"
         />
         <input
           class="form-control rounded-0 rounded-bottom"
@@ -20,13 +20,13 @@
           name="user[password]"
           placeholder="Password"
           type="password"
-          v-model="password"
+          v-model="data.password"
         />
       </div>
       <div class="mb-3">
         <div class="form-check">
           <input
-            v-model="rememberMe"
+            v-model="data.rememberMe"
             id="rememberMe"
             type="checkbox"
             class="form-check-input"
@@ -65,5 +65,5 @@
 import AuthLayout from '@/layouts/Auth'
 import useSignin from '@/use/useSignin'
 
-const { email, password, rememberMe, error, signIn } = useSignin()
+const { data, error, signIn } = useSignin()
 </script>

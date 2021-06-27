@@ -3,25 +3,19 @@ import API from '@/services/requests'
 
 const useSignup = (errors) => {
   errors = errors || ref({})
-
   const isSubmitting = ref(false)
-  const name = ref('')
-  const email = ref('')
-  const password = ref('')
-  const termsAccepted = ref(false)
-  const newsletterSubscribed = ref(false)
-
-  const payload = () => ({
-    name: name.value,
-    email: email.value,
-    password: password.value,
-    termsAccepted: termsAccepted.value,
-    newsletterSubscribed: newsletterSubscribed.value,
+  const data = ref({
+    name: '',
+    email: '',
+    password: '',
+    termsAccepted: false,
+    newsletterSubscribed: true,
   })
+
   const signUp = () => {
     isSubmitting.value = true
     errors.value = []
-    API.signUp(payload())
+    API.signUp(data.value)
       .then((res) => (isSubmitting.value = false))
       .catch((err) => {
         isSubmitting.value = false
@@ -31,17 +25,7 @@ const useSignup = (errors) => {
       })
   }
 
-  return {
-    name,
-    email,
-    password,
-    termsAccepted,
-    newsletterSubscribed,
-    errors,
-    payload,
-    signUp,
-    isSubmitting,
-  }
+  return { data, errors, signUp, isSubmitting }
 }
 
 export default useSignup

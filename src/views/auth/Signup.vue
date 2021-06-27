@@ -5,7 +5,7 @@
       <p class="mb-4 text-secondary">No credit card required</p>
       <div class="mb-3">
         <input
-          v-model="name"
+          v-model="data.name"
           autocomplete="name"
           :class="[
             'form-control',
@@ -15,22 +15,22 @@
           ]"
           placeholder="Name"
           type="text"
-          @input="validateField('name', name)"
+          @input="validateField('name', data.name)"
         />
         <div v-if="errors.name" class="invalid-feedback">{{ errors.name }}</div>
         <input
-          v-model="email"
+          v-model="data.email"
           autocomplete="username"
           :class="['form-control', 'rounded-0', invalidFieldClass('email')]"
           placeholder="Email address"
           type="email"
-          @input="validateField('email', email)"
+          @input="validateField('email', data.email)"
         />
         <div v-if="errors.email" class="invalid-feedback">
           {{ errors.email }}
         </div>
         <input
-          v-model="password"
+          v-model="data.password"
           autocomplete="new-password"
           :class="[
             'form-control',
@@ -40,7 +40,7 @@
           ]"
           placeholder="Password 8+ characters"
           type="password"
-          @input="validateField('password', password)"
+          @input="validateField('password', data.password)"
         />
         <div v-if="errors.password" class="invalid-feedback">
           {{ errors.password }}
@@ -52,8 +52,8 @@
             id="termsAccepted"
             :class="['form-check-input', invalidFieldClass('termsAccepted')]"
             type="checkbox"
-            v-model="termsAccepted"
-            @change="validateField('termsAccepted', termsAccepted)"
+            v-model="data.termsAccepted"
+            @change="validateField('termsAccepted', data.termsAccepted)"
           />
           <label
             for="termsAccepted"
@@ -74,7 +74,7 @@
           <input
             id="newsletterSubscribed"
             class="form-check-input"
-            v-model="newsletterSubscribed"
+            v-model="data.newsletterSubscribed"
             type="checkbox"
           />
           <label
@@ -114,18 +114,9 @@ import useFrontendValidation from '@/use/useFrontendValidation'
 import { signUpSchema as schema } from '@/helpers/yup'
 
 const errors = ref({})
-const {
-  name,
-  email,
-  password,
-  termsAccepted,
-  newsletterSubscribed,
-  payload,
-  signUp,
-  isSubmitting,
-} = useSignup(errors)
+const { data, signUp, isSubmitting } = useSignup(errors)
 
 const validation = useFrontendValidation({ errors, schema })
 const { isValid, invalidFieldClass, validateField, validateForm } = validation
-const onSubmit = () => validateForm(payload()) && signUp()
+const onSubmit = () => validateForm(data.value) && signUp()
 </script>
