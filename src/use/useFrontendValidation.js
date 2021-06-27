@@ -18,12 +18,12 @@ const useFrontendValidation = ({ errors, schema }) => {
       .catch((err) => (errors.value[field] = err.message))
 
   const validateForm = (obj) => {
-    schema
-      .validate(obj, { abortEarly: false })
-      .then(() => (errors.value = {}))
-      .catch((err) =>
-        err.inner.forEach((error) => (errors.value[error.path] = error.message))
-      )
+    try {
+      schema.validateSync(obj, { abortEarly: false })
+      errors.value = {}
+    } catch (err) {
+      err.inner.forEach((error) => (errors.value[error.path] = error.message))
+    }
 
     return isValid.value
   }
