@@ -1,4 +1,3 @@
-// TODO: unused file
 import { ref, computed } from 'vue'
 
 const SIZE = 10
