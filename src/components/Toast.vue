@@ -24,7 +24,7 @@ window.Toast = Toast
 <style>
 .notification-wrapper {
   display: grid;
-  position: absolute;
+  position: fixed;
   top: 60px;
   right: 20px;
   z-index: 20;
