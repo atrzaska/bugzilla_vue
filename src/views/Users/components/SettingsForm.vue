@@ -73,7 +73,7 @@ const {
   onSubmit,
   validateField,
 } = useEditForm({
-  settingsSchema,
+  schema: settingsSchema,
   onFetch: () => API.fetchCurrentUser(),
   onUpdate: (id, data) => API.updateCurrentUser(data),
   successToast: (data) => 'Settings updated successfully.',
