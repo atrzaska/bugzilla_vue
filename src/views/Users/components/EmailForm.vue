@@ -66,7 +66,7 @@ const {
   validateField,
 } = useEditForm({
   schema: changeEmailSchema,
-  onFetch: () => API.fetchCurrentUser(),
+  onFetch: () => API.fetchCurrentUser({ fields: 'email' }),
   onUpdate: (id, data) => API.updateEmail(data),
   successToast: (data) => 'Email updated successfully.',
 })

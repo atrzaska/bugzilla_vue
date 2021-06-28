@@ -74,7 +74,7 @@ const {
   validateField,
 } = useEditForm({
   schema: settingsSchema,
-  onFetch: () => API.fetchCurrentUser(),
+  onFetch: () => API.fetchCurrentUser({ fields: 'name,newsletterSubscribed' }),
   onUpdate: (id, data) => API.updateCurrentUser(data),
   successToast: (data) => 'Settings updated successfully.',
 })

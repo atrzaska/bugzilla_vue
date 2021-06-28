@@ -1,6 +1,9 @@
 import router from '@/router'
 import API from '@/lib/api'
 
+const get = (path) => (params, options = {}) =>
+  API.get(path, { params, ...options })
+
 const clearToken = () => {
   window.localStorage.removeItem('authToken')
   router.push('/signin')
@@ -22,42 +25,37 @@ const logout = () => API.post('/logout').then(clearToken).catch(clearToken)
 const signIn = (params) => API.post('/signin', params)
 const signUp = (user) => API.post('/signup', user)
 
-const fetchCurrentUser = () => API.get('/me')
+const fetchCurrentUser = get('/me')
 const updateCurrentUser = (params) => API.put('/me', params)
 const deleteCurrerntUser = () => API.delete('/me')
 const updateEmail = (params) => API.put('/me/email', params)
 const updatePassword = (params) => API.put('/me/password', params)
 
-const fetchProjects = (params, options = {}) =>
-  API.get('/projects', { params, ...options })
+const fetchProjects = get('/projects')
 const fetchProject = (id) => API.get(`/projects/${id}`)
 const createProject = (params) => API.post('/projects', params)
 const updateProject = (id, params) => API.put(`/projects/${id}`, params)
 const deleteProject = (id) => API.delete(`/projects/${id}`)
 
-const fetchStories = (params, options = {}) =>
-  API.get('/stories', { params, ...options })
+const fetchStories = get('/stories')
 const fetchStory = (id) => API.get(`/stories/${id}`)
 const createStory = (params) => API.post('/stories', params)
 const updateStory = (id, params) => API.put(`/stories/${id}`, params)
 const deleteStory = (id) => API.delete(`/stories/${id}`)
 
-const fetchComments = (params, options = {}) =>
-  API.get('/comments', { params, ...options })
+const fetchComments = get('/comments')
 const fetchComment = (id) => API.get(`/comments/${id}`)
 const createComment = (params) => API.post('/comments', params)
 const updateComment = (id, params) => API.put(`/comments/${id}`, params)
 const deleteComment = (id) => API.delete(`/comments/${id}`)
 
-const fetchTasks = (params, options = {}) =>
-  API.get('/tasks', { params, ...options })
+const fetchTasks = get('/tasks')
 const fetchTask = (id) => API.get(`/tasks/${id}`)
 const createTask = (params) => API.post('/tasks', params)
 const updateTask = (id, params) => API.put(`/tasks/${id}`, params)
 const deleteTask = (id) => API.delete(`/tasks/${id}`)
 
-const fetchMembers = (params, options = {}) =>
-  API.get('/members', { params, ...options })
+const fetchMembers = get('/members')
 const fetchMember = (id) => API.get(`/members/${id}`)
 const createMember = (params) => API.post('/members', params)
 const updateMember = (id, params) => API.put(`/members/${id}`, params)
