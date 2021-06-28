@@ -108,8 +108,8 @@
 <script setup>
 import AuthLayout from '@/layouts/Auth'
 import ErrorsBox from '@/components/ErrorsBox'
-import useSignup from '@/use/useSignup'
-import useFrontendValidation from '@/use/useFrontendValidation'
+import useSignup from '@/hooks/useSignup'
+import useFrontendValidation from '@/hooks/useFrontendValidation'
 import { signUpSchema as schema } from '@/helpers/yup'
 
 const { data, errors, signUp, isSubmitting } = useSignup()

@@ -51,7 +51,7 @@
 
 <script setup>
 import Loading from '@/components/Loading'
-import useEditForm from '@/use/useEditForm'
+import useEditForm from '@/hooks/useEditForm'
 import { changeEmailSchema } from '@/helpers/yup'
 import API from '@/services/requests'
 

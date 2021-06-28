@@ -1,9 +1,9 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import useForm from '@/use/useForm'
-import useFrontendValidation from '@/use/useFrontendValidation'
-import useObject from '@/use/useObject'
-import useUrlParams from '@/use/useUrlParams'
+import useForm from '@/hooks/useForm'
+import useFrontendValidation from '@/hooks/useFrontendValidation'
+import useObject from '@/hooks/useObject'
+import useUrlParams from '@/hooks/useUrlParams'
 
 const useEditForm = ({
   id,

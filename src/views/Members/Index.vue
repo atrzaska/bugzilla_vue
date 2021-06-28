@@ -111,11 +111,11 @@ import Sort from '@/components/Sort'
 import Empty from './components/Empty'
 import threeDots from '@/assets/threeDots.svg'
 import API from '@/services/requests'
-import useUrlParams from '@/use/useUrlParams'
-import usePagination from '@/use/usePagination'
-import useSorting from '@/use/useSorting'
-import useCollection from '@/use/useCollection'
-import useCurrentUser from '@/use/useCurrentUser'
+import useUrlParams from '@/hooks/useUrlParams'
+import usePagination from '@/hooks/usePagination'
+import useSorting from '@/hooks/useSorting'
+import useCollection from '@/hooks/useCollection'
+import useCurrentUser from '@/hooks/useCurrentUser'
 
 const router = useRouter()
 const { user } = useCurrentUser()

@@ -59,7 +59,7 @@
 
 <script setup>
 import Loading from '@/components/Loading'
-import useEditForm from '@/use/useEditForm'
+import useEditForm from '@/hooks/useEditForm'
 import { settingsSchema } from '@/helpers/yup'
 import API from '@/services/requests'
 

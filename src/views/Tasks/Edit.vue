@@ -56,11 +56,11 @@
 <script setup>
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
-import useEditForm from '@/use/useEditForm'
+import useEditForm from '@/hooks/useEditForm'
 import { taskSchema as schema } from '@/helpers/yup'
 import API from '@/services/requests'
 import QueryParams from '@/helpers/QueryParams'
-import useUrlParams from '@/use/useUrlParams'
+import useUrlParams from '@/hooks/useUrlParams'
 
 const { storyId } = useUrlParams()
 const backPath = QueryParams.get('back') || '/dashboard'

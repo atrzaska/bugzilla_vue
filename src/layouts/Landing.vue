@@ -29,7 +29,7 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import useCurrentUser from '@/use/useCurrentUser'
+import useCurrentUser from '@/hooks/useCurrentUser'
 
 const { isLoggedIn } = useCurrentUser()
 

@@ -10,7 +10,7 @@
 
 <script setup>
 import Tab from '@/components/Tab'
-import useUrlParams from '@/use/useUrlParams'
+import useUrlParams from '@/hooks/useUrlParams'
 
 const { id } = useUrlParams()
 </script>

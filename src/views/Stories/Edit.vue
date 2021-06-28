@@ -141,12 +141,12 @@ import { ref, watch } from 'vue'
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
 import LoadMore from '@/components/pagination/LoadMore'
-import useEditForm from '@/use/useEditForm'
+import useEditForm from '@/hooks/useEditForm'
 import { storySchema as schema } from '@/helpers/yup'
 import API from '@/services/requests'
-import useUrlParams from '@/use/useUrlParams'
-import useCollection from '@/use/useCollection'
-import useLoadMorePagination from '@/use/useLoadMorePagination'
+import useUrlParams from '@/hooks/useUrlParams'
+import useCollection from '@/hooks/useCollection'
+import useLoadMorePagination from '@/hooks/useLoadMorePagination'
 
 const { projectId, id } = useUrlParams()
 const {

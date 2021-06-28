@@ -63,7 +63,7 @@
 
 <script setup>
 import AuthLayout from '@/layouts/Auth'
-import useSignin from '@/use/useSignin'
+import useSignin from '@/hooks/useSignin'
 
 const { data, error, signIn } = useSignin()
 </script>

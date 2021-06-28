@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import useModal from '@/use/useModal'
+import useModal from '@/hooks/useModal'
 
 const { Modal, modal } = useModal()
 window.Modal = Modal

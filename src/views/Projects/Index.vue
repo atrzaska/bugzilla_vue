@@ -82,9 +82,9 @@ import Empty from './components/Empty'
 import Sort from '@/components/Sort'
 import threeDots from '@/assets/threeDots.svg'
 import API from '@/services/requests'
-import usePagination from '@/use/usePagination'
-import useSorting from '@/use/useSorting'
-import useCollection from '@/use/useCollection'
+import usePagination from '@/hooks/usePagination'
+import useSorting from '@/hooks/useSorting'
+import useCollection from '@/hooks/useCollection'
 
 const SORT_OPTIONS = {
   id_desc: { name: 'Creation time: newest', value: 'id_desc' },

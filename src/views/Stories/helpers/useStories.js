@@ -1,8 +1,8 @@
 import { ref, watch } from 'vue'
-import useCollection from '@/use/useCollection'
-import useUrlParams from '@/use/useUrlParams'
-import usePagination from '@/use/usePagination'
-import useSorting from '@/use/useSorting'
+import useCollection from '@/hooks/useCollection'
+import useUrlParams from '@/hooks/useUrlParams'
+import usePagination from '@/hooks/usePagination'
+import useSorting from '@/hooks/useSorting'
 import API from '@/services/requests'
 import { defaultSorting } from './sorting'
 

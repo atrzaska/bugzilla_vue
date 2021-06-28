@@ -79,7 +79,7 @@
 
 <script setup>
 import { defineProps } from 'vue'
-import useUrlParams from '@/use/useUrlParams'
+import useUrlParams from '@/hooks/useUrlParams'
 import threeDots from '@/assets/threeDots.svg'
 
 const { id } = useUrlParams()

@@ -24,7 +24,7 @@
 
 <script setup>
 import { defineProps } from 'vue'
-import useUrlParams from '@/use/useUrlParams'
+import useUrlParams from '@/hooks/useUrlParams'
 import Actions from './Actions'
 
 const { id } = useUrlParams()

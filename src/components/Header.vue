@@ -40,7 +40,7 @@
 
 <script setup>
 import API from '@/services/requests'
-import useCurrentUser from '@/use/useCurrentUser'
+import useCurrentUser from '@/hooks/useCurrentUser'
 
 const { user } = useCurrentUser()
 </script>

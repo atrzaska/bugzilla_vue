@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import useForm from '@/use/useForm'
-import useFrontendValidation from '@/use/useFrontendValidation'
+import useForm from '@/hooks/useForm'
+import useFrontendValidation from '@/hooks/useFrontendValidation'
 
 const useNewForm = ({
   data,

@@ -41,11 +41,11 @@
 <script setup>
 import { ref } from 'vue'
 import AppLayout from '@/layouts/App'
-import useNewForm from '@/use/useNewForm'
+import useNewForm from '@/hooks/useNewForm'
 import { commentSchema as schema } from '@/helpers/yup'
 import API from '@/services/requests'
 import QueryParams from '@/helpers/QueryParams'
-import useUrlParams from '@/use/useUrlParams'
+import useUrlParams from '@/hooks/useUrlParams'
 
 const { storyId } = useUrlParams()
 const data = ref({

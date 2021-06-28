@@ -41,7 +41,7 @@
 
 <script setup>
 import AuthLayout from '@/layouts/Auth'
-import useNewForm from '@/use/useNewForm'
+import useNewForm from '@/hooks/useNewForm'
 import { recoverPasswordSchema as schema } from '@/helpers/yup'
 import API from '@/services/requests'
 

@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import useToast from '@/use/useToast'
+import useToast from '@/hooks/useToast'
 
 const { Toast, notifications, deleteNotification } = useToast()
 

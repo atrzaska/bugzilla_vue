@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import useCurrentUser from '@/use/useCurrentUser'
+import useCurrentUser from '@/hooks/useCurrentUser'
 
 const isSigninPage = window.location.pathname === '/signin'
 const { isLoggedIn } = useCurrentUser()
