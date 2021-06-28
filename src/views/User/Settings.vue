@@ -23,7 +23,7 @@
             type="checkbox"
             value="true"
           />
-          <label class="form-label" for="user_receive_news_and_updates">
+          <label class="form-check-label" for="user_receive_news_and_updates">
             Receive news and updates
           </label>
         </div>
