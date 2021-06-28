@@ -14,6 +14,7 @@ const signUpSchema = yup.object().shape({
 const signInSchema = yup.object().shape({
   email: yup.string().required().email().max(255),
   password: yup.string().required().min(8).max(255),
+  rememberMe: yup.boolean(),
 })
 
 const projectSchema = yup.object().shape({
@@ -49,6 +50,17 @@ const resetPasswordSchema = yup.object().shape({
   password: yup.string().required().min(8).max(255),
 })
 
+const commentSchema = yup.object().shape({
+  content: yup.string().required().max(1000),
+  storyId: yup.number().required().positive().integer(),
+})
+
+const taskSchema = yup.object().shape({
+  description: yup.string().required().max(1000),
+  complete: yup.boolean(),
+  storyId: yup.number().required().positive().integer(),
+})
+
 export {
   signUpSchema,
   signInSchema,
@@ -59,4 +71,6 @@ export {
   recoverPasswordSchema,
   confirmEmailSchema,
   resetPasswordSchema,
+  commentSchema,
+  taskSchema,
 }
