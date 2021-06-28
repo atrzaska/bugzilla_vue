@@ -4,14 +4,14 @@
     <Loading v-if="loading" />
     <form v-else @submit.prevent="onSubmit">
       <div class="mb-3">
-        <label class="form-label" for="projectName">Name</label>
+        <label class="form-label" for="name">Name</label>
         <input
           v-model="data.name"
           :class="['form-control', invalidFieldClass('name')]"
-          id="projectName"
+          @input="validateField('name', data.name)"
+          id="name"
           placeholder="Name"
           type="text"
-          @input="validateField('name', data.name)"
         />
         <div v-if="errors.name" class="invalid-feedback">
           {{ errors.name }}
