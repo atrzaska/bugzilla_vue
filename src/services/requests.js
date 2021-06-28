@@ -23,10 +23,10 @@ const signIn = (params) => API.post('/signin', params)
 const signUp = (user) => API.post('/signup', user)
 
 const fetchCurrentUser = () => API.get('/me')
-const updateCurrentUser = () => API.put('/me')
+const updateCurrentUser = (params) => API.put('/me', params)
 const deleteCurrerntUser = () => API.delete('/me')
-const updateEmail = () => API.put('/me/email')
-const updatePassword = () => API.put('/me/password')
+const updateEmail = (params) => API.put('/me/email', params)
+const updatePassword = (params) => API.put('/me/password', params)
 
 const fetchProjects = (params, options = {}) =>
   API.get('/projects', { params, ...options })
