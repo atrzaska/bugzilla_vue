@@ -16,11 +16,10 @@ Invitation emails are sent to invited users asking them to join the project.
 ## Tech stack
 
 - vue 3
+- vue-router
 - bootstrap 5
-- yup validation
 - axios api
-- vuex router
-- lodash
+- yup validation
 
 ## Development Requirements
 
