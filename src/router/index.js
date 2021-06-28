@@ -152,19 +152,19 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
-    path: '/projects/:id/stories/:storyId/edit',
+    path: '/projects/:projectId/stories/:id/edit',
     name: 'StoriesEdit',
     component: StoriesEdit,
     meta: { requiresAuth: true },
   },
   {
-    path: '/comments/new',
+    path: '/stories/:storyId/comments/new',
     name: 'CommentsNew',
     component: CommentsNew,
     meta: { requiresAuth: true },
   },
   {
-    path: '/comments/:id/edit',
+    path: '/stories/:storyId/comments/:id/edit',
     name: 'CommentsEdit',
     component: CommentsEdit,
     meta: { requiresAuth: true },
@@ -182,13 +182,13 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
-    path: '/tasks/new',
+    path: '/stories/:storyId/tasks/new',
     name: 'TasksNew',
     component: TasksNew,
     meta: { requiresAuth: true },
   },
   {
-    path: '/tasks/:id/edit',
+    path: '/stories/:storyId/tasks/:id/edit',
     name: 'TasksEdit',
     component: TasksEdit,
     meta: { requiresAuth: true },
