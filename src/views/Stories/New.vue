@@ -106,10 +106,10 @@ const data = ref({
 })
 const {
   errors,
-  isValid,
-  isSubmitting,
-  onSubmit,
   invalidFieldClass,
+  isSubmitting,
+  isValid,
+  onSubmit,
   validateField,
 } = useNewForm({
   data,

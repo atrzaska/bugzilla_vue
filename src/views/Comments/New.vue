@@ -55,10 +55,10 @@ const data = ref({
 const backPath = QueryParams.get('back') || '/dashboard'
 const {
   errors,
-  isValid,
-  isSubmitting,
-  onSubmit,
   invalidFieldClass,
+  isSubmitting,
+  isValid,
+  onSubmit,
   validateField,
 } = useNewForm({
   data,

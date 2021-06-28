@@ -49,10 +49,10 @@ import API from '@/services/requests'
 const {
   data,
   errors,
-  isValid,
-  isSubmitting,
-  onSubmit,
   invalidFieldClass,
+  isSubmitting,
+  isValid,
+  onSubmit,
   validateField,
 } = useNewForm({
   schema,

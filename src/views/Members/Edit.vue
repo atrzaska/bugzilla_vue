@@ -76,13 +76,13 @@ import useUrlParams from '@/use/useUrlParams'
 const { id, storyId } = useUrlParams()
 const {
   data,
-  loading,
   errors,
   invalidFieldClass,
-  validateField,
-  isValid,
   isSubmitting,
+  isValid,
+  loading,
   onSubmit,
+  validateField,
 } = useEditForm({
   id: storyId,
   schema,
