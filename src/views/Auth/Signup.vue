@@ -49,11 +49,11 @@
       <div class="mb-3">
         <div class="form-check">
           <input
-            id="termsAccepted"
-            :class="['form-check-input', invalidFieldClass('termsAccepted')]"
-            type="checkbox"
             v-model="data.termsAccepted"
             @change="validateField('termsAccepted', data.termsAccepted)"
+            :class="['form-check-input', invalidFieldClass('termsAccepted')]"
+            id="termsAccepted"
+            type="checkbox"
           />
           <label
             for="termsAccepted"
