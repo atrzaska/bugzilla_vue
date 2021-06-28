@@ -61,6 +61,22 @@ const taskSchema = yup.object().shape({
   storyId: yup.number().required().positive().integer(),
 })
 
+const settingsSchema = yup.object().shape({
+  name: yup.string().required().min(8).max(255),
+  newsletterSubscribed: yup.boolean(),
+})
+
+const changeEmailSchema = yup.object().shape({
+  email: yup.string().required().email().max(255),
+  password: yup.string().required().min(8).max(255),
+})
+
+const changePasswordSchema = yup.object().shape({
+  currentPassword: yup.string().required().min(8).max(255),
+  password: yup.string().required().min(8).max(255),
+  passwordConfirmation: yup.string().required().min(8).max(255),
+})
+
 export {
   signUpSchema,
   signInSchema,
@@ -73,4 +89,7 @@ export {
   resetPasswordSchema,
   commentSchema,
   taskSchema,
+  settingsSchema,
+  changeEmailSchema,
+  changePasswordSchema,
 }
