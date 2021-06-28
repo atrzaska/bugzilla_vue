@@ -1,7 +1,8 @@
 <template>
   <AppLayout>
     <h1 class="mb-4">Edit Task</h1>
-    <form @submit.prevent="onSubmit">
+    <Loading v-if="loading" />
+    <form v-else @submit.prevent="onSubmit">
       <div class="mb-3">
         <label class="form-label" for="description">Description</label>
         <textarea
@@ -53,5 +54,31 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import AppLayout from '@/layouts/App'
+import Loading from '@/components/Loading'
+import useEditForm from '@/use/useEditForm'
+import { taskSchema as schema } from '@/helpers/yup'
+import API from '@/services/requests'
+import QueryParams from '@/helpers/QueryParams'
+import useUrlParams from '@/use/useUrlParams'
+
+const { storyId } = useUrlParams()
+const backPath = QueryParams.get('back') || '/dashboard'
+const {
+  data,
+  errors,
+  invalidFieldClass,
+  isSubmitting,
+  isValid,
+  loading,
+  onSubmit,
+  validateField,
+} = useEditForm({
+  schema,
+  onFetch: (id) => API.fetchTask(id),
+  onUpdate: (id, data) => API.updateTask(id, data),
+  successToast: (data) => 'Task updated successfully.',
+  successRedirectPath: backPath,
+})
 </script>

@@ -1,7 +1,8 @@
 <template>
   <AppLayout>
     <h1 class="mb-4">Edit Comment</h1>
-    <form @submit.prevent="onSubmit">
+    <Loading v-if="loading" />
+    <form v-else @submit.prevent="onSubmit">
       <div class="mb-3">
         <label class="form-label" for="content">Content</label>
         <textarea
@@ -39,5 +40,31 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import AppLayout from '@/layouts/App'
+import Loading from '@/components/Loading'
+import useEditForm from '@/use/useEditForm'
+import { commentSchema as schema } from '@/helpers/yup'
+import API from '@/services/requests'
+import QueryParams from '@/helpers/QueryParams'
+import useUrlParams from '@/use/useUrlParams'
+
+const { storyId } = useUrlParams()
+const backPath = QueryParams.get('back') || '/dashboard'
+const {
+  data,
+  errors,
+  invalidFieldClass,
+  isSubmitting,
+  isValid,
+  loading,
+  onSubmit,
+  validateField,
+} = useEditForm({
+  schema,
+  onFetch: (id) => API.fetchComment(id),
+  onUpdate: (id, data) => API.updateComment(id, data),
+  successToast: (data) => 'Comment updated successfully.',
+  successRedirectPath: backPath,
+})
 </script>
