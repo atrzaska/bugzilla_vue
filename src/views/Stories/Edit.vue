@@ -97,7 +97,7 @@
           :key="comment.id"
           class="list-group-item d-flex"
         >
-          <router-link class="me-auto" :to="routes.editCommentPath(comment.id)">
+          <router-link class="me-auto" :to="routes.editCommentPath(comment)">
             {{ comment.content }}
           </router-link>
           <a @click.prevent="onDeleteComment(comment)" href="#">
@@ -121,7 +121,7 @@
           :key="task.id"
           class="list-group-item d-flex"
         >
-          <router-link class="me-auto" :to="routes.editTaskPath(task.id)">
+          <router-link class="me-auto" :to="routes.editTaskPath(task)">
             {{ task.description }}
           </router-link>
           <a @click.prevent="onDeleteTask(task)" href="#">
@@ -171,12 +171,12 @@ const routes = {
   currentStoriesPath: () => `/projects/${projectId}/current`,
   newCommentPath: () =>
     `/stories/${id}/comments/new?back=/projects/${projectId}/stories/${id}/edit`,
-  editCommentPath: (id) =>
-    `/stories/${id}/comments/${id}/edit?back=/projects/${projectId}/stories/${id}/edit`,
+  editCommentPath: (comment) =>
+    `/stories/${id}/comments/${comment.id}/edit?back=/projects/${projectId}/stories/${id}/edit`,
   newTaskPath: () =>
     `/stories/${id}/tasks/new?back=/projects/${projectId}/stories/${id}/edit`,
-  editTaskPath: (id) =>
-    `/stories/${id}/tasks/${id}/edit?back=/projects/${projectId}/stories/${id}/edit`,
+  editTaskPath: (task) =>
+    `/stories/${id}/tasks/${task.id}/edit?back=/projects/${projectId}/stories/${id}/edit`,
 }
 
 // comments
