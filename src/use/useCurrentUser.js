@@ -1,7 +1,6 @@
 import { computed } from 'vue'
 import useObject from '@/use/useObject'
 import API from '@/services/requests'
-const isSigninPage = window.location.pathname === '/signin'
 
 const useCurrentUser = (defaultValue = {}) => {
   const { object: user, setObject, loading } = useObject(defaultValue)
