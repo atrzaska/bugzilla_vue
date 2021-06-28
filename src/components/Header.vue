@@ -23,7 +23,7 @@
             with="80"
           />
           <div class="d-flex flex-column">
-            <b>{{ fullName(user) }}</b>
+            <b>{{ user.name }}</b>
             <div class="text-secondary">{{ user.email }}</div>
           </div>
         </div>
@@ -41,7 +41,6 @@
 <script setup>
 import API from '@/services/requests'
 import useCurrentUser from '@/use/useCurrentUser'
-import { fullName } from '@/helpers/utils'
 
 const { user } = useCurrentUser()
 </script>
