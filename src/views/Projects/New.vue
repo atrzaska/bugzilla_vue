@@ -3,12 +3,12 @@
     <h1 class="mb-4">New Project</h1>
     <form @submit.prevent="onSubmit">
       <div class="mb-3">
-        <label class="form-label" for="projectName">Name</label>
+        <label class="form-label" for="name">Name</label>
         <input
           v-model="data.name"
           :class="['form-control', invalidFieldClass('name')]"
           @input="validateField('name', data.name)"
-          id="projectName"
+          id="name"
           placeholder="Name"
           type="text"
         />
