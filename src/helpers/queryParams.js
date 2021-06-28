@@ -1,4 +1,4 @@
-const queryParams = {
+const QueryParams = {
   get: (key) => new URL(window.location).searchParams.get(key),
   set: (params) => {
     const url = new URL(window.location)
@@ -11,4 +11,4 @@ const queryParams = {
   },
 }
 
-export default queryParams
+export default QueryParams

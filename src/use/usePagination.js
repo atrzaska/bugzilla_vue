@@ -1,10 +1,10 @@
 import { ref, computed } from 'vue'
-import queryParams from '@/helpers/queryParams'
+import QueryParams from '@/helpers/QueryParams'
 
 const SIZE = 10
 
 const usePagination = (options = {}) => {
-  const defaultPage = parseInt(queryParams.get('page')) || 1
+  const defaultPage = parseInt(QueryParams.get('page')) || 1
   const size = options.size || SIZE
   const collection = options.collection || ref([])
   const total = options.total || ref(1)
@@ -26,7 +26,7 @@ const usePagination = (options = {}) => {
 
     page.value = val
     offset.value = (val - 1) * size
-    queryParams.set({ page: val })
+    QueryParams.set({ page: val })
   }
 
   const previousPage = () => goToPage(page.value - 1)
