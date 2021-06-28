@@ -40,7 +40,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
 import useEditForm from '@/use/useEditForm'
