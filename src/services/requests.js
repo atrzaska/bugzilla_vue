@@ -18,24 +18,12 @@ const refreshToken = async () => {
     .catch(clearToken)
 }
 
-const fetchCurrentUser = () => API.get('/me')
-
-const signIn = ({ email, password, rememberMe }) => {
-  return API.post('/signin', { email, password, rememberMe }).then((res) => {
-    const { token, user } = res.data
-    window.localStorage.setItem('authToken', token)
-    router.push('/dashboard')
-    API.clearCache('/me')
-    return { token, user }
-  })
-}
-
-const signUp = (user) =>
-  API.post('/signup', user).then((res) => {
-    router.push('/signup/success')
-    return res
-  })
 const logout = () => API.post('/logout').then(clearToken).catch(clearToken)
+
+const signIn = (params) => API.post('/signin', params)
+const signUp = (user) => API.post('/signup', user)
+const fetchCurrentUser = () => API.get('/me')
+const updateCurrentUser = () => API.put('/me')
 
 const fetchProjects = (params, options = {}) =>
   API.get('/projects', { params, ...options })
@@ -82,10 +70,11 @@ const updateResetPassword = (id, params) =>
 export default {
   clearToken,
   refreshToken,
-  fetchCurrentUser,
+  logout,
   signIn,
   signUp,
-  logout,
+  fetchCurrentUser,
+  updateCurrentUser,
 
   fetchProjects,
   fetchProject,

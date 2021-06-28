@@ -1,7 +1,9 @@
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import API from '@/services/requests'
 
 const useSignin = () => {
+  const router = useRouter()
   const error = ref(false)
   const isSubmitting = ref(false)
   const data = ref({
@@ -14,7 +16,13 @@ const useSignin = () => {
     isSubmitting.value = true
     error.value = false
     API.signIn(data.value)
-      .then((res) => (isSubmitting.value = false))
+      .then((res) => {
+        const { token } = res.data
+        window.localStorage.setItem('authToken', token)
+        router.push('/dashboard')
+        API.clearCache('/me')
+        isSubmitting.value = false
+      })
       .catch((err) => {
         isSubmitting.value = false
         if (err.response.status === 422) {
