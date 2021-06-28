@@ -22,8 +22,12 @@ const logout = () => API.post('/logout').then(clearToken).catch(clearToken)
 
 const signIn = (params) => API.post('/signin', params)
 const signUp = (user) => API.post('/signup', user)
+
 const fetchCurrentUser = () => API.get('/me')
 const updateCurrentUser = () => API.put('/me')
+const deleteCurrerntUser = () => API.delete('/me')
+const updateEmail = () => API.put('/me/email')
+const updatePassword = () => API.put('/me/password')
 
 const fetchProjects = (params, options = {}) =>
   API.get('/projects', { params, ...options })
@@ -70,11 +74,15 @@ const updateResetPassword = (id, params) =>
 export default {
   clearToken,
   refreshToken,
+
   logout,
   signIn,
   signUp,
   fetchCurrentUser,
   updateCurrentUser,
+  deleteCurrerntUser,
+  updateEmail,
+  updatePassword,
 
   fetchProjects,
   fetchProject,
