@@ -27,7 +27,7 @@ import StoriesNew from '@/views/Stories/New'
 import TasksEdit from '@/views/Tasks/Edit'
 import TasksNew from '@/views/Tasks/New'
 import Terms from '@/views/Pages/Terms'
-import UsersSettings from '@/views/User/Settings'
+import UsersSettings from '@/views/Users/Settings'
 
 const routes = [
   {
