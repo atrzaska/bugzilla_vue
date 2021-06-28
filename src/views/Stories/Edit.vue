@@ -81,7 +81,7 @@
         </button>
         <router-link
           class="btn btn-outline-secondary"
-          :to="`/projects/${id}/current`"
+          :to="routes.currentStoriesPath()"
         >
           Back
         </router-link>
@@ -97,7 +97,7 @@
           :key="comment.id"
           class="list-group-item d-flex"
         >
-          <router-link class="me-auto" :to="`/comments/${comment.id}/edit`">
+          <router-link class="me-auto" :to="routes.editCommentPath(comment.id)">
             {{ comment.content }}
           </router-link>
           <a @click.prevent="onDeleteComment(comment)" href="#">
@@ -108,7 +108,9 @@
       <LoadMore :pagination="commentsPagination" />
     </div>
     <div v-else class="text-center">No Comments</div>
-    <router-link class="mb-3" to="/comments/new">New Comment</router-link>
+    <router-link class="mb-3" :to="routes.newCommentPath()">
+      New Comment
+    </router-link>
     <hr />
     <h5>Tasks</h5>
     <Loading v-if="tasksData.loading.value" />
@@ -119,7 +121,7 @@
           :key="task.id"
           class="list-group-item d-flex"
         >
-          <router-link class="me-auto" :to="`/tasks/${task.id}/edit`">
+          <router-link class="me-auto" :to="routes.editTaskPath(task.id)">
             {{ task.description }}
           </router-link>
           <a @click.prevent="onDeleteTask(task)" href="#">
@@ -130,7 +132,7 @@
       <LoadMore :pagination="tasksPagination" />
     </div>
     <div v-else class="text-center">No Tasks</div>
-    <router-link to="/tasks/new">New Task</router-link>
+    <router-link :to="routes.newTaskPath()">New Task</router-link>
   </AppLayout>
 </template>
 
@@ -146,7 +148,7 @@ import useUrlParams from '@/use/useUrlParams'
 import useCollection from '@/use/useCollection'
 import useLoadMorePagination from '@/use/useLoadMorePagination'
 
-const { id, storyId } = useUrlParams()
+const { projectId, id } = useUrlParams()
 const {
   data,
   loading,
@@ -157,20 +159,32 @@ const {
   isSubmitting,
   onSubmit,
 } = useEditForm({
-  id: storyId,
+  id,
   schema,
   onFetch: (id) => API.fetchStory(id),
   onUpdate: (id, data) => API.updateStory(id, data),
   successToast: (data) => `Story ${data.name} updated successfully.`,
-  successRedirectPath: `/projects/${id}/current`,
+  successRedirectPath: `/projects/${projectId}/current`,
 })
+
+const routes = {
+  currentStoriesPath: () => `/projects/${projectId}/current`,
+  newCommentPath: () =>
+    `/stories/${id}/comments/new?back=/projects/${projectId}/stories/${id}/edit`,
+  editCommentPath: (id) =>
+    `/stories/${id}/comments/${id}/edit?back=/projects/${projectId}/stories/${id}/edit`,
+  newTaskPath: () =>
+    `/stories/${id}/tasks/new?back=/projects/${projectId}/stories/${id}/edit`,
+  editTaskPath: (id) =>
+    `/stories/${id}/tasks/${id}/edit?back=/projects/${projectId}/stories/${id}/edit`,
+}
 
 // comments
 const commentsData = useCollection()
 const commentsPagination = useLoadMorePagination(commentsData)
 const fetchComments = () => {
   API.fetchComments(
-    { 'filter.storyId': storyId, offset: commentsPagination.offset.value },
+    { 'filter.storyId': id, offset: commentsPagination.offset.value },
     { refresh: true }
   ).then((res) => {
     commentsPagination.setCollection(res.data)
@@ -184,7 +198,13 @@ const onDeleteCommentConfirmed = (comment) =>
   API.deleteComment(comment.id).then((res) => {
     window.Toast.success('Comment removed successfully.')
     commentsData.startLoading()
-    commentsPagination.reset()
+
+    if (commentsPagination.offset.value === 0) {
+      commentsPagination.reset()
+      fetchComments()
+    } else {
+      commentsPagination.reset()
+    }
   })
 
 const onDeleteComment = (comment) =>
@@ -199,7 +219,7 @@ const tasksData = useCollection()
 const tasksPagination = useLoadMorePagination(tasksData)
 const fetchTasks = () =>
   API.fetchTasks(
-    { 'filter.storyId': storyId, offset: tasksPagination.offset.value },
+    { 'filter.storyId': id, offset: tasksPagination.offset.value },
     { refresh: true }
   ).then((res) => {
     tasksPagination.setCollection(res.data)
@@ -212,7 +232,13 @@ const onDeleteTaskConfirmed = (task) =>
   API.deleteTask(task.id).then((res) => {
     window.Toast.success(`Task ${task.description} removed successfully.`)
     tasksData.startLoading()
-    tasksPagination.reset()
+
+    if (tasksPagination.offset.value === 0) {
+      tasksPagination.reset()
+      fetchTasks()
+    } else {
+      tasksPagination.reset()
+    }
   })
 
 const onDeleteTask = (task) =>
