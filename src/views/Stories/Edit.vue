@@ -90,7 +90,7 @@
     <hr />
     <h5>Comments</h5>
     <Loading v-if="commentsData.loading.value" />
-    <div v-else>
+    <div v-else-if="commentsData.collection.value.length">
       <div class="list-group border-0 mb-3">
         <div
           v-for="comment in commentsData.collection.value"
@@ -107,11 +107,12 @@
       </div>
       <LoadMore :pagination="commentsPagination" />
     </div>
+    <div v-else class="text-center">No Comments</div>
     <router-link class="mb-3" to="/comments/new">New Comment</router-link>
     <hr />
     <h5>Tasks</h5>
     <Loading v-if="tasksData.loading.value" />
-    <div v-else>
+    <div v-else-if="tasksData.collection.value.length">
       <div class="list-group border-0 mb-3">
         <div
           v-for="task in tasksData.collection.value"
@@ -128,6 +129,7 @@
       </div>
       <LoadMore :pagination="tasksPagination" />
     </div>
+    <div v-else class="text-center">No Tasks</div>
     <router-link to="/tasks/new">New Task</router-link>
   </AppLayout>
 </template>
