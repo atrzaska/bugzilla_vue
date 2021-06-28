@@ -50,13 +50,13 @@ import API from '@/services/requests'
 
 const {
   data,
-  loading,
   errors,
   invalidFieldClass,
-  validateField,
-  isValid,
   isSubmitting,
+  isValid,
+  loading,
   onSubmit,
+  validateField,
 } = useEditForm({
   schema,
   onFetch: (id) => API.fetchProject(id),

@@ -151,13 +151,13 @@ import useLoadMorePagination from '@/use/useLoadMorePagination'
 const { projectId, id } = useUrlParams()
 const {
   data,
-  loading,
   errors,
   invalidFieldClass,
-  validateField,
-  isValid,
   isSubmitting,
+  isValid,
+  loading,
   onSubmit,
+  validateField,
 } = useEditForm({
   id,
   schema,
