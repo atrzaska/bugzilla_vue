@@ -27,7 +27,7 @@ const signUp = (user) => API.post('/signup', user)
 
 const fetchCurrentUser = get('/me')
 const updateCurrentUser = (params) => API.put('/me', params)
-const deleteCurrerntUser = () => API.delete('/me')
+const deleteCurrentUser = () => API.delete('/me')
 const updateEmail = (params) => API.put('/me/email', params)
 const updatePassword = (params) => API.put('/me/password', params)
 
@@ -77,7 +77,7 @@ export default {
   signUp,
   fetchCurrentUser,
   updateCurrentUser,
-  deleteCurrerntUser,
+  deleteCurrentUser,
   updateEmail,
   updatePassword,
 
