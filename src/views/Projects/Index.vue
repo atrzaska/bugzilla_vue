@@ -118,6 +118,7 @@ const onDelete = (project) =>
     onConfirm: () => onDeleteConfirmed(project),
   })
 
+watch(sort, () => (page.value = 1))
 watch([page, sort], fetchCollection)
 fetchCollection()
 </script>
