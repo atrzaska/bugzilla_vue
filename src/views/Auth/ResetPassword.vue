@@ -18,6 +18,19 @@
         </div>
       </div>
       <div class="mb-3">
+        <input
+          v-model="data.passwordConfirmation"
+          :class="['form-control', invalidFieldClass('passwordConfirmation')]"
+          @input="validateField('passwordConfirmation')"
+          id="passwordConfirmation"
+          placeholder="Confirm Password"
+          type="password"
+        />
+        <div v-if="errors.passwordConfirmation" class="invalid-feedback">
+          {{ errors.passwordConfirmation }}
+        </div>
+      </div>
+      <div class="mb-3">
         <button
           :disabled="!isValid || isSubmitting"
           class="btn btn-lg btn-primary w-100"

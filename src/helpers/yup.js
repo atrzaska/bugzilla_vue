@@ -70,6 +70,9 @@ const confirmEmailSchema = yup.object().shape({
 
 const resetPasswordSchema = yup.object().shape({
   password: yup.string().required().min(8).max(255),
+  passwordConfirmation: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match'),
 })
 
 const commentSchema = yup.object().shape({
@@ -96,7 +99,9 @@ const changeEmailSchema = yup.object().shape({
 const changePasswordSchema = yup.object().shape({
   currentPassword: yup.string().required().min(8).max(255),
   password: yup.string().required().min(8).max(255),
-  passwordConfirmation: yup.string().required().min(8).max(255),
+  passwordConfirmation: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match'),
 })
 
 export {
