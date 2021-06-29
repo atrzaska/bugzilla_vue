@@ -7,20 +7,18 @@
       </div>
       <div class="mb-3">
         <input
-          class="form-control rounded-0 rounded-top"
-          id="user_email"
-          name="user[email]"
-          placeholder="Email address"
-          type="email"
           v-model="data.email"
+          class="form-control rounded-0 rounded-top"
+          id="email"
+          type="email"
+          placeholder="Email address"
         />
         <input
-          class="form-control rounded-0 rounded-bottom"
-          id="user_password"
-          name="user[password]"
-          placeholder="Password"
-          type="password"
           v-model="data.password"
+          class="form-control rounded-0 rounded-bottom"
+          id="password"
+          type="password"
+          placeholder="Password"
         />
       </div>
       <div class="mb-3">

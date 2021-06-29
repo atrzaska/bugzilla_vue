@@ -6,41 +6,42 @@
       <div class="mb-3">
         <input
           v-model="data.name"
-          autocomplete="name"
+          @input="validateField('name', data.name)"
           :class="[
             'form-control',
             'rounded-0',
             'rounded-top',
             invalidFieldClass('name'),
           ]"
+          autocomplete="name"
           placeholder="Name"
           type="text"
-          @input="validateField('name', data.name)"
+          autofocus
         />
         <div v-if="errors.name" class="invalid-feedback">{{ errors.name }}</div>
         <input
           v-model="data.email"
-          autocomplete="username"
+          @input="validateField('email', data.email)"
           :class="['form-control', 'rounded-0', invalidFieldClass('email')]"
+          autocomplete="username"
           placeholder="Email address"
           type="email"
-          @input="validateField('email', data.email)"
         />
         <div v-if="errors.email" class="invalid-feedback">
           {{ errors.email }}
         </div>
         <input
           v-model="data.password"
-          autocomplete="new-password"
           :class="[
             'form-control',
             'rounded-0',
             'rounded-bottom',
             invalidFieldClass('password'),
           ]"
+          @input="validateField('password', data.password)"
+          autocomplete="new-password"
           placeholder="Password 8+ characters"
           type="password"
-          @input="validateField('password', data.password)"
         />
         <div v-if="errors.password" class="invalid-feedback">
           {{ errors.password }}
@@ -72,9 +73,9 @@
       <div class="mb-3">
         <div class="form-check">
           <input
+            v-model="data.newsletterSubscribed"
             id="newsletterSubscribed"
             class="form-check-input"
-            v-model="data.newsletterSubscribed"
             type="checkbox"
           />
           <label
