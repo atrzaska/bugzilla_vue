@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
     <h1 class="text-center">Settings</h1>
-    <SettingsForm />
+    <PersonalSettingsForm />
     <hr />
     <EmailForm />
     <hr />
@@ -19,7 +19,7 @@
 <script setup>
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
-import SettingsForm from './components/SettingsForm'
+import PersonalSettingsForm from './components/PersonalSettingsForm'
 import ChangePasswordForm from './components/ChangePasswordForm'
 import EmailForm from './components/EmailForm'
 </script>
