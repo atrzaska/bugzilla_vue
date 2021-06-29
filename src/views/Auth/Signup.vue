@@ -6,7 +6,7 @@
       <div class="mb-3">
         <input
           v-model="data.name"
-          @input="validateField('name', data.name)"
+          @input="validateField('name')"
           :class="[
             'form-control',
             'rounded-0',
@@ -21,7 +21,7 @@
         <div v-if="errors.name" class="invalid-feedback">{{ errors.name }}</div>
         <input
           v-model="data.email"
-          @input="validateField('email', data.email)"
+          @input="validateField('email')"
           :class="['form-control', 'rounded-0', invalidFieldClass('email')]"
           autocomplete="username"
           placeholder="Email address"
@@ -38,7 +38,7 @@
             'rounded-bottom',
             invalidFieldClass('password'),
           ]"
-          @input="validateField('password', data.password)"
+          @input="validateField('password')"
           autocomplete="new-password"
           placeholder="Password 8+ characters"
           type="password"
@@ -51,7 +51,7 @@
         <div class="form-check">
           <input
             v-model="data.termsAccepted"
-            @change="validateField('termsAccepted', data.termsAccepted)"
+            @change="validateField('termsAccepted')"
             :class="['form-check-input', invalidFieldClass('termsAccepted')]"
             id="termsAccepted"
             type="checkbox"
@@ -114,7 +114,7 @@ import useFrontendValidation from '@/hooks/useFrontendValidation'
 import { signUpSchema as schema } from '@/helpers/yup'
 
 const { data, errors, signUp, isSubmitting } = useSignup()
-const validation = useFrontendValidation({ errors, schema })
+const validation = useFrontendValidation({ data, errors, schema })
 const { isValid, invalidFieldClass, validateField, validateForm } = validation
-const onSubmit = () => validateForm(data.value) && signUp()
+const onSubmit = () => validateForm() && signUp()
 </script>

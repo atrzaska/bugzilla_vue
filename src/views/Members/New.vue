@@ -7,7 +7,7 @@
         <input
           v-model="data.email"
           :class="['form-control', invalidFieldClass('email')]"
-          @input="validateField('email', data.email)"
+          @input="validateField('email')"
           id="email"
           type="text"
           v-autofocus

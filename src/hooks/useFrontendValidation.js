@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { toFullErrors, toInvalidFields } from '@/helpers/errors'
 
-const useFrontendValidation = ({ errors, schema }) => {
+const useFrontendValidation = ({ data, errors, schema }) => {
   errors = errors || ref({})
 
   const fullErrors = computed(() => toFullErrors(errors.value))
@@ -11,15 +11,15 @@ const useFrontendValidation = ({ errors, schema }) => {
   const invalidFieldClass = (field) =>
     invalidFields.value.includes(field) && 'is-invalid'
 
-  const validateField = (field, val) =>
+  const validateField = (field) =>
     schema
-      .validateAt(field, { [field]: val })
+      .validateAt(field, data.value)
       .then(() => delete errors.value[field])
       .catch((err) => (errors.value[field] = err.message))
 
-  const validateForm = (obj) => {
+  const validateForm = () => {
     try {
-      schema.validateSync(obj, { abortEarly: false })
+      schema.validateSync(data.value, { abortEarly: false })
       errors.value = {}
     } catch (err) {
       err.inner.forEach((error) => (errors.value[error.path] = error.message))

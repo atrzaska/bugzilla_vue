@@ -7,7 +7,7 @@
         <textarea
           v-model="data.description"
           :class="['form-control', invalidFieldClass('description')]"
-          @input="validateField('description', data.description)"
+          @input="validateField('description')"
           id="description"
           placeholder="Description"
           v-autofocus

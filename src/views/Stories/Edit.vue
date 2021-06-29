@@ -8,7 +8,7 @@
         <input
           v-model="data.name"
           :class="['form-control', invalidFieldClass('name')]"
-          @input="validateField('name', data.name)"
+          @input="validateField('name')"
           id="name"
           placeholder="Name"
           type="text"
@@ -23,7 +23,7 @@
         <input
           v-model="data.description"
           :class="['form-control', invalidFieldClass('description')]"
-          @input="validateField('description', data.description)"
+          @input="validateField('description')"
           id="description"
           placeholder="Description"
           type="text"
@@ -37,7 +37,7 @@
         <select
           v-model="data.kind"
           :class="['form-select', invalidFieldClass('kind')]"
-          @input="validateField('kind', data.kind)"
+          @input="validateField('kind')"
           id="kind"
         >
           <option value="feature">Feature</option>
@@ -54,7 +54,7 @@
         <select
           v-model="data.container"
           :class="['form-select', invalidFieldClass('container')]"
-          @input="validateField('container', data.container)"
+          @input="validateField('container')"
           id="container"
         >
           <option value="icebox">Icebox</option>

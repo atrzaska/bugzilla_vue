@@ -8,7 +8,7 @@
         <input
           v-model="data.password"
           :class="['form-control', invalidFieldClass('password')]"
-          @input="validateField('password', data.password)"
+          @input="validateField('password')"
           id="password"
           placeholder="Password"
           type="password"

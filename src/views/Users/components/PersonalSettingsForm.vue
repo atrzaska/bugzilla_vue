@@ -7,7 +7,7 @@
       <input
         v-model="data.name"
         :class="['form-control', invalidFieldClass('name')]"
-        @input="validateField('name', data.name)"
+        @input="validateField('name')"
         id="name"
         placeholder="Name"
         type="text"
@@ -20,9 +20,7 @@
       <div class="form-check">
         <input
           v-model="data.newsletterSubscribed"
-          @change="
-            validateField('newsletterSubscribed', data.newsletterSubscribed)
-          "
+          @change="validateField('newsletterSubscribed')"
           :class="[
             'form-check-input',
             invalidFieldClass('newsletterSubscribed'),

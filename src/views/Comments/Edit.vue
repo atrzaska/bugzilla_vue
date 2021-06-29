@@ -8,7 +8,7 @@
         <textarea
           v-model="data.content"
           :class="['form-control', invalidFieldClass('content')]"
-          @input="validateField('content', data.content)"
+          @input="validateField('content')"
           id="content"
           placeholder="Content"
         />

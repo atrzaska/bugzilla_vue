@@ -6,7 +6,7 @@
       <input
         v-model="data.currentPassword"
         :class="['form-control', invalidFieldClass('currentPassword')]"
-        @input="validateField('currentPassword', data.currentPassword)"
+        @input="validateField('currentPassword')"
         id="currentPassword"
         placeholder="Current password"
         type="password"
@@ -20,7 +20,7 @@
       <input
         v-model="data.password"
         :class="['form-control', invalidFieldClass('password')]"
-        @input="validateField('password', data.password)"
+        @input="validateField('password')"
         id="newPassword"
         placeholder="New password"
         type="password"
@@ -36,9 +36,7 @@
       <input
         v-model="data.passwordConfirmation"
         :class="['form-control', invalidFieldClass('passwordConfirmation')]"
-        @input="
-          validateField('passwordConfirmation', data.passwordConfirmation)
-        "
+        @input="validateField('passwordConfirmation')"
         id="passwordConfirmation"
         placeholder="Confirm new password"
         type="password"

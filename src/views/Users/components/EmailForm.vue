@@ -7,7 +7,7 @@
       <input
         v-model="data.email"
         :class="['form-control', invalidFieldClass('email')]"
-        @input="validateField('email', data.email)"
+        @input="validateField('email')"
         id="email"
         placeholder="Email"
         type="email"
@@ -21,7 +21,7 @@
       <input
         v-model="data.password"
         :class="['form-control', invalidFieldClass('password')]"
-        @input="validateField('password', data.password)"
+        @input="validateField('password')"
         id="password"
         placeholder="Current password"
         type="password"

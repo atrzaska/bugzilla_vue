@@ -7,7 +7,7 @@
         <input
           v-model="data.name"
           :class="['form-control', invalidFieldClass('name')]"
-          @input="validateField('name', data.name)"
+          @input="validateField('name')"
           id="name"
           placeholder="Name"
           type="text"

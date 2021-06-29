@@ -9,7 +9,7 @@
         <input
           v-model="data.email"
           :class="['form-control', invalidFieldClass('email')]"
-          @input="validateField('email', data.email)"
+          @input="validateField('email')"
           id="email"
           placeholder="Email address"
           type="email"
