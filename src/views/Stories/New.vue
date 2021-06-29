@@ -11,6 +11,7 @@
           id="name"
           placeholder="Name"
           type="text"
+          v-autofocus
         />
         <div v-if="errors.name" class="invalid-feedback">
           {{ errors.name }}
