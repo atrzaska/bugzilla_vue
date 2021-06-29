@@ -16,12 +16,12 @@
       </div>
     </div>
     <div class="mb-3">
-      <label class="form-label" for="password">New password</label>
+      <label class="form-label" for="newPassword">New password</label>
       <input
         v-model="data.password"
         :class="['form-control', invalidFieldClass('password')]"
         @input="validateField('password', data.password)"
-        id="password"
+        id="newPassword"
         placeholder="New password"
         type="password"
       />
