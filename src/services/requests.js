@@ -24,6 +24,11 @@ const logout = () => API.post('/logout').then(clearToken).catch(clearToken)
 
 const signIn = (params) => API.post('/signin', params)
 const signUp = (user) => API.post('/signup', user)
+const createRecovery = (params) => API.post('/recover', params)
+const createConfirmation = (params) => API.post('/confirm', params)
+const fetchResetPassword = (id) => API.get(`/reset_password/${id}`)
+const updateResetPassword = (id, params) =>
+  API.put(`/reset_password/${id}`, params)
 
 const fetchCurrentUser = get('/me')
 const updateCurrentUser = (params) => API.put('/me', params)
@@ -62,19 +67,19 @@ const updateMember = (id, params) => API.put(`/members/${id}`, params)
 const deleteMember = (id) => API.delete(`/members/${id}`)
 
 const createInvite = (params) => API.post('/invites', params)
-const createRecovery = (params) => API.post('/recover', params)
-const createConfirmation = (params) => API.post('/confirm', params)
-const fetchResetPassword = (id) => API.get(`/reset_password/${id}`)
-const updateResetPassword = (id, params) =>
-  API.put(`/reset_password/${id}`, params)
 
 export default {
   clearToken,
   refreshToken,
-
   logout,
+
   signIn,
   signUp,
+  createRecovery,
+  createConfirmation,
+  fetchResetPassword,
+  updateResetPassword,
+
   fetchCurrentUser,
   updateCurrentUser,
   deleteCurrentUser,
@@ -112,9 +117,4 @@ export default {
   deleteMember,
 
   createInvite,
-  createRecovery,
-  createConfirmation,
-
-  fetchResetPassword,
-  updateResetPassword,
 }
