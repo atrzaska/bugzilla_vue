@@ -161,9 +161,8 @@ const onLeaveProjectConfirmed = (member) =>
   })
 
 const onLeaveProject = (member) =>
-  window.Modal.confirm({
+  window.Modal.confirmDelete({
     title: `You are about to leave project ${project.value.name}`,
-    body: 'This action cannot be undone. Are you sure you want to continue?',
     onConfirm: () => onLeaveProjectConfirmed(member),
   })
 
@@ -176,9 +175,8 @@ const onRemoveFromProjectConfirmed = (member) =>
   })
 
 const onRemoveFromProject = (member) =>
-  window.Modal.confirm({
+  window.Modal.confirmDelete({
     title: `You are about to remove ${member.name} from project ${project.value.name}`,
-    body: 'This action cannot be undone. Are you sure you want to continue?',
     onConfirm: () => onRemoveFromProjectConfirmed(member),
   })
 

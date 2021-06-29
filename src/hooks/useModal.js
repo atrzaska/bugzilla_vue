@@ -26,9 +26,9 @@ const useModal = () => {
   const Modal = {
     show,
     confirm: show,
-    confirmDelete: ({ name, onConfirm }) =>
+    confirmDelete: ({ title, name, onConfirm }) =>
       show({
-        title: `You are about to delete ${name}`,
+        title: title || `You are about to delete ${name}`,
         body:
           'This action cannot be undone. Are you sure you want to continue?',
         onConfirm,

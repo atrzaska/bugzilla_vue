@@ -208,9 +208,8 @@ const onDeleteCommentConfirmed = (comment) =>
   })
 
 const onDeleteComment = (comment) =>
-  window.Modal.confirm({
+  window.Modal.confirmDelete({
     title: 'You are about to remove a comment',
-    body: 'This action cannot be undone. Are you sure you want to continue?',
     onConfirm: () => onDeleteCommentConfirmed(comment),
   })
 
@@ -242,9 +241,8 @@ const onDeleteTaskConfirmed = (task) =>
   })
 
 const onDeleteTask = (task) =>
-  window.Modal.confirm({
+  window.Modal.confirmDelete({
     title: `You are about to remove ${task.description}`,
-    body: 'This action cannot be undone. Are you sure you want to continue?',
     onConfirm: () => onDeleteTaskConfirmed(task),
   })
 </script>
