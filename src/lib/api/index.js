@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+const authToken = () => localStorage.getItem('authToken')
+
 axios.interceptors.response.use(
   (res) => res,
   function (err) {
@@ -22,7 +24,7 @@ axios.interceptors.response.use(
 const defaultOptions = () => ({
   baseURL: '/api',
   headers: {
-    Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+    Authorization: `Bearer ${authToken()}`,
     'X-Requested-With': 'XMLHttpRequest',
     'Content-Type': 'application/json',
   },
@@ -58,11 +60,36 @@ const clearCache = (url, options = {}) => {
   return cache.delete(cacheKey)
 }
 
+const toFormData = (data) => {
+  const formData = new FormData()
+
+  for (const [key, value] of Object.entries(data)) {
+    formData.append(key, value)
+  }
+
+  return formData
+}
+
+const withMultipart = (options) => ({
+  ...options,
+  baseURL: '/api',
+  headers: {
+    Authorization: `Bearer ${authToken()}`,
+    'Content-Type': 'multipart/form-data',
+  },
+})
+
 const API = {
   get: (url, options) => cachedAxios.get(url, withDefaults(options)),
   post: (url, data, options) => axios.post(url, data, withDefaults(options)),
+  postMultipart: (url, data, options) =>
+    axios.post(url, toFormData(data), withMultipart(options)),
   put: (url, data, options) => axios.put(url, data, withDefaults(options)),
+  putMultipart: (url, data, options) =>
+    axios.put(url, toFormData(data), withMultipart(options)),
   patch: (url, data, options) => axios.patch(url, data, withDefaults(options)),
+  patchMultipart: (url, data, options) =>
+    axios.patch(url, toFormData(data), withMultipart(options)),
   delete: (url, options) => axios.delete(url, withDefaults(options)),
   clearCache,
 }

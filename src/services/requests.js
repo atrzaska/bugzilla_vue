@@ -31,7 +31,7 @@ const updateResetPassword = (id, params) =>
   API.put(`/reset_password/${id}`, params)
 
 const fetchCurrentUser = get('/me')
-const updateCurrentUser = (params) => API.put('/me', params)
+const updateCurrentUser = (params) => API.putMultipart('/me', params)
 const deleteCurrentUser = () => API.delete('/me')
 const updateEmail = (params) => API.put('/me/email', params)
 const updatePassword = (params) => API.put('/me/password', params)

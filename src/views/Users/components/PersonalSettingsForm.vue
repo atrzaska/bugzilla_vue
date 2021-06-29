@@ -17,6 +17,15 @@
       </div>
     </div>
     <div class="mb-3">
+      <label for="avatar" class="form-label">Avatar</label>
+      <input
+        @change="handleFileUpload"
+        class="form-control"
+        type="file"
+        id="avatar"
+      />
+    </div>
+    <div class="mb-3">
       <div class="form-check">
         <input
           v-model="data.newsletterSubscribed"
@@ -76,4 +85,6 @@ const {
   onUpdate: (id, data) => API.updateCurrentUser(data),
   successToast: (data) => 'Settings updated successfully.',
 })
+
+const handleFileUpload = (e) => (data.value.avatar = e.target.files[0])
 </script>
