@@ -83,7 +83,7 @@ const {
   schema: settingsSchema,
   onFetch: () => API.fetchCurrentUser({ fields: 'name,newsletterSubscribed' }),
   onUpdate: (id, data) => API.updateCurrentUser(data),
-  successToast: (data) => 'Settings updated successfully.',
+  onSuccess: () => window.location.reload(),
 })
 
 const handleFileUpload = (e) => (data.value.avatar = e.target.files[0])

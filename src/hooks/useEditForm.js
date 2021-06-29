@@ -12,6 +12,7 @@ const useEditForm = ({
   onFetch,
   onFetchError,
   onUpdate,
+  onSuccess,
   successToast,
   successRedirectPath,
 }) => {
@@ -29,6 +30,7 @@ const useEditForm = ({
       form.submit(onUpdate(id, data.value)).then((res) => {
         successRedirectPath && router.push(successRedirectPath)
         successToast && window.Toast.success(successToast(res.data))
+        onSuccess && onSuccess(res.data)
       })
   }
 

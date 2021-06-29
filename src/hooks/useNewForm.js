@@ -9,6 +9,7 @@ const useNewForm = ({
   onCreate,
   successToast,
   successRedirectPath,
+  onSuccess,
 }) => {
   data = data || ref({})
   const errors = ref({})
@@ -21,6 +22,7 @@ const useNewForm = ({
       form.submit(onCreate(data.value)).then((res) => {
         successRedirectPath && router.push(successRedirectPath)
         successToast && window.Toast.success(successToast(res.data))
+        onSuccess && onSuccess(res.data)
       })
   }
 
