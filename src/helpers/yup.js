@@ -1,5 +1,21 @@
 import * as yup from 'yup'
 
+yup.setLocale({
+  mixed: {
+    required: 'This is a required field',
+    oneOf: 'Must be one of the following values: ${values}',
+  },
+  string: {
+    min: 'Must be at least ${min} characters',
+    max: 'Must be at most ${max} characters',
+    email: 'Must be a valid email',
+  },
+  number: {
+    positive: 'Must be a positive number',
+    integer: 'Must be an integer',
+  },
+})
+
 const signUpSchema = yup.object().shape({
   name: yup.string().required().min(8).max(255),
   email: yup.string().required().email().max(255),
@@ -7,7 +23,7 @@ const signUpSchema = yup.object().shape({
   termsAccepted: yup
     .boolean()
     .required()
-    .oneOf([true], 'The terms and conditions must be accepted.'),
+    .oneOf([true], 'Terms and conditions must be accepted.'),
   newsletterSubscribed: yup.boolean(),
 })
 
@@ -24,8 +40,14 @@ const projectSchema = yup.object().shape({
 const storySchema = yup.object().shape({
   name: yup.string().required().max(255),
   description: yup.string().required().max(255),
-  kind: yup.string().required().oneOf(['feature', 'bug', 'chore', 'release']),
-  container: yup.string().required().oneOf(['icebox', 'backlog']),
+  kind: yup
+    .string()
+    .required()
+    .oneOf(['feature', 'bug', 'chore', 'release'], 'Invalid value'),
+  container: yup
+    .string()
+    .required()
+    .oneOf(['icebox', 'backlog'], 'Invalid value'),
   projectId: yup.number().required().positive().integer(),
 })
 
@@ -35,7 +57,7 @@ const newMemberSchema = yup.object().shape({
 })
 
 const editMemberSchema = yup.object().shape({
-  role: yup.string().required().oneOf(['owner', 'member']),
+  role: yup.string().required().oneOf(['owner', 'member'], 'Invalid value'),
 })
 
 const recoverPasswordSchema = yup.object().shape({
