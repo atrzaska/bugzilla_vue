@@ -1,5 +1,5 @@
 import { ref, computed } from 'vue'
-import QueryParams from '@/helpers/QueryParams'
+import QueryParams from '@/services/QueryParams'
 
 const SIZE = 10
 

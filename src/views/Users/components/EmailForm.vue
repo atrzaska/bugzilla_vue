@@ -52,7 +52,7 @@
 <script setup>
 import Loading from '@/components/Loading'
 import useEditForm from '@/hooks/useEditForm'
-import { changeEmailSchema } from '@/helpers/yup'
+import { changeEmailSchema } from '@/services/yup'
 import API from '@/services/requests'
 
 const {

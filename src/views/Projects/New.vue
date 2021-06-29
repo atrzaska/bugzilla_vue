@@ -44,7 +44,7 @@
 <script setup>
 import AppLayout from '@/layouts/App'
 import useNewForm from '@/hooks/useNewForm'
-import { projectSchema as schema } from '@/helpers/yup'
+import { projectSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
 
 const {

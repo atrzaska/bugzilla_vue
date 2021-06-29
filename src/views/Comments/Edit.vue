@@ -43,9 +43,9 @@
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
 import useEditForm from '@/hooks/useEditForm'
-import { commentSchema as schema } from '@/helpers/yup'
+import { commentSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
-import QueryParams from '@/helpers/QueryParams'
+import QueryParams from '@/services/QueryParams'
 import useUrlParams from '@/hooks/useUrlParams'
 
 const { storyId } = useUrlParams()

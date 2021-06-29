@@ -1,5 +1,5 @@
 import { ref, computed } from 'vue'
-import { toFullErrors, toInvalidFields } from '@/helpers/errors'
+import { toFullErrors, toInvalidFields } from '@/services/errors'
 
 const useFrontendValidation = ({ data, errors, schema }) => {
   errors = errors || ref({})

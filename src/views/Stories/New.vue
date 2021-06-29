@@ -94,7 +94,7 @@
 import { ref } from 'vue'
 import AppLayout from '@/layouts/App'
 import useNewForm from '@/hooks/useNewForm'
-import { storySchema as schema } from '@/helpers/yup'
+import { storySchema as schema } from '@/services/yup'
 import API from '@/services/requests'
 import useUrlParams from '@/hooks/useUrlParams'
 

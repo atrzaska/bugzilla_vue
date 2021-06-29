@@ -43,9 +43,9 @@
 import { ref } from 'vue'
 import AppLayout from '@/layouts/App'
 import useNewForm from '@/hooks/useNewForm'
-import { commentSchema as schema } from '@/helpers/yup'
+import { commentSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
-import QueryParams from '@/helpers/QueryParams'
+import QueryParams from '@/services/QueryParams'
 import useUrlParams from '@/hooks/useUrlParams'
 
 const { storyId } = useUrlParams()

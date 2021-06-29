@@ -67,7 +67,7 @@
 <script setup>
 import Loading from '@/components/Loading'
 import useEditForm from '@/hooks/useEditForm'
-import { changePasswordSchema } from '@/helpers/yup'
+import { changePasswordSchema } from '@/services/yup'
 import API from '@/services/requests'
 
 const {

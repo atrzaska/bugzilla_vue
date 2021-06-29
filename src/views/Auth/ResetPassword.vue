@@ -55,7 +55,7 @@ import { useRouter } from 'vue-router'
 import AuthLayout from '@/layouts/Auth'
 import Loading from '@/components/Loading'
 import useEditForm from '@/hooks/useEditForm'
-import { resetPasswordSchema as schema } from '@/helpers/yup'
+import { resetPasswordSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
 
 const router = useRouter()

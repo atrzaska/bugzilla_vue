@@ -69,7 +69,7 @@
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
 import useEditForm from '@/hooks/useEditForm'
-import { editMemberSchema as schema } from '@/helpers/yup'
+import { editMemberSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
 import useUrlParams from '@/hooks/useUrlParams'
 

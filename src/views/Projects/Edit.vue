@@ -46,7 +46,7 @@
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
 import useEditForm from '@/hooks/useEditForm'
-import { projectSchema as schema } from '@/helpers/yup'
+import { projectSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
 
 const {
