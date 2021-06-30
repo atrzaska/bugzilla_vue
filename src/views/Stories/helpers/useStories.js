@@ -51,7 +51,7 @@ const useStories = ({ filters }) => {
       onConfirm: () => onDeleteConfirmed(story),
     })
 
-  watch(sort, () => (page.value = 1))
+  watch(sort, () => pagination.goToPage(1))
   watch([page, sort], fetchCollection)
   fetchCollection()
 

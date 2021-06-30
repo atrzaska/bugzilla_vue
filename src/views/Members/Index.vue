@@ -180,7 +180,7 @@ const onRemoveFromProject = (member) =>
     onConfirm: () => onRemoveFromProjectConfirmed(member),
   })
 
-watch(sort, () => (page.value = 1))
+watch(sort, () => pagination.goToPage(1))
 watch([page, sort], fetchCollection)
 fetchCollection()
 </script>
