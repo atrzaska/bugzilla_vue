@@ -62,7 +62,7 @@
       </div>
       <CompactPagination :pagination="pagination" />
       <BootstrapPagination :pagination="pagination" />
-      <XrmPagination :pagination="pagination" />
+      <Pagination :pagination="pagination" />
     </div>
     <Empty v-else />
   </AppLayout>
@@ -74,7 +74,7 @@ import AppLayout from '@/layouts/App'
 import TopPagination from '@/components/pagination/TopPagination'
 import CompactPagination from '@/components/pagination/CompactPagination'
 import BootstrapPagination from '@/components/pagination/BootstrapPagination'
-import XrmPagination from '@/components/pagination/XrmPagination'
+import Pagination from '@/components/pagination/Pagination'
 import AllegroPagination from '@/components/pagination/AllegroPagination'
 import PageResults from '@/components/pagination/PageResults'
 import Loading from '@/components/Loading'

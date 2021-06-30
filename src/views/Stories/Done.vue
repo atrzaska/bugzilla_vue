@@ -35,7 +35,7 @@
           </template>
         </tbody>
       </table>
-      <XrmPagination :pagination="pagination" />
+      <Pagination :pagination="pagination" />
     </div>
     <Empty v-else />
   </AppLayout>
@@ -46,7 +46,7 @@ import { watch } from 'vue'
 import AppLayout from '@/layouts/App'
 import ProjectTabs from '@/components/ProjectTabs'
 import TopPagination from '@/components/pagination/TopPagination'
-import XrmPagination from '@/components/pagination/XrmPagination'
+import Pagination from '@/components/pagination/Pagination'
 import Loading from '@/components/Loading'
 import Sort from '@/components/Sort'
 import Story from './components/Story'
