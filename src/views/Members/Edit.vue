@@ -39,28 +39,12 @@
         </div>
       </div>
       <hr />
-      <div class="mb-3">
-        <button
-          class="btn btn-primary me-2"
-          type="submit"
-          :disabled="!isValid || isSubmitting"
-        >
-          <div v-if="isSubmitting">
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-            </div>
-          </div>
-          <div v-else>Change role</div>
-        </button>
-        <router-link
-          class="btn btn-outline-secondary"
-          :to="`/projects/${id}/members`"
-        >
-          Back
-        </router-link>
-      </div>
+      <FormButtons
+        ctaText="Change role"
+        :isValid="isValid"
+        :isSubmitting="isSubmitting"
+        :backLink="`/projects/${id}/members`"
+      />
     </form>
   </AppLayout>
 </template>
@@ -68,6 +52,7 @@
 <script setup>
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
+import FormButtons from '@/components/form/FormButtons'
 import useEditForm from '@/hooks/useEditForm'
 import { editMemberSchema as schema } from '@/services/yup'
 import API from '@/services/requests'

@@ -2,43 +2,19 @@
   <AppLayout>
     <h1 class="mb-4">Invite member</h1>
     <form @submit.prevent="onSubmit">
-      <div class="mb-3">
-        <label class="form-label" for="email">Email</label>
-        <input
-          v-model="data.email"
-          :class="['form-control', invalidFieldClass('email')]"
-          @input="validateField('email')"
-          id="email"
-          type="text"
-          autofocus
-        />
-        <div v-if="errors.email" class="invalid-feedback">
-          {{ errors.email }}
-        </div>
-      </div>
+      <Field
+        v-model="data.email"
+        :validation="validation"
+        id="email"
+        label="Email"
+        autofocus
+      />
       <hr />
-      <div class="mb-3">
-        <button
-          class="btn btn-primary me-2"
-          type="submit"
-          :disabled="!isValid || isSubmitting"
-        >
-          <div v-if="isSubmitting">
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-            </div>
-          </div>
-          <div v-else>Save</div>
-        </button>
-        <router-link
-          class="btn btn-outline-secondary"
-          :to="`/projects/${id}/members`"
-        >
-          Back
-        </router-link>
-      </div>
+      <FormButtons
+        :isValid="isValid"
+        :isSubmitting="isSubmitting"
+        :backLink="`/projects/${id}/members`"
+      />
     </form>
   </AppLayout>
 </template>
@@ -46,6 +22,8 @@
 <script setup>
 import { ref } from 'vue'
 import AppLayout from '@/layouts/App'
+import Field from '@/components/form/Field'
+import FormButtons from '@/components/form/FormButtons'
 import useNewForm from '@/hooks/useNewForm'
 import { newMemberSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
@@ -62,6 +40,7 @@ const {
   isValid,
   onSubmit,
   validateField,
+  validation,
 } = useNewForm({
   data,
   schema,

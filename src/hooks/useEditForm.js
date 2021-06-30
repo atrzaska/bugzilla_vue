@@ -43,7 +43,15 @@ const useEditForm = ({
 
   fetchObject()
 
-  return { ...validation, ...form, ...object, onSubmit }
+  return {
+    ...validation,
+    ...form,
+    ...object,
+    validation,
+    form,
+    object,
+    onSubmit,
+  }
 }
 
 export default useEditForm

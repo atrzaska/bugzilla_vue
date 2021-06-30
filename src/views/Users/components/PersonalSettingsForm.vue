@@ -2,20 +2,12 @@
   <h5 class="mb-4">Change personal data</h5>
   <Loading v-if="loading" />
   <form v-else @submit.prevent="onSubmit">
-    <div class="mb-3">
-      <label class="form-label" for="name">Name</label>
-      <input
-        v-model="data.name"
-        :class="['form-control', invalidFieldClass('name')]"
-        @input="validateField('name')"
-        id="name"
-        placeholder="Name"
-        type="text"
-      />
-      <div v-if="errors.name" class="invalid-feedback">
-        {{ errors.name }}
-      </div>
-    </div>
+    <Field
+      v-model="data.name"
+      :validation="validation"
+      id="name"
+      label="Name"
+    />
     <div class="mb-3">
       <label for="avatar" class="form-label">Avatar</label>
       <input
@@ -45,27 +37,14 @@
         </div>
       </div>
     </div>
-    <div class="mb-3">
-      <button
-        class="btn btn-primary me-2"
-        type="submit"
-        :disabled="!isValid || isSubmitting"
-      >
-        <div v-if="isSubmitting">
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="spinner-border" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </div>
-        </div>
-        <div v-else>Save</div>
-      </button>
-    </div>
+    <FormButtons :isValid="isValid" :isSubmitting="isSubmitting" />
   </form>
 </template>
 
 <script setup>
 import Loading from '@/components/Loading'
+import Field from '@/components/form/Field'
+import FormButtons from '@/components/form/FormButtons'
 import useEditForm from '@/hooks/useEditForm'
 import { settingsSchema } from '@/services/yup'
 import API from '@/services/requests'
@@ -79,6 +58,7 @@ const {
   loading,
   onSubmit,
   validateField,
+  validation,
 } = useEditForm({
   schema: settingsSchema,
   onFetch: () => API.fetchCurrentUser({ fields: 'name,newsletterSubscribed' }),
