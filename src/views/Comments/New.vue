@@ -10,7 +10,7 @@
           @input="validateField('content')"
           id="content"
           placeholder="Content"
-          v-autofocus
+          autofocus
         />
         <div v-if="errors.content" class="invalid-feedback">
           {{ errors.content }}

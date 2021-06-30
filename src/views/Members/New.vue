@@ -10,7 +10,7 @@
           @input="validateField('email')"
           id="email"
           type="text"
-          v-autofocus
+          autofocus
         />
         <div v-if="errors.email" class="invalid-feedback">
           {{ errors.email }}
