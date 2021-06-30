@@ -26,7 +26,7 @@ const useNewForm = ({
       })
   }
 
-  return { ...form, ...validation, onSubmit }
+  return { ...form, ...validation, form, validation, onSubmit }
 }
 
 export default useNewForm

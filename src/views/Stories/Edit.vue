@@ -3,35 +3,19 @@
     <h1 class="mb-4">Edit Story</h1>
     <Loading v-if="loading" />
     <form v-else @submit.prevent="onSubmit">
-      <div class="mb-3">
-        <label class="form-label" for="name">Name</label>
-        <input
-          v-model="data.name"
-          :class="['form-control', invalidFieldClass('name')]"
-          @input="validateField('name')"
-          id="name"
-          placeholder="Name"
-          type="text"
-          autofocus
-        />
-        <div v-if="errors.name" class="invalid-feedback">
-          {{ errors.name }}
-        </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="description">Description</label>
-        <input
-          v-model="data.description"
-          :class="['form-control', invalidFieldClass('description')]"
-          @input="validateField('description')"
-          id="description"
-          placeholder="Description"
-          type="text"
-        />
-        <div v-if="errors.description" class="invalid-feedback">
-          {{ errors.description }}
-        </div>
-      </div>
+      <Field
+        v-model="data.name"
+        :validation="validation"
+        id="name"
+        label="Name"
+        autofocus
+      />
+      <Field
+        v-model="data.description"
+        :validation="validation"
+        id="description"
+        label="Description"
+      />
       <div class="mb-3">
         <label class="form-label" for="kind">Story type</label>
         <select
@@ -65,28 +49,11 @@
         </div>
       </div>
       <hr />
-      <div class="mb-3">
-        <button
-          class="btn btn-primary me-2"
-          type="submit"
-          :disabled="!isValid || isSubmitting"
-        >
-          <div v-if="isSubmitting">
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-            </div>
-          </div>
-          <div v-else>Save</div>
-        </button>
-        <router-link
-          class="btn btn-outline-secondary"
-          :to="routes.currentStoriesPath()"
-        >
-          Back
-        </router-link>
-      </div>
+      <FormButtons
+        :isValid="isValid"
+        :isSubmitting="isSubmitting"
+        :backLink="routes.currentStoriesPath()"
+      />
     </form>
     <hr />
     <h5>Comments</h5>
@@ -138,10 +105,12 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
 import LoadMore from '@/components/pagination/LoadMore'
+import Field from '@/components/form/Field'
+import FormButtons from '@/components/form/FormButtons'
 import useEditForm from '@/hooks/useEditForm'
 import { storySchema as schema } from '@/services/yup'
 import API from '@/services/requests'
@@ -159,6 +128,7 @@ const {
   loading,
   onSubmit,
   validateField,
+  validation,
 } = useEditForm({
   id,
   schema,
