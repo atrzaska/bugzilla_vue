@@ -8,19 +8,19 @@
         </a>
       </li>
 
-      <li v-if="isBeginning" :class="['page-item', page === 1 && 'active']">
+      <li v-if="isBeginning" :class="['page-item', activePageClass(1)]">
         <a @click.prevent="goToPage(1)" class="page-link" href="#">1</a>
       </li>
-      <li v-if="isBeginning" :class="['page-item', page === 2 && 'active']">
+      <li v-if="isBeginning" :class="['page-item', activePageClass(2)]">
         <a @click.prevent="goToPage(2)" class="page-link" href="#">2</a>
       </li>
-      <li v-if="isBeginning" :class="['page-item', page === 3 && 'active']">
+      <li v-if="isBeginning" :class="['page-item', activePageClass(3)]">
         <a @click.prevent="goToPage(3)" class="page-link" href="#">3</a>
       </li>
-      <li v-if="isBeginning" :class="['page-item', page === 4 && 'active']">
+      <li v-if="isBeginning" :class="['page-item', activePageClass(4)]">
         <a @click.prevent="goToPage(4)" class="page-link" href="#">4</a>
       </li>
-      <li v-if="isBeginning" :class="['page-item', page === 5 && 'active']">
+      <li v-if="isBeginning" :class="['page-item', activePageClass(5)]">
         <a @click.prevent="goToPage(5)" class="page-link" href="#">5</a>
       </li>
 
@@ -55,39 +55,27 @@
         </a>
       </li>
 
-      <li
-        v-if="isEnd"
-        :class="['page-item', page === totalPages - 4 && 'active']"
-      >
+      <li v-if="isEnd" :class="['page-item', activePageClass(totalPages - 4)]">
         <a @click.prevent="goToPage(totalPages - 4)" class="page-link" href="#">
           {{ totalPages - 4 }}
         </a>
       </li>
-      <li
-        v-if="isEnd"
-        :class="['page-item', page === totalPages - 3 && 'active']"
-      >
+      <li v-if="isEnd" :class="['page-item', activePageClass(totalPages - 3)]">
         <a @click.prevent="goToPage(totalPages - 3)" class="page-link" href="#">
           {{ totalPages - 3 }}
         </a>
       </li>
-      <li
-        v-if="isEnd"
-        :class="['page-item', page === totalPages - 2 && 'active']"
-      >
+      <li v-if="isEnd" :class="['page-item', activePageClass(totalPages - 2)]">
         <a @click.prevent="goToPage(totalPages - 2)" class="page-link" href="#">
           {{ totalPages - 2 }}
         </a>
       </li>
-      <li
-        v-if="isEnd"
-        :class="['page-item', page === totalPages - 1 && 'active']"
-      >
+      <li v-if="isEnd" :class="['page-item', activePageClass(totalPages - 1)]">
         <a @click.prevent="goToPage(totalPages - 1)" class="page-link" href="#">
           {{ totalPages - 1 }}
         </a>
       </li>
-      <li v-if="isEnd" :class="['page-item', page === totalPages && 'active']">
+      <li v-if="isEnd" :class="['page-item', activePageClass(totalPages)]">
         <a @click.prevent="goToPage(totalPages)" class="page-link" href="#">
           {{ totalPages }}
         </a>
@@ -125,6 +113,7 @@ const {
   page,
   totalPages,
   goToPage,
+  activePageClass,
 } = pagination
 
 const isBeginning = computed(() => page.value < 5)

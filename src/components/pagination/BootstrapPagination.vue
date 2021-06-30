@@ -14,7 +14,7 @@
       <li
         v-for="visiblePage in visiblePages"
         :key="visiblePage"
-        :class="['page-item', page === visiblePage && 'active']"
+        :class="['page-item', activePageClass(visiblePage)]"
       >
         <a @click.prevent="goToPage(visiblePage)" class="page-link" href="#">
           {{ visiblePage }}
@@ -49,6 +49,7 @@ const {
   page,
   totalPages,
   goToPage,
+  activePageClass,
 } = pagination
 
 const MORE_ITEMS_TO_SHOW = 3 // current page + 2 more items
