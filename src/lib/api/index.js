@@ -21,16 +21,34 @@ axios.interceptors.response.use(
   }
 )
 
-const defaultOptions = () => ({
+const withDefaults = (options = {}) => ({
   baseURL: '/api',
   headers: {
     Authorization: `Bearer ${authToken()}`,
     'X-Requested-With': 'XMLHttpRequest',
     'Content-Type': 'application/json',
   },
+  ...options,
 })
 
-const withDefaults = (options = {}) => ({ ...defaultOptions(), ...options })
+const withMultipart = (options) => ({
+  baseURL: '/api',
+  headers: {
+    Authorization: `Bearer ${authToken()}`,
+    'Content-Type': 'multipart/form-data',
+  },
+  ...options,
+})
+
+const toFormData = (data) => {
+  const formData = new FormData()
+
+  for (const [key, value] of Object.entries(data)) {
+    formData.append(key, value)
+  }
+
+  return formData
+}
 
 const cache = new Map()
 
@@ -59,25 +77,6 @@ const clearCache = (url, options = {}) => {
 
   return cache.delete(cacheKey)
 }
-
-const toFormData = (data) => {
-  const formData = new FormData()
-
-  for (const [key, value] of Object.entries(data)) {
-    formData.append(key, value)
-  }
-
-  return formData
-}
-
-const withMultipart = (options) => ({
-  ...options,
-  baseURL: '/api',
-  headers: {
-    Authorization: `Bearer ${authToken()}`,
-    'Content-Type': 'multipart/form-data',
-  },
-})
 
 const API = {
   get: (url, options) => cachedAxios.get(url, withDefaults(options)),
