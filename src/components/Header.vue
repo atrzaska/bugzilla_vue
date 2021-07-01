@@ -44,14 +44,3 @@ import useCurrentUser from '@/hooks/useCurrentUser'
 
 const { user } = useCurrentUser()
 </script>
-
-<style>
-.header {
-  height: 48px;
-  z-index: 10;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-</style>

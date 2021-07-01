@@ -173,9 +173,3 @@ const isBeginning = computed(() => page.value < 5)
 const isEnd = computed(() => page.value > totalPages.value - 4)
 const isMiddle = computed(() => !isBeginning.value && !isEnd.value)
 </script>
-
-<style scoped>
-.page-item.disabled .page-link {
-  color: #666;
-}
-</style>

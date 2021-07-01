@@ -20,26 +20,3 @@ const { Toast, notifications, deleteNotification } = useToast()
 
 window.Toast = Toast
 </script>
-
-<style>
-.notification-wrapper {
-  display: grid;
-  position: fixed;
-  top: 60px;
-  right: 20px;
-  z-index: 20;
-}
-
-.fade-in {
-  animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-</style>

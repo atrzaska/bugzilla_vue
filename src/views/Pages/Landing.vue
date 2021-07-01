@@ -39,9 +39,3 @@
 <script setup>
 import LandingLayout from '@/layouts/Landing'
 </script>
-
-<style>
-.product-header {
-  max-width: 900px;
-}
-</style>
