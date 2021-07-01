@@ -101,6 +101,7 @@ const changePasswordSchema = yup.object().shape({
   password: yup.string().required().min(8).max(255),
   passwordConfirmation: yup
     .string()
+    .required()
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 })
 
