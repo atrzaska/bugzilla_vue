@@ -1567,7 +1567,7 @@
   resolved "https://registry.yarnpkg.com/@vue/cli-overlay/-/cli-overlay-4.5.13.tgz#4f1fd2161be8f69d6cba8079f3f0d7dc4dee47a7"
   integrity sha512-jhUIg3klgi5Cxhs8dnat5hi/W2tQJvsqCxR0u6hgfSob0ORODgUBlN+F/uwq7cKIe/pzedVUk1y07F13GQvPqg==
 
-"@vue/cli-plugin-babel@~4.5.0":
+"@vue/cli-plugin-babel@~4.5.13":
   version "4.5.13"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-4.5.13.tgz#a89c482edcc4ea1d135645cec502a7f5fd4c30e7"
   integrity sha512-ykvEAfD8PgGs+dGMGqr7l/nRmIS39NRzWLhMluPLTvDV1L+IxcoB73HNLGA/aENDpl8CuWrTE+1VgydcOhp+wg==
@@ -1580,7 +1580,7 @@
     thread-loader "^2.1.3"
     webpack "^4.0.0"
 
-"@vue/cli-plugin-e2e-cypress@~4.5.0":
+"@vue/cli-plugin-e2e-cypress@~4.5.13":
   version "4.5.13"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-e2e-cypress/-/cli-plugin-e2e-cypress-4.5.13.tgz#c014ba1b4d08e582c26b36890cc65844b12e9dde"
   integrity sha512-7AyqCgDqgCj93QxkJYJG5YuXW07enHAYCdGZHPBHZKniIiq8VfvA6/ZT6TTU7DRr2/QxoIbXtbGnmNyDF/Urww==
@@ -1589,7 +1589,7 @@
     cypress "^3.8.3"
     eslint-plugin-cypress "^2.10.3"
 
-"@vue/cli-plugin-eslint@~4.5.0":
+"@vue/cli-plugin-eslint@~4.5.13":
   version "4.5.13"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-4.5.13.tgz#8baf22d0d96d76720c7506646b96f4f62c05bdfa"
   integrity sha512-yc2uXX6aBiy3vEf5TwaueaDqQbdIXIhk0x0KzEtpPo23jBdLkpOSoU5NCgE06g/ZiGAcettpmBSv73Hfp4wHEw==
@@ -1601,7 +1601,7 @@
     webpack "^4.0.0"
     yorkie "^2.0.0"
 
-"@vue/cli-plugin-pwa@~4.5.0":
+"@vue/cli-plugin-pwa@~4.5.13":
   version "4.5.13"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-pwa/-/cli-plugin-pwa-4.5.13.tgz#a800639814b6f62a38f04198c340cfaee7295c3f"
   integrity sha512-uU5pp94VU0YscfKq/mNRsKOdxG+CTqVlZWaYkRc+HCcwkJ/m/CnxgaEqQFr0QpHC8zmlX4gILO1RVYygJoR9tw==
@@ -1610,14 +1610,14 @@
     webpack "^4.0.0"
     workbox-webpack-plugin "^4.3.1"
 
-"@vue/cli-plugin-router@^4.5.13", "@vue/cli-plugin-router@~4.5.0":
+"@vue/cli-plugin-router@^4.5.13", "@vue/cli-plugin-router@~4.5.13":
   version "4.5.13"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-router/-/cli-plugin-router-4.5.13.tgz#0b67c8898a2bf132941919a2a2e5f3aacbd9ffbe"
   integrity sha512-tgtMDjchB/M1z8BcfV4jSOY9fZSMDTPgF9lsJIiqBWMxvBIsk9uIZHxp62DibYME4CCKb/nNK61XHaikFp+83w==
   dependencies:
     "@vue/cli-shared-utils" "^4.5.13"
 
-"@vue/cli-plugin-unit-jest@~4.5.0":
+"@vue/cli-plugin-unit-jest@~4.5.13":
   version "4.5.13"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-unit-jest/-/cli-plugin-unit-jest-4.5.13.tgz#6aca031452a5883f39580ec50ea926c982e1d138"
   integrity sha512-8t7QIihJWB9Kv85FamrEzWbJnvsLhQdyXHl3h+qhAihrZdLL+9mj905y88cBCq+i2PqqZ/qAoabbpf4DxDAb7g==
@@ -1638,7 +1638,7 @@
     ts-jest "^24.2.0"
     vue-jest "^3.0.5"
 
-"@vue/cli-plugin-vuex@^4.5.13", "@vue/cli-plugin-vuex@~4.5.0":
+"@vue/cli-plugin-vuex@^4.5.13", "@vue/cli-plugin-vuex@~4.5.13":
   version "4.5.13"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-vuex/-/cli-plugin-vuex-4.5.13.tgz#98646d8bc1e69cf6c6a6cba2fed3eace0356c360"
   integrity sha512-I1S9wZC7iI0Wn8kw8Zh+A2Qkf6s1M6vTGBkx8boXjuzfwEEyEHRxadsVCecZc8Mkpydo0nykj+MyYF96TKFuVA==
@@ -1743,7 +1743,7 @@
     "@vue/compiler-core" "3.1.4"
     "@vue/shared" "3.1.4"
 
-"@vue/compiler-sfc@^3.0.0":
+"@vue/compiler-sfc@^3.1.4":
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.1.4.tgz#93e87db950e0711339c18baa7bb7d28d3522d7bc"
   integrity sha512-4KDQg60Khy3SgnF+V/TB2NZqzmM4TyGRmzsxqG1SebGdMSecCweFDSlI/F1vDYk6dKiCHgmpoT9A1sLxswkJ0A==
