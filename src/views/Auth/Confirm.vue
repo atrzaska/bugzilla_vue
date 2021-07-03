@@ -27,7 +27,7 @@
           <div v-if="isSubmitting">
             <div class="d-flex justify-content-center align-items-center">
               <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
+                <span class="visually-hidden">Loading...</span>
               </div>
             </div>
           </div>
