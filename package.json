@@ -20,7 +20,6 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.13",
     "@vue/cli-plugin-e2e-cypress": "~4.5.13",
     "@vue/cli-plugin-eslint": "~4.5.13",
     "@vue/cli-plugin-pwa": "~4.5.13",
