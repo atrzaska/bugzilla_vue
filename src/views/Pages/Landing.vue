@@ -27,6 +27,7 @@
         </div>
       </div>
     </div>
+    <MySideDrawer />
     <footer class="text-center">
       <span class="me-2">Made with</span>
       <i class="fas fa-heart me-2 d-inline"></i>
@@ -38,4 +39,5 @@
 
 <script setup>
 import LandingLayout from '@/layouts/Landing'
+import MySideDrawer from '@/components/MySideDrawer'
 </script>
