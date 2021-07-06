@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmit } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 const {
   modelValue,
@@ -46,7 +46,7 @@ const {
   errorClass: String,
   autofocus: Boolean,
 })
-const emit = defineEmit(['update:modelValue'])
+const emit = defineEmits(['update:modelValue'])
 const field = fieldParam || id
 const onInput = (val) => {
   emit('update:modelValue', val)

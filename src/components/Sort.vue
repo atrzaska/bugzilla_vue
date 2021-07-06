@@ -17,13 +17,13 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmit } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 const { modelValue, options } = defineProps({
   modelValue: String,
   options: Object,
 })
-const emit = defineEmit(['update:modelValue'])
+const emit = defineEmits(['update:modelValue'])
 
 const updateValue = (val) => emit('update:modelValue', val)
 </script>
