@@ -1,22 +1,25 @@
 import router from '@/router'
 import API from '@/lib/api'
+import { setToken, getToken } from '@/services/jwt'
 
-const get = (path) => (params, options = {}) =>
-  API.get(path, { params, ...options })
+const get =
+  (path) =>
+  (params, options = {}) =>
+    API.get(path, { params, ...options })
 
 const clearToken = () => {
-  window.localStorage.removeItem('authToken')
+  setToken(null)
   router.push('/signin')
   API.clearCache('/me')
 }
 
 const refreshToken = async () => {
-  if (!window.localStorage.getItem('authToken')) {
+  if (!getToken()) {
     return
   }
 
   API.get('/refresh_token')
-    .then((res) => window.localStorage.setItem('authToken', res.data.token))
+    .then((res) => setToken(res.data.token))
     .catch(clearToken)
 }
 
