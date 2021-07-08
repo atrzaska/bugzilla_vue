@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import API from '@/services/requests'
-import { setToken } from '@/services/jwt'
+import { setAccessToken } from '@/services/jwt'
 
 const useSignin = () => {
   const router = useRouter()
@@ -19,7 +19,7 @@ const useSignin = () => {
     API.signIn(data.value)
       .then((res) => {
         const { token } = res.data
-        setToken(token)
+        setAccessToken(token)
         router.push('/dashboard')
         API.clearCache('/me')
         isSubmitting.value = false

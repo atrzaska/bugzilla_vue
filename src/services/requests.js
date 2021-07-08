@@ -1,6 +1,6 @@
 import router from '@/router'
 import API from '@/lib/api'
-import { setToken, getToken } from '@/services/jwt'
+import { setAccessToken, getAccessToken } from '@/services/jwt'
 
 const get =
   (path) =>
@@ -8,18 +8,18 @@ const get =
     API.get(path, { params, ...options })
 
 const clearToken = () => {
-  setToken(null)
+  setAccessToken(null)
   router.push('/signin')
   API.clearCache('/me')
 }
 
 const refreshToken = async () => {
-  if (!getToken()) {
+  if (!getAccessToken()) {
     return
   }
 
   API.get('/refresh_token')
-    .then((res) => setToken(res.data.token))
+    .then((res) => setAccessToken(res.data.token))
     .catch(clearToken)
 }
 

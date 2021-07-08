@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getToken } from '@/services/jwt'
+import { getAccessToken } from '@/services/jwt'
 
 axios.interceptors.response.use(
   (res) => res,
@@ -23,7 +23,7 @@ axios.interceptors.response.use(
 const withDefaults = (options = {}) => ({
   baseURL: '/api',
   headers: {
-    Authorization: `Bearer ${getToken()}`,
+    Authorization: `Bearer ${getAccessToken()}`,
     'X-Requested-With': 'XMLHttpRequest',
     'Content-Type': 'application/json',
   },
@@ -33,7 +33,7 @@ const withDefaults = (options = {}) => ({
 const withMultipart = (options) => ({
   baseURL: '/api',
   headers: {
-    Authorization: `Bearer ${getToken()}`,
+    Authorization: `Bearer ${getAccessToken()}`,
     'Content-Type': 'multipart/form-data',
   },
   ...options,

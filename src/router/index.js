@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { getToken } from '@/services/jwt'
+import { getAccessToken } from '@/services/jwt'
 import CommentsEdit from '@/views/Comments/Edit'
 import CommentsNew from '@/views/Comments/New'
 import Confirm from '@/views/Auth/Confirm'
@@ -203,7 +203,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((r) => r.meta.requiresAuth)
-  const isLoggedOut = !getToken()
+  const isLoggedOut = !getAccessToken()
 
   if (requiresAuth) {
     if (isLoggedOut) {
