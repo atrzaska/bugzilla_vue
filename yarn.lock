@@ -8672,11 +8672,6 @@ regexpp@^2.0.1:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-2.0.1.tgz#8d19d31cf632482b589049f8281f93dbcba4d07f"
   integrity sha512-lv0M6+TkDVniA3aD1Eg0DVpfU/booSu7Eev3TDO/mZKHBfVjgCGTV4t4buppESEYDtkArYFOxTJWv6S5C+iaNw==
 
-register-service-worker@^1.7.1:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/register-service-worker/-/register-service-worker-1.7.2.tgz#6516983e1ef790a98c4225af1216bc80941a4bd2"
-  integrity sha512-CiD3ZSanZqcMPRhtfct5K9f7i3OLCcBBWsJjLh1gW9RO/nS94sVzY59iS+fgYBOBqaBpf4EzfqUF3j9IG+xo8A==
-
 relateurl@0.2.x:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
