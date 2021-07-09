@@ -1,6 +1,14 @@
 <template>
   <header
-    class="header d-flex align-items-center px-3 border-bottom shadow-sm bg-white"
+    class="
+      header
+      d-flex
+      align-items-center
+      px-3
+      border-bottom
+      shadow-sm
+      bg-white
+    "
   >
     <router-link to="/dashboard" class="me-auto">
       <img height="24" src="/images/bootstrap.svg" width="24" />
@@ -32,7 +40,9 @@
           Profile
         </router-link>
         <router-link to="/help" class="dropdown-item">Help</router-link>
-        <a class="dropdown-item" @click="API.logout">Log out</a>
+        <a @click.prevent="API.logout" class="dropdown-item" href="#">
+          Log out
+        </a>
       </div>
     </div>
   </header>
