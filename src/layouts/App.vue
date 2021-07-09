@@ -22,9 +22,6 @@
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
 import { onMounted } from 'vue'
-import API from '@/services/requests'
-
-API.refreshToken()
 
 onMounted(() => (document.body.className = 'bg-light'))
 </script>

@@ -1,6 +1,6 @@
 import router from '@/router'
 import API from '@/lib/api'
-import { setAccessToken, getAccessToken } from '@/services/jwt'
+import { setAccessToken } from '@/services/jwt'
 
 const get =
   (path) =>
@@ -14,16 +14,6 @@ const clearToken = () => {
 }
 
 const clearCurrentUserCache = () => API.clearCache('/me')
-
-const refreshToken = async () => {
-  if (!getAccessToken()) {
-    return
-  }
-
-  API.get('/refresh_token')
-    .then((res) => setAccessToken(res.data.accessToken))
-    .catch(clearToken)
-}
 
 const logout = () => API.post('/logout').then(clearToken).catch(clearToken)
 
@@ -76,7 +66,6 @@ const createInvite = (params) => API.post('/invites', params)
 export default {
   clearCurrentUserCache,
   clearToken,
-  refreshToken,
   logout,
 
   signIn,
