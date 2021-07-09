@@ -72,23 +72,3 @@ const PLACEMENTS = {
 
 const placement = right.value ? PLACEMENTS.right : PLACEMENTS.left
 </script>
-
-<style>
-.b-side-drawer {
-  width: 320px;
-  max-width: 100%;
-  height: 100vh;
-  max-height: 100vh;
-  z-index: 1050;
-  overflow: scroll;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: auto;
-}
-
-.b-side-drawer-right {
-  right: 0;
-  left: auto;
-}
-</style>
