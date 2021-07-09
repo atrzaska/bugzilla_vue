@@ -5,7 +5,7 @@
       <div class="col-12">
         <slot></slot>
         <div class="text-center my-4">
-          <a class="btn btn-primary btn-lg" :href="salesUrl"> Contact sales </a>
+          <a class="btn btn-primary btn-lg" :href="salesUrl">Contact sales</a>
         </div>
       </div>
     </div>
@@ -19,6 +19,5 @@ import AuthHeader from '@/components/AuthHeader'
 onMounted(() => (document.body.className = 'bg-white'))
 
 const appHost = 'bugzilla.nexxy.net'
-const appUrl = `https://${appHost}`
 const salesUrl = `mailto://sales@${appHost}`
 </script>

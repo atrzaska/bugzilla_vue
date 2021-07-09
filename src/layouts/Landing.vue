@@ -1,19 +1,20 @@
 <template>
   <header class="d-flex align-items-center p-4">
     <router-link class="me-4" to="/">
-      <img height="48" src="/images/bootstrap.svg" width="48" />
+      <img height="48" src="/images/bootstrap.svg" width="48" alt="pic" />
     </router-link>
-    <a class="me-4" href="mailto:hi@bugzilla.app"> Contact us </a>
+    <a class="me-4" href="mailto:hi@bugzilla.app">Contact us</a>
     <a
       class="me-4"
       href="https://github.com/atrzaska/bugzilla_ex"
       target="_blank"
+      rel="noreferrer"
     >
       Github
     </a>
     <div class="me-auto" />
     <div v-if="isLoggedIn">
-      <router-link v-if="isLoggedIn" class="btn btn-primary" to="/dashboard">
+      <router-link class="btn btn-primary" to="/dashboard">
         Go to the dashboard
       </router-link>
     </div>

@@ -22,6 +22,7 @@
       <img
         src="https://picsum.photos/500/500/?image=54"
         class="img-thumbnail img-fluid"
+        alt="pic"
       />
     </div>
     <div class="px-3 py-2">
@@ -33,6 +34,7 @@
       <img
         src="https://picsum.photos/500/500/?image=54"
         class="img-thumbnail img-fluid"
+        alt="pic"
       />
     </div>
     <div class="px-3 py-2">
@@ -44,6 +46,7 @@
       <img
         src="https://picsum.photos/500/500/?image=54"
         class="img-thumbnail img-fluid"
+        alt="pic"
       />
     </div>
   </SideDrawer>

@@ -1,7 +1,7 @@
 <template>
   <header class="d-flex align-items-center p-4">
     <router-link class="me-auto" to="/">
-      <img height="48" src="/images/bootstrap.svg" width="48" />
+      <img height="48" src="/images/bootstrap.svg" width="48" alt="pic" />
     </router-link>
     <router-link v-if="isLoggedIn" class="btn btn-primary" to="/dashboard">
       Go to the dashboard

@@ -32,7 +32,7 @@
                   class="btn btn-outline-secondary dropdown-toggle"
                   data-bs-toggle="dropdown"
                 >
-                  <img :src="threeDots" />
+                  <img :src="threeDots" alt="pic" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <router-link

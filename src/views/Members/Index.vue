@@ -30,10 +30,11 @@
             <td>
               <div class="d-flex align-items-center">
                 <img
+                  :src="item.photoUrl"
                   class="rounded-circle me-2"
                   height="48"
-                  :src="item.photoUrl"
                   with="48"
+                  alt="pic"
                 />
                 <div class="d-flex flex-column">
                   <b v-if="isCurrentUser(item)">You • {{ item.name }}</b>
@@ -49,7 +50,7 @@
                   class="btn btn-outline-secondary dropdown-toggle"
                   data-bs-toggle="dropdown"
                 >
-                  <img :src="threeDots" />
+                  <img :src="threeDots" alt="pic" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <template v-if="isCurrentUser(item)">

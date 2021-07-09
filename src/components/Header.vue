@@ -11,17 +11,18 @@
     "
   >
     <router-link to="/dashboard" class="me-auto">
-      <img height="24" src="/images/bootstrap.svg" width="24" />
+      <img height="24" src="/images/bootstrap.svg" width="24" alt="pic" />
     </router-link>
     <div class="dropdown">
-      <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#">
+      <button class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown">
         <img
           class="rounded-circle"
           height="32"
           :src="user.photoUrl || '/images/nobody.jpg'"
           with="32"
+          alt="pic"
         />
-      </a>
+      </button>
       <div class="dropdown-menu dropdown-menu-end">
         <div class="d-flex align-items-center px-3">
           <img
@@ -29,6 +30,7 @@
             height="80"
             :src="user.photoUrl || '/images/nobody.jpg'"
             with="80"
+            alt="pic"
           />
           <div class="d-flex flex-column">
             <b>{{ user.name }}</b>
@@ -40,9 +42,7 @@
           Profile
         </router-link>
         <router-link to="/help" class="dropdown-item">Help</router-link>
-        <a @click.prevent="API.logout" class="dropdown-item" href="#">
-          Log out
-        </a>
+        <button @click="API.logout" class="dropdown-item">Log out</button>
       </div>
     </div>
   </header>
