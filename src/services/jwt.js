@@ -1,5 +1,6 @@
-const setToken = (val) => window.localStorage.setItem('authToken', val)
+let accessToken = null
 
-const getToken = () => window.localStorage.getItem('authToken')
+const setAccessToken = (val) => (accessToken = val)
+const getAccessToken = () => accessToken
 
-export { setToken, getToken }
+export { setAccessToken, getAccessToken }
