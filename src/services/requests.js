@@ -21,7 +21,7 @@ const refreshToken = async () => {
   }
 
   API.get('/refresh_token')
-    .then((res) => setAccessToken(res.data.token))
+    .then((res) => setAccessToken(res.data.accessToken))
     .catch(clearToken)
 }
 
