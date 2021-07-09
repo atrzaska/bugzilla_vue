@@ -1,5 +1,7 @@
 import { ref, computed } from 'vue'
-import { toFullErrors, toInvalidFields } from '@/services/errors'
+
+const toInvalidFields = (errors) => Object.keys(errors)
+const toFullErrors = (errors) => Object.values(errors).flat()
 
 const useFrontendValidation = ({ data, errors, schema }) => {
   errors = errors || ref({})

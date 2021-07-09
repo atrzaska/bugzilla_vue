@@ -1,4 +1,5 @@
-import '@/plugins'
+import '@popperjs/core'
+import 'bootstrap'
 import '@/css/app.scss'
 
 import { createApp } from 'vue'
