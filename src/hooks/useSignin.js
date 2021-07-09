@@ -21,7 +21,7 @@ const useSignin = () => {
         const { accessToken } = res.data
         setAccessToken(accessToken)
         router.push('/dashboard')
-        API.clearCache('/me')
+        API.clearCurrentUserCache()
         isSubmitting.value = false
       })
       .catch((err) => {

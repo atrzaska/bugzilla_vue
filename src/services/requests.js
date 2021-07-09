@@ -13,6 +13,8 @@ const clearToken = () => {
   API.clearCache('/me')
 }
 
+const clearCurrentUserCache = () => API.clearCache('/me')
+
 const refreshToken = async () => {
   if (!getAccessToken()) {
     return
@@ -72,6 +74,7 @@ const deleteMember = (id) => API.delete(`/members/${id}`)
 const createInvite = (params) => API.post('/invites', params)
 
 export default {
+  clearCurrentUserCache,
   clearToken,
   refreshToken,
   logout,
