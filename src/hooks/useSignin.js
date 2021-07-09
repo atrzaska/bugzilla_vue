@@ -18,8 +18,8 @@ const useSignin = () => {
     error.value = false
     API.signIn(data.value)
       .then((res) => {
-        const { token } = res.data
-        setAccessToken(token)
+        const { accessToken } = res.data
+        setAccessToken(accessToken)
         router.push('/dashboard')
         API.clearCache('/me')
         isSubmitting.value = false
