@@ -1,24 +1,6 @@
 import axios from 'axios'
 import { getAccessToken } from '@/services/jwt'
-
-axios.interceptors.response.use(
-  (res) => res,
-  function (err) {
-    if (err.response) {
-      if (err.response.status === 500) {
-        window.Toast.error('Something went wrong, please try again.')
-      } else if (err.response.status === 404) {
-        window.Toast.error('Resource not found.')
-      } else if (err.response.status === 403) {
-        window.Toast.error('You have no access to this resource.')
-      }
-    } else {
-      window.Toast.error('Something went wrong, please try again.')
-    }
-
-    return Promise.reject(err)
-  }
-)
+import './middleware/addErrorToast'
 
 const withDefaults = (options = {}) => ({
   baseURL: '/api',
