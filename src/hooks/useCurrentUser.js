@@ -7,7 +7,7 @@ const useCurrentUser = (defaultValue = {}) => {
 
   API.fetchCurrentUser()
     .then((res) => setObject(res.data))
-    .catch((err) => setObject(defaultValue))
+    .catch(() => setObject(defaultValue))
 
   const isLoggedIn = computed(() => !!user.value.id)
 
