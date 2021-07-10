@@ -21,7 +21,7 @@
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-              @click="onClose"
+              @click="modal.onClose"
             />
           </div>
           <div v-if="!!modal.body" class="modal-body">
