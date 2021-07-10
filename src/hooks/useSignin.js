@@ -20,9 +20,9 @@ const useSignin = () => {
       .then((res) => {
         const { accessToken } = res.data
         setAccessToken(accessToken)
-        router.push('/dashboard')
-        API.clearCurrentUserCache()
         isSubmitting.value = false
+        API.clearCurrentUserCache()
+        router.push('/dashboard')
       })
       .catch((err) => {
         isSubmitting.value = false
