@@ -1,10 +1,10 @@
 <template>
   <div class="notification-wrapper">
     <div
-      v-for="(notification, index) in notifications"
-      :key="index"
+      v-for="notification in notifications"
+      :key="notification.id"
       class="toast border-0 fade show mb-2 cursor-pointer ms-auto fade-in"
-      @click="deleteNotification(index)"
+      @click="deleteNotification(notification)"
     >
       <div :class="`toast-body alert-${notification.kind} p-3 rounded`">
         {{ notification.message }}
