@@ -11,6 +11,17 @@ const useCollection = () => {
     loading.value = false
   }
 
+  const appendCollection = (data) => {
+    collection.value = collection.value.concat(data.collection)
+    total.value = data.total
+    loading.value = false
+  }
+
+  const reset = () => {
+    collection.value = []
+    total.value = 0
+  }
+
   const startLoading = () => {
     loading.value = true
   }
@@ -24,6 +35,8 @@ const useCollection = () => {
     total,
     loading,
     setCollection,
+    appendCollection,
+    reset,
     startLoading,
     stopLoading,
   }
