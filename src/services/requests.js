@@ -1,4 +1,3 @@
-import router from '@/router'
 import API from '@/lib/api'
 import { setAccessToken } from '@/services/jwt'
 
@@ -9,7 +8,6 @@ const get =
 
 const clearToken = () => {
   setAccessToken(null)
-  router.push('/signin')
   API.clearCache('/me')
 }
 

@@ -42,7 +42,7 @@
           Profile
         </router-link>
         <router-link to="/help" class="dropdown-item">Help</router-link>
-        <button @click="API.logout" class="dropdown-item">Log out</button>
+        <button @click="onLogout" class="dropdown-item">Log out</button>
       </div>
     </div>
   </header>
@@ -51,6 +51,9 @@
 <script setup>
 import API from '@/services/requests'
 import useCurrentUser from '@/hooks/useCurrentUser'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const { user } = useCurrentUser()
+const onLogout = () => API.logout().then(() => router.push('/signin'))
 </script>
