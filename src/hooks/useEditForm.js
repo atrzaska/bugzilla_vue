@@ -7,7 +7,6 @@ import useUrlParams from '@/hooks/useUrlParams'
 
 const useEditForm = ({
   id,
-  data,
   schema,
   onFetch,
   onFetchError,
@@ -16,9 +15,9 @@ const useEditForm = ({
   successToast,
   successRedirectPath,
 }) => {
-  data = data || ref({})
+  const data = ref({})
   const errors = ref({})
-  const form = useForm({ data, errors })
+  const form = useForm({ errors })
   const validation = useFrontendValidation({ data, errors, schema })
   const router = useRouter()
   const object = useObject(data)
@@ -44,6 +43,7 @@ const useEditForm = ({
   fetchObject()
 
   return {
+    data,
     ...validation,
     ...form,
     ...object,

@@ -1,7 +1,6 @@
 import { ref } from 'vue'
 
-const useForm = ({ data, errors }) => {
-  data = data || ref({})
+const useForm = ({ errors }) => {
   errors = errors || ref({})
   const isSubmitting = ref(false)
 
@@ -21,7 +20,7 @@ const useForm = ({ data, errors }) => {
       })
   }
 
-  return { data, errors, isSubmitting, submit }
+  return { errors, isSubmitting, submit }
 }
 
 export default useForm
