@@ -39,6 +39,7 @@ const usePagination = (options = {}) => {
     total,
     page,
     size,
+    offset,
     totalPages,
     showPagination,
     hasPreviousPage,
