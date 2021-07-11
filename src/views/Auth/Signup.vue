@@ -108,7 +108,6 @@
 
 <script setup>
 import AuthLayout from '@/layouts/Auth'
-import ErrorsBox from '@/components/ErrorsBox'
 import useSignup from '@/hooks/useSignup'
 import useFrontendValidation from '@/hooks/useFrontendValidation'
 import { signUpSchema as schema } from '@/services/yup'
