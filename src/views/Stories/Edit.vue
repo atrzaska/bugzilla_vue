@@ -153,15 +153,12 @@ const routes = {
 // comments
 const commentsData = useCollection()
 const commentsPagination = useLoadMorePagination(commentsData)
-const fetchComments = () => {
+const fetchComments = () =>
   API.fetchComments(
     { 'filter.storyId': id, offset: commentsPagination.offset.value },
     { refresh: true }
-  ).then((res) => {
-    commentsPagination.setCollection(res.data)
-    commentsData.stopLoading()
-  })
-}
+  ).then((res) => commentsData.appendCollection(res.data))
+
 fetchComments()
 watch(commentsPagination.offset, fetchComments)
 
@@ -171,9 +168,11 @@ const onDeleteCommentConfirmed = (comment) =>
     commentsData.startLoading()
 
     if (commentsPagination.offset.value === 0) {
+      commentsData.reset()
       commentsPagination.reset()
       fetchComments()
     } else {
+      commentsData.reset()
       commentsPagination.reset()
     }
   })
@@ -191,10 +190,8 @@ const fetchTasks = () =>
   API.fetchTasks(
     { 'filter.storyId': id, offset: tasksPagination.offset.value },
     { refresh: true }
-  ).then((res) => {
-    tasksPagination.setCollection(res.data)
-    tasksData.stopLoading()
-  })
+  ).then((res) => tasksData.appendCollection(res.data))
+
 fetchTasks()
 watch(tasksPagination.offset, fetchTasks)
 
@@ -204,9 +201,11 @@ const onDeleteTaskConfirmed = (task) =>
     tasksData.startLoading()
 
     if (tasksPagination.offset.value === 0) {
+      tasksData.reset()
       tasksPagination.reset()
       fetchTasks()
     } else {
+      tasksData.reset()
       tasksPagination.reset()
     }
   })
