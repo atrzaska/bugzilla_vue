@@ -12,7 +12,7 @@
           </div>
         </div>
       </div>
-      <div v-else>{{ ctaText }}</div>
+      <div v-else>{{ ctaText || 'Save' }}</div>
     </button>
     <router-link
       v-if="backLink"
@@ -34,5 +34,5 @@ const props = defineProps({
   ctaText: String,
 })
 
-const { isValid, isSubmitting, backLink, ctaText = 'Save' } = toRefs(props)
+const { isValid, isSubmitting, backLink, ctaText } = toRefs(props)
 </script>
