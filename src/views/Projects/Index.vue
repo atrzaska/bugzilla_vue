@@ -42,13 +42,9 @@
                     Edit
                   </router-link>
                   <div class="dropdown-divider" />
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    @click.prevent="onDelete(project)"
-                  >
+                  <button class="dropdown-item" @click="onDelete(project)">
                     Remove
-                  </a>
+                  </button>
                 </div>
               </div>
             </td>

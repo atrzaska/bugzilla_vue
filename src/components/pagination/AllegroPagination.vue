@@ -2,150 +2,134 @@
   <nav v-if="showPagination" aria-label="Page navigation">
     <ul class="pagination justify-content-center">
       <li v-if="hasPreviousPage" class="page-item">
-        <a @click.prevent="previousPage()" class="page-link" href="#">
+        <button @click="previousPage" class="page-link">
           <i class="fas fa-chevron-left" />
           <span class="ms-3 text-primary">PREVIOUS</span>
-        </a>
+        </button>
       </li>
 
       <template v-if="totalPages <= 7">
         <li v-if="totalPages >= 1" :class="['page-item', activePageClass(1)]">
-          <a @click.prevent="goToPage(1)" class="page-link" href="#">1</a>
+          <button @click="goToPage(1)" class="page-link">1</button>
         </li>
         <li v-if="totalPages >= 2" :class="['page-item', activePageClass(2)]">
-          <a @click.prevent="goToPage(2)" class="page-link" href="#">2</a>
+          <button @click="goToPage(2)" class="page-link">2</button>
         </li>
         <li v-if="totalPages >= 3" :class="['page-item', activePageClass(3)]">
-          <a @click.prevent="goToPage(3)" class="page-link" href="#">3</a>
+          <button @click="goToPage(3)" class="page-link">3</button>
         </li>
         <li v-if="totalPages >= 4" :class="['page-item', activePageClass(4)]">
-          <a @click.prevent="goToPage(4)" class="page-link" href="#">4</a>
+          <button @click="goToPage(4)" class="page-link">4</button>
         </li>
         <li v-if="totalPages >= 5" :class="['page-item', activePageClass(5)]">
-          <a @click.prevent="goToPage(5)" class="page-link" href="#">5</a>
+          <button @click="goToPage(5)" class="page-link">5</button>
         </li>
         <li v-if="totalPages >= 6" :class="['page-item', activePageClass(6)]">
-          <a @click.prevent="goToPage(6)" class="page-link" href="#">6</a>
+          <button @click="goToPage(6)" class="page-link">6</button>
         </li>
         <li v-if="totalPages >= 7" :class="['page-item', activePageClass(7)]">
-          <a @click.prevent="goToPage(7)" class="page-link" href="#">7</a>
+          <button @click="goToPage(7)" class="page-link">7</button>
         </li>
       </template>
       <template v-else>
         <li v-if="isBeginning" :class="['page-item', activePageClass(1)]">
-          <a @click.prevent="goToPage(1)" class="page-link" href="#">1</a>
+          <button @click="goToPage(1)" class="page-link">1</button>
         </li>
         <li v-if="isBeginning" :class="['page-item', activePageClass(2)]">
-          <a @click.prevent="goToPage(2)" class="page-link" href="#">2</a>
+          <button @click="goToPage(2)" class="page-link">2</button>
         </li>
         <li v-if="isBeginning" :class="['page-item', activePageClass(3)]">
-          <a @click.prevent="goToPage(3)" class="page-link" href="#">3</a>
+          <button @click="goToPage(3)" class="page-link">3</button>
         </li>
         <li v-if="isBeginning" :class="['page-item', activePageClass(4)]">
-          <a @click.prevent="goToPage(4)" class="page-link" href="#">4</a>
+          <button @click="goToPage(4)" class="page-link">4</button>
         </li>
         <li v-if="isBeginning" :class="['page-item', activePageClass(5)]">
-          <a @click.prevent="goToPage(5)" class="page-link" href="#">5</a>
+          <button @click="goToPage(5)" class="page-link">5</button>
         </li>
 
         <li v-if="isMiddle || isEnd" class="page-item">
-          <a @click.prevent="goToPage(1)" class="page-link" href="#">1</a>
+          <button @click="goToPage(1)" class="page-link">1</button>
         </li>
-        <li v-if="isMiddle || isEnd" class="page-item">
-          <a class="page-link text-dark">...</a>
+        <li v-if="isMiddle || isEnd" class="page-item disabled">
+          <button class="page-link text-dark">...</button>
         </li>
 
         <li v-if="isMiddle" class="page-item">
-          <a @click.prevent="goToPage(page - 2)" class="page-link" href="#">
+          <button @click="goToPage(page - 2)" class="page-link">
             {{ page - 2 }}
-          </a>
+          </button>
         </li>
         <li v-if="isMiddle" class="page-item">
-          <a @click.prevent="goToPage(page - 1)" class="page-link" href="#">
+          <button @click="goToPage(page - 1)" class="page-link">
             {{ page - 1 }}
-          </a>
+          </button>
         </li>
         <li v-if="isMiddle" class="page-item active">
-          <a class="page-link">{{ page }}</a>
+          <button class="page-link">{{ page }}</button>
         </li>
         <li v-if="isMiddle" class="page-item">
-          <a @click.prevent="goToPage(page + 1)" class="page-link" href="#">
+          <button @click="goToPage(page + 1)" class="page-link">
             {{ page + 1 }}
-          </a>
+          </button>
         </li>
         <li v-if="isMiddle" class="page-item">
-          <a @click.prevent="goToPage(page + 2)" class="page-link" href="#">
+          <button @click="goToPage(page + 2)" class="page-link">
             {{ page + 2 }}
-          </a>
+          </button>
         </li>
 
         <li
           v-if="isEnd"
           :class="['page-item', activePageClass(totalPages - 4)]"
         >
-          <a
-            @click.prevent="goToPage(totalPages - 4)"
-            class="page-link"
-            href="#"
-          >
+          <button @click="goToPage(totalPages - 4)" class="page-link">
             {{ totalPages - 4 }}
-          </a>
+          </button>
         </li>
         <li
           v-if="isEnd"
           :class="['page-item', activePageClass(totalPages - 3)]"
         >
-          <a
-            @click.prevent="goToPage(totalPages - 3)"
-            class="page-link"
-            href="#"
-          >
+          <button @click="goToPage(totalPages - 3)" class="page-link">
             {{ totalPages - 3 }}
-          </a>
+          </button>
         </li>
         <li
           v-if="isEnd"
           :class="['page-item', activePageClass(totalPages - 2)]"
         >
-          <a
-            @click.prevent="goToPage(totalPages - 2)"
-            class="page-link"
-            href="#"
-          >
+          <button @click="goToPage(totalPages - 2)" class="page-link">
             {{ totalPages - 2 }}
-          </a>
+          </button>
         </li>
         <li
           v-if="isEnd"
           :class="['page-item', activePageClass(totalPages - 1)]"
         >
-          <a
-            @click.prevent="goToPage(totalPages - 1)"
-            class="page-link"
-            href="#"
-          >
+          <button @click="goToPage(totalPages - 1)" class="page-link">
             {{ totalPages - 1 }}
-          </a>
+          </button>
         </li>
         <li v-if="isEnd" :class="['page-item', activePageClass(totalPages)]">
-          <a @click.prevent="goToPage(totalPages)" class="page-link" href="#">
+          <button @click="goToPage(totalPages)" class="page-link">
             {{ totalPages }}
-          </a>
+          </button>
         </li>
       </template>
 
       <li class="page-item disabled">
-        <a class="page-link text-dark">of</a>
+        <button class="page-link text-dark">of</button>
       </li>
       <li class="page-item disabled">
-        <a class="page-link text-dark">{{ totalPages }}</a>
+        <button class="page-link text-dark">{{ totalPages }}</button>
       </li>
 
       <li v-if="hasNextPage" class="page-item">
-        <a @click.prevent="nextPage()" href="#" class="page-link">
+        <button @click="nextPage" class="page-link">
           <span class="me-3 text-primary">NEXT</span>
           <i class="fas fa-chevron-right" />
-        </a>
+        </button>
       </li>
     </ul>
   </nav>
