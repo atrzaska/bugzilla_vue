@@ -115,7 +115,7 @@ import API from '@/services/requests'
 import useUrlParams from '@/hooks/useUrlParams'
 import usePagination from '@/hooks/usePagination'
 import useSorting from '@/hooks/useSorting'
-import useCollection from '@/hooks/useCollection'
+import useCollection from '@/hooks/async/useCollection'
 import useCurrentUser from '@/hooks/useCurrentUser'
 
 const router = useRouter()

@@ -1,5 +1,5 @@
 import { ref, watch } from 'vue'
-import useCollection from '@/hooks/useCollection'
+import useCollection from '@/hooks/async/useCollection'
 import useUrlParams from '@/hooks/useUrlParams'
 import usePagination from '@/hooks/usePagination'
 import useSorting from '@/hooks/useSorting'

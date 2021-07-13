@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import useObject from '@/hooks/useObject'
+import useObject from '@/hooks/async/useObject'
 import API from '@/services/requests'
 
 const useCurrentUser = (defaultValue = {}) => {

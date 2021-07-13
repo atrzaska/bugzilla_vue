@@ -80,7 +80,7 @@ import threeDots from '@/assets/threeDots.svg'
 import API from '@/services/requests'
 import usePagination from '@/hooks/usePagination'
 import useSorting from '@/hooks/useSorting'
-import useCollection from '@/hooks/useCollection'
+import useCollection from '@/hooks/async/useCollection'
 
 const SORT_OPTIONS = {
   id_desc: { name: 'Creation time: newest', value: 'id_desc' },

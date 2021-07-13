@@ -115,7 +115,7 @@ import useEditForm from '@/hooks/useEditForm'
 import { storySchema as schema } from '@/services/yup'
 import API from '@/services/requests'
 import useUrlParams from '@/hooks/useUrlParams'
-import useCollection from '@/hooks/useCollection'
+import useCollection from '@/hooks/async/useCollection'
 import useLoadMorePagination from '@/hooks/useLoadMorePagination'
 
 const { projectId, id } = useUrlParams()
