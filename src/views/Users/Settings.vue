@@ -11,9 +11,9 @@
     <h5 class="mb-4">Cancel my account</h5>
     <p>Unhappy?</p>
     <div>
-      <a @click.prevent="onCancelAccount" href="#" class="btn btn-danger">
+      <button @click="onCancelAccount" class="btn btn-danger">
         Cancel my account
-      </a>
+      </button>
     </div>
   </AppLayout>
 </template>
