@@ -2,33 +2,33 @@
   <nav v-if="showPagination" aria-label="Page navigation">
     <ul class="pagination justify-content-center">
       <li v-if="hasPreviousPage" class="page-item">
-        <a @click.prevent="previousPage()" class="page-link" href="#">
+        <button @click="previousPage" class="page-link">
           <i class="fas fa-chevron-left" />
-        </a>
+        </button>
       </li>
       <li v-else class="page-item disabled">
-        <a class="page-link">
+        <button class="page-link">
           <i class="fas fa-chevron-left" />
-        </a>
+        </button>
       </li>
       <li
         v-for="visiblePage in visiblePages"
         :key="visiblePage"
         :class="['page-item', activePageClass(visiblePage)]"
       >
-        <a @click.prevent="goToPage(visiblePage)" class="page-link" href="#">
+        <button @click="goToPage(visiblePage)" class="page-link">
           {{ visiblePage }}
-        </a>
+        </button>
       </li>
       <li v-if="hasNextPage" class="page-item">
-        <a @click.prevent="nextPage()" href="#" class="page-link">
+        <button @click="nextPage" class="page-link">
           <i class="fas fa-chevron-right" />
-        </a>
+        </button>
       </li>
       <li v-else class="page-item disabled">
-        <a class="page-link">
+        <button class="page-link">
           <i class="fas fa-chevron-right" />
-        </a>
+        </button>
       </li>
     </ul>
   </nav>

@@ -2,7 +2,7 @@
   <nav v-if="showPagination" aria-label="Page navigation">
     <ul class="pagination justify-content-center">
       <li v-if="hasPreviousPage" class="page-item">
-        <a @click.prevent="previousPage()" class="page-link" href="#">
+        <a @click.prevent="previousPage" class="page-link" href="#">
           <i class="fas fa-chevron-left" />
         </a>
       </li>
@@ -55,7 +55,7 @@
         <li v-if="isMiddle || isEnd" class="page-item">
           <a @click.prevent="goToPage(1)" class="page-link" href="#">1</a>
         </li>
-        <li v-if="isMiddle || isEnd" class="page-item">
+        <li v-if="isMiddle || isEnd" class="page-item disabled">
           <a class="page-link text-dark">...</a>
         </li>
 
@@ -138,7 +138,7 @@
       </template>
 
       <li v-if="hasNextPage" class="page-item">
-        <a @click.prevent="nextPage()" href="#" class="page-link">
+        <a @click.prevent="nextPage" href="#" class="page-link">
           <i class="fas fa-chevron-right" />
         </a>
       </li>

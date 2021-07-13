@@ -3,11 +3,15 @@
     v-if="showPagination"
     class="d-flex justify-content-end align-items-center"
   >
-    <a v-if="hasPreviousPage" href="" @click.prevent="previousPage()">
+    <button
+      v-if="hasPreviousPage"
+      @click="previousPage"
+      class="btn btn-link p-0 border-0"
+    >
       <div class="pe-2 text-primary">
         <i class="fas fa-chevron-left" />
       </div>
-    </a>
+    </button>
     <div v-else class="pe-2">
       <i class="fas fa-chevron-left" />
     </div>
@@ -20,11 +24,15 @@
       />
     </div>
     <span>of {{ totalPages }}</span>
-    <a v-if="hasNextPage" href="" @click.prevent="nextPage()">
+    <button
+      v-if="hasNextPage"
+      @click="nextPage"
+      class="btn btn-link p-0 border-0"
+    >
       <div class="ps-2 text-primary">
         <i class="fas fa-chevron-right" />
       </div>
-    </a>
+    </button>
     <div v-else class="ps-2">
       <i class="fas fa-chevron-right" />
     </div>
