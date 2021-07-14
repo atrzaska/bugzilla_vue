@@ -3,7 +3,7 @@
     v-if="hasNextPage"
     class="d-flex justify-content-center align-items-center"
   >
-    <a href="" @click.prevent="loadMore()">Load More</a>
+    <a href="#" @click.prevent="loadMore">Load More</a>
   </div>
 </template>
 
