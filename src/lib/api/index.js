@@ -57,7 +57,7 @@ const clearCache = (url, options = {}) => {
   const { params } = options
   const cacheKey = JSON.stringify({ url, params })
 
-  return cache.delete(cacheKey)
+  return cache.delete(cacheKey) || true
 }
 
 const API = {
