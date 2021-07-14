@@ -23,11 +23,11 @@ const useFrontendValidation = ({ data, errors, schema }) => {
     try {
       schema.validateSync(data.value, { abortEarly: false })
       errors.value = {}
+      return true
     } catch (err) {
       err.inner.forEach((error) => (errors.value[error.path] = error.message))
+      return false
     }
-
-    return isValid.value
   }
 
   return {
