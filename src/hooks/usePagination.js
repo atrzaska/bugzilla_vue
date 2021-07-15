@@ -28,7 +28,7 @@ const usePagination = (options = {}) => {
 
     page.value = val
     offset.value = (val - 1) * size
-    QueryParams.set({ page: val })
+    QueryParams.setWithDefault('page', val, 1)
   }
 
   const previousPage = () => goToPage(page.value - 1)
