@@ -4,11 +4,11 @@ import QueryParams from '@/services/QueryParams'
 const SIZE = 10
 
 const usePagination = (options = {}) => {
-  const defaultPage = parseInt(QueryParams.get('page')) || 1
+  const initialPage = parseInt(QueryParams.get('page')) || 1
   const size = options.size || SIZE
   const collection = options.collection || ref([])
   const total = options.total || ref(1)
-  const page = ref(defaultPage)
+  const page = ref(initialPage)
   const offset = ref(0)
   const totalPages = computed(() => Math.ceil(total.value / size))
   const showPagination = computed(() => totalPages.value > 1)
