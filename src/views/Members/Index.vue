@@ -133,11 +133,13 @@ const project = ref({})
 const defaultSorting = SORT_OPTIONS.name_asc.value
 const sort = useSorting(defaultSorting)
 const { id } = useUrlParams()
-const { collection, total, loading, setCollection } = useCollection()
+const { collection, total, loading, setCollection, startLoading } =
+  useCollection()
 const pagination = usePagination({ collection, total })
 const { page } = pagination
 
 const fetchCollection = () => {
+  startLoading()
   API.fetchProject(id)
     .then((res) => (project.value = res.data))
     .then((result) =>

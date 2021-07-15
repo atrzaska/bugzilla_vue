@@ -10,12 +10,13 @@ const useStories = ({ filters }) => {
   const project = ref({})
   const sort = useSorting(defaultSorting)
   const { id } = useUrlParams()
-  const { collection, total, loading, setCollection } = useCollection()
+  const { collection, total, loading, setCollection, startLoading } =
+    useCollection()
   const pagination = usePagination({ collection, total })
   const { page } = pagination
 
   const fetchCollection = () => {
-    loading.value = true
+    startLoading()
     API.fetchProject(id)
       .then((res) => (project.value = res.data))
       .then((result) =>
@@ -33,10 +34,7 @@ const useStories = ({ filters }) => {
   }
 
   const updateStoryState = (story, state) =>
-    API.updateStory(story.id, { state }).then(() => {
-      loading.value = true
-      fetchCollection()
-    })
+    API.updateStory(story.id, { state }).then(fetchCollection)
 
   const onDeleteConfirmed = (story) => {
     API.deleteStory(story.id).then((res) => {
