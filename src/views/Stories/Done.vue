@@ -42,7 +42,6 @@
 </template>
 
 <script setup>
-import { watch } from 'vue'
 import AppLayout from '@/layouts/App'
 import ProjectTabs from '@/components/ProjectTabs'
 import TopPagination from '@/components/pagination/TopPagination'
