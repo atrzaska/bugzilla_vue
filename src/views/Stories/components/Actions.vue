@@ -63,7 +63,7 @@
         Edit
       </router-link>
       <div class="dropdown-divider" />
-      <div class="dropdown-item" href="#" @click="onDelete(story)">Remove</div>
+      <div class="dropdown-item" @click="onDelete(story)">Remove</div>
     </div>
   </div>
 </template>
