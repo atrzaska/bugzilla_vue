@@ -1,67 +1,60 @@
 <template>
   <div class="btn-group">
-    <a
+    <div
       v-if="story.state === 'unstarted'"
       class="btn btn-outline-secondary d-flex align-items-center"
-      href="#"
-      @click.prevent="updateStoryState(story, 'started')"
+      @click="updateStoryState(story, 'started')"
     >
       Start
-    </a>
-    <a
+    </div>
+    <div
       v-if="story.state === 'started'"
       class="btn btn-outline-secondary d-flex align-items-center"
-      href="#"
-      @click.prevent="updateStoryState(story, 'finished')"
+      @click="updateStoryState(story, 'finished')"
     >
       Finish
-    </a>
-    <a
+    </div>
+    <div
       v-if="story.state === 'finished'"
       class="btn btn-outline-secondary d-flex align-items-center"
-      href="#"
-      @click.prevent="updateStoryState(story, 'delivered')"
+      @click="updateStoryState(story, 'delivered')"
     >
       Deliver
-    </a>
-    <a
+    </div>
+    <div
       v-if="story.state === 'delivered'"
       class="btn btn-outline-secondary d-flex align-items-center"
-      href="#"
-      @click.prevent="updateStoryState(story, 'accepted')"
+      @click="updateStoryState(story, 'accepted')"
     >
       Accept
-    </a>
-    <a
+    </div>
+    <div
       v-if="story.state === 'delivered'"
       class="btn btn-outline-secondary d-flex align-items-center"
-      href="#"
-      @click.prevent="updateStoryState(story, 'rejected')"
+      @click="updateStoryState(story, 'rejected')"
     >
       Reject
-    </a>
-    <a
+    </div>
+    <div
       v-if="story.state === 'rejected'"
       class="btn btn-outline-secondary d-flex align-items-center"
-      href="#"
-      @click.prevent="updateStoryState(story, 'unstarted')"
+      @click="updateStoryState(story, 'unstarted')"
     >
       Restart
-    </a>
-    <a
+    </div>
+    <div
       v-if="story.state === 'accepted'"
       class="btn btn-outline-secondary d-flex align-items-center"
-      href="#"
-      @click.prevent="updateStoryState(story, 'unstarted')"
+      @click="updateStoryState(story, 'unstarted')"
     >
       Restart
-    </a>
-    <a
+    </div>
+    <div
       class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
       data-bs-toggle="dropdown"
     >
       <img :src="threeDots" alt="pic" />
-    </a>
+    </div>
     <div class="dropdown-menu dropdown-menu-end">
       <router-link
         class="dropdown-item"
@@ -70,9 +63,7 @@
         Edit
       </router-link>
       <div class="dropdown-divider" />
-      <a class="dropdown-item" href="#" @click.prevent="onDelete(story)">
-        Remove
-      </a>
+      <div class="dropdown-item" href="#" @click="onDelete(story)">Remove</div>
     </div>
   </div>
 </template>
