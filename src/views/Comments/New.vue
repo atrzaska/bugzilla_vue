@@ -2,20 +2,14 @@
   <AppLayout>
     <h1 class="mb-4">New Comment</h1>
     <form @submit.prevent="onSubmit">
-      <div class="mb-3">
-        <label class="form-label" for="content">Content</label>
-        <textarea
-          v-model="data.content"
-          :class="['form-control', invalidFieldClass('content')]"
-          @input="validateField('content')"
-          id="content"
-          placeholder="Content"
-          autofocus
-        />
-        <div v-if="errors.content" class="invalid-feedback">
-          {{ errors.content }}
-        </div>
-      </div>
+      <TextArea
+        v-model="data.content"
+        :validation="validation"
+        id="content"
+        label="Content"
+        autofocus
+      />
+      <hr />
       <FormButtons
         :isValid="isValid"
         :isSubmitting="isSubmitting"
@@ -29,6 +23,7 @@
 import { ref } from 'vue'
 import AppLayout from '@/layouts/App'
 import FormButtons from '@/components/form/FormButtons'
+import TextArea from '@/components/form/TextArea'
 import useNewForm from '@/hooks/useNewForm'
 import { commentSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
@@ -41,15 +36,7 @@ const data = ref({
   content: '',
 })
 const backPath = QueryParams.get('back') || '/dashboard'
-const {
-  errors,
-  invalidFieldClass,
-  isSubmitting,
-  isValid,
-  onSubmit,
-  validateField,
-  validation,
-} = useNewForm({
+const { errors, isSubmitting, isValid, onSubmit, validation } = useNewForm({
   data,
   schema,
   onCreate: (data) => API.createComment(data),
