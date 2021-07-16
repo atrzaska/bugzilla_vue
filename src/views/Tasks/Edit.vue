@@ -3,19 +3,13 @@
     <h1 class="mb-4">Edit Task</h1>
     <Loading v-if="loading" />
     <form v-else @submit.prevent="onSubmit">
-      <div class="mb-3">
-        <label class="form-label" for="description">Description</label>
-        <textarea
-          v-model="data.description"
-          :class="['form-control', invalidFieldClass('description')]"
-          @input="validateField('description')"
-          id="description"
-          placeholder="Description"
-        />
-        <div v-if="errors.description" class="invalid-feedback">
-          {{ errors.description }}
-        </div>
-      </div>
+      <TextArea
+        v-model="data.description"
+        :validation="validation"
+        id="description"
+        label="Description"
+        autofocus
+      />
       <div class="mb-3">
         <div class="form-check">
           <input
@@ -30,6 +24,7 @@
           </div>
         </div>
       </div>
+      <hr />
       <FormButtons
         :isValid="isValid"
         :isSubmitting="isSubmitting"
@@ -43,6 +38,7 @@
 import AppLayout from '@/layouts/App'
 import Loading from '@/components/Loading'
 import FormButtons from '@/components/form/FormButtons'
+import TextArea from '@/components/form/TextArea'
 import useEditForm from '@/hooks/useEditForm'
 import { taskSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
@@ -60,6 +56,7 @@ const {
   loading,
   onSubmit,
   validateField,
+  validation,
 } = useEditForm({
   schema,
   onFetch: (id) => API.fetchTask(id),

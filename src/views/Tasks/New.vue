@@ -2,20 +2,13 @@
   <AppLayout>
     <h1 class="mb-4">New Task</h1>
     <form @submit.prevent="onSubmit">
-      <div class="mb-3">
-        <label class="form-label" for="description">Description</label>
-        <textarea
-          v-model="data.description"
-          :class="['form-control', invalidFieldClass('description')]"
-          @input="validateField('description')"
-          id="description"
-          placeholder="Description"
-          autofocus
-        />
-        <div v-if="errors.description" class="invalid-feedback">
-          {{ errors.description }}
-        </div>
-      </div>
+      <TextArea
+        v-model="data.description.value"
+        :validation="validation"
+        id="description"
+        label="Description"
+        autofocus
+      />
       <div class="mb-3">
         <div class="form-check">
           <input
@@ -30,6 +23,7 @@
           </div>
         </div>
       </div>
+      <hr />
       <FormButtons
         :isValid="isValid"
         :isSubmitting="isSubmitting"
@@ -43,6 +37,7 @@
 import { ref } from 'vue'
 import AppLayout from '@/layouts/App'
 import FormButtons from '@/components/form/FormButtons'
+import TextArea from '@/components/form/TextArea'
 import useNewForm from '@/hooks/useNewForm'
 import { taskSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
