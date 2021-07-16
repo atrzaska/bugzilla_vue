@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label" for="storyContainer">Container</label>
+        <label class="form-label" for="container">Container</label>
         <select
           v-model="data.container"
           :class="['form-select', invalidFieldClass('container')]"

@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label" for="storyContainer">Container</label>
+        <label class="form-label" for="container">Container</label>
         <select
           v-model="data.container"
           :class="['form-select', invalidFieldClass('container')]"
@@ -68,9 +68,12 @@
           <router-link class="me-auto" :to="routes.editCommentPath(comment)">
             {{ comment.content }}
           </router-link>
-          <a @click.prevent="onDeleteComment(comment)" href="#">
+          <button
+            class="btn btn-link p-0 border-0"
+            @click="onDeleteComment(comment)"
+          >
             <i class="far fa-times-circle" />
-          </a>
+          </button>
         </div>
       </div>
       <LoadMore :pagination="commentsPagination" />
@@ -92,9 +95,9 @@
           <router-link class="me-auto" :to="routes.editTaskPath(task)">
             {{ task.description }}
           </router-link>
-          <a @click.prevent="onDeleteTask(task)" href="#">
+          <button class="btn btn-link p-0 border-0" @click="onDeleteTask(task)">
             <i class="far fa-times-circle" />
-          </a>
+          </button>
         </div>
       </div>
       <LoadMore :pagination="tasksPagination" />
