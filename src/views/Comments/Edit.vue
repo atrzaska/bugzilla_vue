@@ -28,15 +28,14 @@ import useEditForm from '@/hooks/useEditForm'
 import { commentSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
 import QueryParams from '@/services/QueryParams'
-import useUrlParams from '@/hooks/useUrlParams'
 
-const { storyId } = useUrlParams()
 const backPath = QueryParams.get('back') || '/dashboard'
-const { data, errors, isSubmitting, isValid, loading, onSubmit } = useEditForm({
-  schema,
-  onFetch: (id) => API.fetchComment(id),
-  onUpdate: (id, data) => API.updateComment(id, data),
-  successToast: (data) => 'Comment updated successfully.',
-  successRedirectPath: backPath,
-})
+const { data, isSubmitting, isValid, loading, onSubmit, validation } =
+  useEditForm({
+    schema,
+    onFetch: (id) => API.fetchComment(id),
+    onUpdate: (id, data) => API.updateComment(id, data),
+    successToast: (data) => 'Comment updated successfully.',
+    successRedirectPath: backPath,
+  })
 </script>
