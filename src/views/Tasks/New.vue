@@ -18,7 +18,7 @@
             class="form-check-input"
           />
           <label for="complete" class="form-check-label">Complete</label>
-          <div v-if="errors.content" class="invalid-feedback">
+          <div v-if="errors.complete" class="invalid-feedback">
             {{ errors.complete }}
           </div>
         </div>
