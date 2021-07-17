@@ -33,15 +33,7 @@ const { id } = useUrlParams()
 const data = ref({
   projectId: parseInt(id),
 })
-const {
-  errors,
-  invalidFieldClass,
-  isSubmitting,
-  isValid,
-  onSubmit,
-  validateField,
-  validation,
-} = useNewForm({
+const { isSubmitting, isValid, onSubmit, validation } = useNewForm({
   data,
   schema,
   onCreate: (data) => API.createInvite(data),

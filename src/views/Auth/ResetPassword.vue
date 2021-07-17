@@ -60,7 +60,6 @@ import API from '@/services/requests'
 
 const router = useRouter()
 const {
-  id,
   data,
   loading,
   errors,
