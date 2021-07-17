@@ -11,7 +11,7 @@ const useFrontendValidation = ({ data, errors, schema }) => {
   const isValid = computed(() => Object.keys(errors.value).length === 0)
 
   const invalidFieldClass = (field) =>
-    invalidFields.value.includes(field) && 'is-invalid'
+    invalidFields.value.includes(field) ? 'is-invalid' : ''
 
   const validateField = (field) =>
     schema
