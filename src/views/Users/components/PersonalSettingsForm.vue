@@ -26,10 +26,10 @@
             'form-check-input',
             invalidFieldClass('newsletterSubscribed'),
           ]"
-          id="receive_news_and_updates"
+          id="newsletterSubscribed"
           type="checkbox"
         />
-        <label class="form-check-label" for="receive_news_and_updates">
+        <label class="form-check-label" for="newsletterSubscribed">
           Receive news and updates
         </label>
         <div v-if="errors.newsletterSubscribed" class="invalid-feedback">
