@@ -19,28 +19,25 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import AppLayout from '@/layouts/App'
-import Loading from '@/components/Loading'
 import PersonalSettingsForm from './components/PersonalSettingsForm'
 import ChangePasswordForm from './components/ChangePasswordForm'
 import EmailForm from './components/EmailForm'
 import API from '@/services/requests'
 
-const onDeleteConfirmed = () =>
+const router = useRouter()
+
+const onCancelAccountConfirmed = () =>
   API.deleteCurrentUser().then(() => {
     window.Toast.success(`Account deleted successfully.`)
     API.clearToken()
-  })
-
-const onDelete = (project) =>
-  window.Modal.confirmDelete({
-    name: project.name,
-    onConfirm: () => onDeleteConfirmed(project),
+    router.push('/')
   })
 
 const onCancelAccount = () =>
   window.Modal.confirmDelete({
     title: 'You are about to delete your account',
-    onConfirm: onDeleteConfirmed,
+    onConfirm: onCancelAccountConfirmed,
   })
 </script>
