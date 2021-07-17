@@ -11,6 +11,7 @@
               v-model="data.role"
               class="form-check-input"
               id="role_member"
+              name="role"
               type="radio"
               value="member"
             />
@@ -26,6 +27,7 @@
               v-model="data.role"
               class="form-check-input"
               id="role_owner"
+              name="role"
               type="radio"
               value="owner"
             />

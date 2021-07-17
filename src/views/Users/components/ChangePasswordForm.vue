@@ -12,7 +12,7 @@
       v-model="data.password"
       :validation="validation"
       id="newPassword"
-      field="password"
+      name="password"
       label="New password"
       type="password"
     />
@@ -39,18 +39,11 @@ import useEditForm from '@/hooks/useEditForm'
 import { changePasswordSchema } from '@/services/yup'
 import API from '@/services/requests'
 
-const {
-  data,
-  errors,
-  isSubmitting,
-  isValid,
-  loading,
-  onSubmit,
-  validation,
-} = useEditForm({
-  schema: changePasswordSchema,
-  onFetch: () => Promise.resolve({ data: {} }),
-  onUpdate: (id, data) => API.updatePassword(data),
-  successToast: (data) => 'Password updated successfully.',
-})
+const { data, isSubmitting, isValid, loading, onSubmit, validation } =
+  useEditForm({
+    schema: changePasswordSchema,
+    onFetch: () => Promise.resolve({ data: {} }),
+    onUpdate: (id, data) => API.updatePassword(data),
+    successToast: (data) => 'Password updated successfully.',
+  })
 </script>

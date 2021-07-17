@@ -6,6 +6,7 @@
       :class="[inputClass, validation.invalidFieldClass(field)]"
       @input="onInput($event.target.value)"
       :id="id"
+      :name="field"
       :placeholder="placeholder || label"
       :type="type"
       :autofocus="autofocus"
@@ -23,7 +24,7 @@ const {
   modelValue,
   validation,
   id,
-  field: fieldParam,
+  name,
   placeholder,
   label,
   type = 'text',
@@ -36,6 +37,7 @@ const {
   modelValue: String,
   validation: Object,
   id: String,
+  name: String,
   field: String,
   placeholder: String,
   label: String,
@@ -47,7 +49,7 @@ const {
   autofocus: Boolean,
 })
 const emit = defineEmits(['update:modelValue'])
-const field = fieldParam || id
+const field = name || id
 const onInput = (val) => {
   emit('update:modelValue', val)
   validation.validateField(field)
