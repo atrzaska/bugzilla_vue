@@ -34,7 +34,7 @@ To install them run:
 
 ## Backend API for this Single Page Application
 
-This application is using backend API which I did not publish yet. It will not work without it.
+This application is using backend API https://github.com/atrzaska/bugzilla_api. It will not work without it.
 
 ## Development Setup
 
@@ -84,7 +84,6 @@ Pages/components:
 - sidebar with app modules
 - logged in app pages with app layout
 - auth pages with auth layout
-- enums using `ecto_enum`
 - bootstrap 5 toast component
 - bootstrap 5 modal component
 - live validations using bootstrap and yup
