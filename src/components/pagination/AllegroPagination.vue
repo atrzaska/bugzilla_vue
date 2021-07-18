@@ -9,113 +9,36 @@
       </li>
 
       <template v-if="totalPages <= 7">
-        <li v-if="totalPages >= 1" :class="['page-item', activePageClass(1)]">
-          <button @click="goToPage(1)" class="page-link">1</button>
-        </li>
-        <li v-if="totalPages >= 2" :class="['page-item', activePageClass(2)]">
-          <button @click="goToPage(2)" class="page-link">2</button>
-        </li>
-        <li v-if="totalPages >= 3" :class="['page-item', activePageClass(3)]">
-          <button @click="goToPage(3)" class="page-link">3</button>
-        </li>
-        <li v-if="totalPages >= 4" :class="['page-item', activePageClass(4)]">
-          <button @click="goToPage(4)" class="page-link">4</button>
-        </li>
-        <li v-if="totalPages >= 5" :class="['page-item', activePageClass(5)]">
-          <button @click="goToPage(5)" class="page-link">5</button>
-        </li>
-        <li v-if="totalPages >= 6" :class="['page-item', activePageClass(6)]">
-          <button @click="goToPage(6)" class="page-link">6</button>
-        </li>
-        <li v-if="totalPages >= 7" :class="['page-item', activePageClass(7)]">
-          <button @click="goToPage(7)" class="page-link">7</button>
-        </li>
+        <Li :show="totalPages >= 1" :page="1" :pagination="pagination" />
+        <Li :show="totalPages >= 2" :page="2" :pagination="pagination" />
+        <Li :show="totalPages >= 3" :page="3" :pagination="pagination" />
+        <Li :show="totalPages >= 4" :page="4" :pagination="pagination" />
+        <Li :show="totalPages >= 5" :page="5" :pagination="pagination" />
+        <Li :show="totalPages >= 6" :page="6" :pagination="pagination" />
+        <Li :show="totalPages >= 7" :page="7" :pagination="pagination" />
       </template>
       <template v-else>
-        <li v-if="isBeginning" :class="['page-item', activePageClass(1)]">
-          <button @click="goToPage(1)" class="page-link">1</button>
-        </li>
-        <li v-if="isBeginning" :class="['page-item', activePageClass(2)]">
-          <button @click="goToPage(2)" class="page-link">2</button>
-        </li>
-        <li v-if="isBeginning" :class="['page-item', activePageClass(3)]">
-          <button @click="goToPage(3)" class="page-link">3</button>
-        </li>
-        <li v-if="isBeginning" :class="['page-item', activePageClass(4)]">
-          <button @click="goToPage(4)" class="page-link">4</button>
-        </li>
-        <li v-if="isBeginning" :class="['page-item', activePageClass(5)]">
-          <button @click="goToPage(5)" class="page-link">5</button>
-        </li>
+        <Li :show="isBeginning" :page="1" :pagination="pagination" />
+        <Li :show="isBeginning" :page="2" :pagination="pagination" />
+        <Li :show="isBeginning" :page="3" :pagination="pagination" />
+        <Li :show="isBeginning" :page="4" :pagination="pagination" />
+        <Li :show="isBeginning" :page="5" :pagination="pagination" />
 
-        <li v-if="isMiddle || isEnd" class="page-item">
-          <button @click="goToPage(1)" class="page-link">1</button>
-        </li>
+        <Li :show="isMiddle || isEnd" :page="1" :pagination="pagination" />
         <li v-if="isMiddle || isEnd" class="page-item disabled">
           <button class="page-link text-dark">...</button>
         </li>
+        <Li :show="isMiddle" :page="page - 2" :pagination="pagination" />
+        <Li :show="isMiddle" :page="page - 1" :pagination="pagination" />
+        <Li :show="isMiddle" :page="page" :pagination="pagination" />
+        <Li :show="isMiddle" :page="page + 1" :pagination="pagination" />
+        <Li :show="isMiddle" :page="page + 2" :pagination="pagination" />
 
-        <li v-if="isMiddle" class="page-item">
-          <button @click="goToPage(page - 2)" class="page-link">
-            {{ page - 2 }}
-          </button>
-        </li>
-        <li v-if="isMiddle" class="page-item">
-          <button @click="goToPage(page - 1)" class="page-link">
-            {{ page - 1 }}
-          </button>
-        </li>
-        <li v-if="isMiddle" class="page-item active">
-          <button class="page-link">{{ page }}</button>
-        </li>
-        <li v-if="isMiddle" class="page-item">
-          <button @click="goToPage(page + 1)" class="page-link">
-            {{ page + 1 }}
-          </button>
-        </li>
-        <li v-if="isMiddle" class="page-item">
-          <button @click="goToPage(page + 2)" class="page-link">
-            {{ page + 2 }}
-          </button>
-        </li>
-
-        <li
-          v-if="isEnd"
-          :class="['page-item', activePageClass(totalPages - 4)]"
-        >
-          <button @click="goToPage(totalPages - 4)" class="page-link">
-            {{ totalPages - 4 }}
-          </button>
-        </li>
-        <li
-          v-if="isEnd"
-          :class="['page-item', activePageClass(totalPages - 3)]"
-        >
-          <button @click="goToPage(totalPages - 3)" class="page-link">
-            {{ totalPages - 3 }}
-          </button>
-        </li>
-        <li
-          v-if="isEnd"
-          :class="['page-item', activePageClass(totalPages - 2)]"
-        >
-          <button @click="goToPage(totalPages - 2)" class="page-link">
-            {{ totalPages - 2 }}
-          </button>
-        </li>
-        <li
-          v-if="isEnd"
-          :class="['page-item', activePageClass(totalPages - 1)]"
-        >
-          <button @click="goToPage(totalPages - 1)" class="page-link">
-            {{ totalPages - 1 }}
-          </button>
-        </li>
-        <li v-if="isEnd" :class="['page-item', activePageClass(totalPages)]">
-          <button @click="goToPage(totalPages)" class="page-link">
-            {{ totalPages }}
-          </button>
-        </li>
+        <Li :show="isEnd" :page="totalPages - 4" :pagination="pagination" />
+        <Li :show="isEnd" :page="totalPages - 3" :pagination="pagination" />
+        <Li :show="isEnd" :page="totalPages - 2" :pagination="pagination" />
+        <Li :show="isEnd" :page="totalPages - 1" :pagination="pagination" />
+        <Li :show="isEnd" :page="totalPages" :pagination="pagination" />
       </template>
 
       <li class="page-item disabled">
@@ -137,6 +60,7 @@
 
 <script setup>
 import { defineProps, computed } from 'vue'
+import Li from '@/components/pagination/Li'
 
 const props = defineProps({ pagination: Object })
 
