@@ -1,5 +1,4 @@
 <template>
-  <h5 class="mb-4">Change personal data</h5>
   <Loading v-if="loading" />
   <form v-else @submit.prevent="onSubmit">
     <Field

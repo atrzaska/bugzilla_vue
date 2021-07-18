@@ -1,8 +1,10 @@
 <template>
   <AppLayout>
     <h1 class="text-center">Settings</h1>
+    <h5 class="mb-4">Change personal data</h5>
     <PersonalSettingsForm />
     <hr />
+    <h5 class="mb-4">Change email</h5>
     <EmailForm />
     <hr />
     <h5 class="mb-4">Change password</h5>

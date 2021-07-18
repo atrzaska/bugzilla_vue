@@ -1,5 +1,4 @@
 <template>
-  <h5 class="mb-4">Change email</h5>
   <Loading v-if="loading" />
   <form v-else @submit.prevent="onSubmit">
     <Field
@@ -30,18 +29,11 @@ import useEditForm from '@/hooks/useEditForm'
 import { changeEmailSchema } from '@/services/yup'
 import API from '@/services/requests'
 
-const {
-  data,
-  errors,
-  isSubmitting,
-  isValid,
-  loading,
-  onSubmit,
-  validation,
-} = useEditForm({
-  schema: changeEmailSchema,
-  onFetch: () => API.fetchCurrentUser({ fields: 'email' }),
-  onUpdate: (id, data) => API.updateEmail(data),
-  successToast: (data) => 'Email updated successfully.',
-})
+const { data, errors, isSubmitting, isValid, loading, onSubmit, validation } =
+  useEditForm({
+    schema: changeEmailSchema,
+    onFetch: () => API.fetchCurrentUser({ fields: 'email' }),
+    onUpdate: (id, data) => API.updateEmail(data),
+    successToast: (data) => 'Email updated successfully.',
+  })
 </script>
