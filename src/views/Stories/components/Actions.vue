@@ -70,10 +70,10 @@
 
 <script setup>
 import { defineProps } from 'vue'
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 import threeDots from '@/assets/threeDots.svg'
 
-const { id } = useUrlParams()
+const { id } = useParams()
 
 const props = defineProps({
   story: Object,

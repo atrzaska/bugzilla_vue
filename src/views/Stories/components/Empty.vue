@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 
-const { id } = useUrlParams()
+const { id } = useParams()
 </script>

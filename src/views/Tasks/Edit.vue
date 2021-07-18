@@ -43,9 +43,9 @@ import useEditForm from '@/hooks/useEditForm'
 import { taskSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
 import QueryParams from '@/services/QueryParams'
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 
-const { storyId } = useUrlParams()
+const { storyId } = useParams()
 const backPath = QueryParams.get('back') || '/dashboard'
 const {
   data,

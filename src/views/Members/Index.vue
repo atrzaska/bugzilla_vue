@@ -112,7 +112,7 @@ import Sort from '@/components/Sort'
 import Empty from './components/Empty'
 import threeDots from '@/assets/threeDots.svg'
 import API from '@/services/requests'
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 import usePagination from '@/hooks/usePagination'
 import useSorting from '@/hooks/useSorting'
 import useCollection from '@/hooks/async/useCollection'
@@ -132,7 +132,7 @@ const SORT_OPTIONS = {
 const project = ref({})
 const defaultSorting = SORT_OPTIONS.name_asc.value
 const sort = useSorting(defaultSorting)
-const { id } = useUrlParams()
+const { id } = useParams()
 const { collection, total, loading, setCollection, startLoading } =
   useCollection()
 const pagination = usePagination({ collection, total })

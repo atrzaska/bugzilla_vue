@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue'
 import useCollection from '@/hooks/async/useCollection'
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 import usePagination from '@/hooks/usePagination'
 import useSorting from '@/hooks/useSorting'
 import API from '@/services/requests'
@@ -9,7 +9,7 @@ import { defaultSorting } from './sorting'
 const useStories = ({ filters }) => {
   const project = ref({})
   const sort = useSorting(defaultSorting)
-  const { id } = useUrlParams()
+  const { id } = useParams()
   const { collection, total, loading, setCollection, startLoading } =
     useCollection()
   const pagination = usePagination({ collection, total })

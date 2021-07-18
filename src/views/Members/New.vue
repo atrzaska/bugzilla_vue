@@ -27,9 +27,9 @@ import FormButtons from '@/components/form/FormButtons'
 import useNewForm from '@/hooks/useNewForm'
 import { newMemberSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 
-const { id } = useUrlParams()
+const { id } = useParams()
 const data = ref({
   projectId: parseInt(id),
 })

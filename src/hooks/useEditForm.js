@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import useForm from '@/hooks/useForm'
 import useFrontendValidation from '@/hooks/useFrontendValidation'
 import useObject from '@/hooks/async/useObject'
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 
 const useEditForm = ({
   id,
@@ -21,7 +21,7 @@ const useEditForm = ({
   const validation = useFrontendValidation({ data, errors, schema })
   const router = useRouter()
   const object = useObject(data)
-  const urlParams = useUrlParams()
+  const urlParams = useParams()
   id = id || urlParams.id
 
   const onSubmit = () => {

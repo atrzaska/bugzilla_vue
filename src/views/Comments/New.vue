@@ -28,9 +28,9 @@ import useNewForm from '@/hooks/useNewForm'
 import { commentSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
 import QueryParams from '@/services/QueryParams'
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 
-const { storyId } = useUrlParams()
+const { storyId } = useParams()
 const data = ref({
   storyId: parseInt(storyId),
   content: '',

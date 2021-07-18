@@ -117,11 +117,11 @@ import FormButtons from '@/components/form/FormButtons'
 import useEditForm from '@/hooks/useEditForm'
 import { storySchema as schema } from '@/services/yup'
 import API from '@/services/requests'
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 import useCollection from '@/hooks/async/useCollection'
 import useLoadMorePagination from '@/hooks/useLoadMorePagination'
 
-const { projectId, id } = useUrlParams()
+const { projectId, id } = useParams()
 const {
   data,
   errors,

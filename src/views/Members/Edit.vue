@@ -58,9 +58,9 @@ import FormButtons from '@/components/form/FormButtons'
 import useEditForm from '@/hooks/useEditForm'
 import { editMemberSchema as schema } from '@/services/yup'
 import API from '@/services/requests'
-import useUrlParams from '@/hooks/useUrlParams'
+import useParams from '@/hooks/useParams'
 
-const { id, storyId } = useUrlParams()
+const { id, storyId } = useParams()
 const {
   data,
   errors,
