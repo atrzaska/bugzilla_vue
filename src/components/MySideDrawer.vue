@@ -12,6 +12,8 @@
     title="My side drawer 2"
     :show="drawer.show"
     @close="drawer.close"
+    backdrop
+    right
   >
     <div class="px-3 py-2">
       <p>

@@ -1,41 +1,38 @@
 <template>
   <div
     v-if="show && backdrop"
-    class="modal-backdrop fade show"
-    @click="$emit('close')"
+    id="sideDrawerBackdrop"
+    class="modal-backdrop fade"
+    @click="onCloseWrapped"
   />
-  <transition
-    name="side-drawer-transition"
-    :enter-active-class="placement.enterClass"
-    :leave-active-class="placement.leaveClass"
+  <div
+    v-if="show"
+    id="sideDrawerWrapper"
+    :class="['shadow', 'bg-white', 'h-100', placement.wrapperClass]"
+    :style="{ width }"
   >
-    <div
-      v-if="show"
-      :class="['shadow', 'bg-white', 'h-100', placement.wrapperClass]"
-      :style="{ width }"
+    <template v-if="noHeader" />
+    <header
+      v-else
+      class="d-flex align-items-center justify-content-between p-3"
     >
-      <template v-if="noHeader" />
-      <header
-        v-else
-        class="d-flex align-items-center justify-content-between p-3"
-      >
-        <h5 class="mb-0">{{ title }}</h5>
-        <button
-          type="button"
-          class="btn-close"
-          aria-label="Close"
-          @click="$emit('close')"
-        />
-      </header>
-      <div class="content">
-        <slot></slot>
-      </div>
+      <h5 class="mb-0">{{ title }}</h5>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        @click="onCloseWrapped"
+      />
+    </header>
+    <div class="content">
+      <slot></slot>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits, toRefs } from 'vue'
+import { defineProps, defineEmits, toRefs, watch } from 'vue'
+import toggleClass from '@/services/toggleClass'
 
 const props = defineProps({
   show: Object,
@@ -46,7 +43,7 @@ const props = defineProps({
   width: Number,
 })
 
-defineEmits(['close'])
+const emit = defineEmits(['close'])
 
 const {
   title,
@@ -59,16 +56,26 @@ const {
 
 const PLACEMENTS = {
   left: {
-    enterClass: 'animated slideInLeft',
-    leaveClass: 'animated slideOutLeft',
     wrapperClass: 'b-side-drawer',
   },
   right: {
-    enterClass: 'animated slideInRight',
-    leaveClass: 'animated slideOutRight',
     wrapperClass: 'b-side-drawer b-side-drawer-right',
   },
 }
 
 const placement = right.value ? PLACEMENTS.right : PLACEMENTS.left
+
+const animate = () => {
+  toggleClass('sideDrawerBackdrop', 'show')
+  toggleClass('sideDrawerWrapper', 'b-side-drawer-active')
+}
+
+const onClose = () => emit('close')
+
+const onCloseWrapped = () => {
+  animate()
+  setTimeout(onClose, 400)
+}
+
+watch(show, () => setTimeout(animate, 1))
 </script>
