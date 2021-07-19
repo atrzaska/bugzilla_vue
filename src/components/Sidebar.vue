@@ -26,6 +26,6 @@ const linkClass = (path) => [
   'd-flex',
   'justify-content-center',
   'align-items-center',
-  isActive(path) && 'sidebar-item-active',
+  isActive(path) ? 'sidebar-item-active' : '',
 ]
 </script>
