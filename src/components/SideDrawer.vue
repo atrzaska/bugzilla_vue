@@ -56,10 +56,10 @@ const {
 
 const PLACEMENTS = {
   left: {
-    wrapperClass: 'b-side-drawer',
+    wrapperClass: 'side-drawer',
   },
   right: {
-    wrapperClass: 'b-side-drawer b-side-drawer-right',
+    wrapperClass: 'side-drawer side-drawer-right',
   },
 }
 
@@ -67,7 +67,7 @@ const placement = right.value ? PLACEMENTS.right : PLACEMENTS.left
 
 const animate = () => {
   toggleClass('sideDrawerBackdrop', 'show')
-  toggleClass('sideDrawerWrapper', 'b-side-drawer-active')
+  toggleClass('sideDrawerWrapper', 'side-drawer-active')
 }
 
 const onClose = () => emit('close')
